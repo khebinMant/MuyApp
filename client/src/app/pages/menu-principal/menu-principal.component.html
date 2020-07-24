@@ -1,0 +1,52 @@
+<p>menu-principal works!</p>
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" >
+  <mat-toolbar class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1 class="example-app-name">MuyApp</h1>
+    <div class="usuario" fxFlex="4%">
+      <button mat-fab color="primary" [matMenuTriggerFor]="menuPersona">
+        <img src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="">
+     </button>
+      <mat-menu #menuPersona="matMenu" xPosition="before">
+          <mat-card class="example-card">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>Shiba Inu</mat-card-title>
+              <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <p>
+                The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+                A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+                bred for hunting.
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button>
+                <a routerLink="">Cerrar Sesion</a>
+                <router-outlet></router-outlet>
+              </button>
+              <button mat-button>SHARE</button>
+            </mat-card-actions>
+          </mat-card>
+
+      </mat-menu>
+    </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container"
+                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+        Aqui irian las plantas
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <a routerLink="data">Vamos  a muyadata</a>
+      <a routerLink="app">Vamos  al huerto</a>
+      <a routerLink="">Vamos  a Login</a>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

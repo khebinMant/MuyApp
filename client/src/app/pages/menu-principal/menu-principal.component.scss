@@ -1,0 +1,132 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+button mat-menu-item{
+  height: auto;
+  width: auto;
+}
+button mat-icon-button{
+  position: absolute;
+  left: 25px;
+  top: 20px
+}
+mat-toolbar {
+  height: 3.3rem;
+  background:linear-gradient(to top, white,#D2FFD7);
+  padding: 0;
+ }
+.example-is-mobile .example-toolbar {
+
+  position: relative;
+
+  text-align: center;
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  z-index: 2;
+}
+
+h1.example-app-name {
+  position: absolute;
+  right: 45%;
+}
+.example-sidenav-container {
+  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+     causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+  flex: 1;
+}
+.example-is-mobile .example-sidenav-container {
+  /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+     `<body>` to be our scrolling element for mobile layouts. */
+  flex: 1 0 auto;
+}
+.usuario {
+  position: absolute;
+  right: 25px;
+  display: inline-block;
+}
+.usuario button {
+  padding: 0;
+  height: 45px;
+  width: 45px;
+  margin-top: 0.1rem;
+}
+.usuario button img {
+  height: 45px;
+  width: 45px;
+  margin-top: -0.9rem;
+  padding: 0;
+  border-radius: 100%;
+  // border:1px solid #666;
+}
+.example-card {
+  max-width: 400px;
+}
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+mat-card img{
+  justify-content: center;
+}
+/*
+@import '../../../main-style.scss';
+
+.layout-box{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  overflow: hidden;
+
+  .page-content{
+    flex-grow: 1;
+    overflow-y : scroll;
+  }
+}
+.top-bar{
+  position: relative;
+  width: 100%;
+  height: 68px;
+  background:linear-gradient(to top, #D2FFD7,white);
+
+  box-shadow: 0px 0px 10px 0px rgba(black, 0.60);
+
+  display: flex;
+  flex-shrink: 0; // to prevent the top bar from shrinking  para prevenir que la barra de top se contraiga
+  // Center child elements(the heading)
+  justify-content: center;
+  align-items: center;
+  h1{
+    color:#707070 ;
+    font-size: 35px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+  }
+  .cara{
+    position: absolute;
+    right: 15px;
+  }
+  .icono{
+    position: absolute;
+    left: 15px;
+  }
+}
+mat-sidenav-container {
+  max-width: 100%;
+  height: 550px;
+}
+mat-sidenav {
+  position: absolute;
+  max-width: 320px;
+  background-color: #f77129c2;
+  height: 550px;
+}
+mat-sidenav-content {
+  background-color: #fff;
+  height: 550px;
+}
+*/
