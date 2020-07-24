@@ -1,0 +1,49 @@
+
+.container{
+  background-image: url("../../../assets/imagenes/inicio.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: 60%;
+  width: 100%;
+  height: 100%;
+}
+.titulo{
+  padding-top: 30px;
+  margin-bottom: 100px;
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+}
+.leyenda{
+  font-size: 30px;
+  text-align: center;
+  margin-top: 50px;
+}
+.botones{
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+hr{
+  height: 3px;
+  background-color: green;
+  border-color: transparent;
+  margin-top: 30px;
+  width: 700px;
+}
+.subtitulo{
+  text-align: center;
+  font-size: 45px;
+}
+.footer{
+  text-align: center;
+  height: 100px;
+}
+
+.footer ul li{
+  margin: 10px;
+  display: inline-block;
+}
+.footer ul{
+  text-align: center;
+}

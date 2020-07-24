@@ -52,6 +52,7 @@ import { MenuPrincipalComponent } from './pages/menu-principal/menu-principal.co
 import { MuyaDataComponent } from './pages/muya-data/muya-data.component';
 import { MuyaAppComponent } from './pages/muya-app/muya-app.component';
 import { LoginComponent } from './pages/login/login.component';
+import { InicioComponent } from './pages/inicio/inicio.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { LoginComponent } from './pages/login/login.component';
     MenuPrincipalComponent,
     MuyaDataComponent,
     MuyaAppComponent,
-    LoginComponent
+    LoginComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,

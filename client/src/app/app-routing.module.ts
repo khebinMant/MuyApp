@@ -1,3 +1,4 @@
+import { InicioComponent } from './pages/inicio/inicio.component';
 import { MuyaDataComponent } from './pages/muya-data/muya-data.component';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -19,8 +20,8 @@ const routes: Routes = [
   [
     {path: 'menu', component:MenuPrincipalComponent}
   ]
-}
-
+  },
+  { path: 'inicio', component:InicioComponent}
 ];
 
 @NgModule({
