@@ -1,0 +1,43 @@
+@import "~leaflet/dist/leaflet.css";
+
+.todo{
+  display: flex;
+  flex-direction: row;
+  height: 90%;
+  margin: 15px;
+
+  .mp{
+    border: 1px solid rgba(128, 128, 128, .5);
+    width: 65%;
+  }
+  .opciones{
+    position: relative;
+    background:linear-gradient(to top,#D2FFD7,white);
+    border: 1px solid rgba(128, 128, 128, .5);
+    margin-left: 100px;
+    width: 20%;
+  }
+}
+mat-form-field {
+  width: 100%;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

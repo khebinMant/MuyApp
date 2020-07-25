@@ -1,3 +1,4 @@
+import { MuyaMapComponent } from './pages/muya-map/muya-map.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { MuyaDataComponent } from './pages/muya-data/muya-data.component';
 import { AppComponent } from './app.component';
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: 'menu', component:MenuPrincipalComponent, children:
     [
       {path: 'data', component:MuyaDataComponent},
-      {path: 'app', component:MuyaAppComponent}
+      {path: 'app', component:MuyaAppComponent},
+      { path: 'map', component: MuyaMapComponent}
     ]
   },
   {path: 'login', component:LoginComponent, children:

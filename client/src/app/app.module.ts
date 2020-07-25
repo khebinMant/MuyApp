@@ -1,10 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 
 import {A11yModule} from '@angular/cdk/a11y';
 import {ClipboardModule} from '@angular/cdk/clipboard';
@@ -53,6 +52,8 @@ import { MuyaDataComponent } from './pages/muya-data/muya-data.component';
 import { MuyaAppComponent } from './pages/muya-app/muya-app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
+import { MuyaMapComponent } from './pages/muya-map/muya-map.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { InicioComponent } from './pages/inicio/inicio.component';
     MuyaDataComponent,
     MuyaAppComponent,
     LoginComponent,
-    InicioComponent
+    InicioComponent,
+    MuyaMapComponent
   ],
   imports: [
     BrowserModule,
@@ -109,9 +111,13 @@ import { InicioComponent } from './pages/inicio/inicio.component';
     MatTreeModule,
     PortalModule,
     ScrollingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatFormFieldModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ]
 })
 export class AppModule { }

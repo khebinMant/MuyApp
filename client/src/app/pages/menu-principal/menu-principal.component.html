@@ -1,7 +1,7 @@
-<p>menu-principal works!</p>
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches" >
   <mat-toolbar class="example-toolbar">
     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <img class="logo" src="../../../assets/iconos/huerto.png" alt="">
     <h1 class="example-app-name">MuyApp</h1>
     <div class="usuario" fxFlex="4%">
       <button mat-fab color="primary" [matMenuTriggerFor]="menuPersona">
@@ -25,7 +25,6 @@
             <mat-card-actions>
               <button mat-button>
                 <a routerLink="">Cerrar Sesion</a>
-                <router-outlet></router-outlet>
               </button>
               <button mat-button>SHARE</button>
             </mat-card-actions>
@@ -39,13 +38,114 @@
                          [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
                  [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
-        Aqui irian las plantas
+                 <mat-card class="tarjeta-lateral">
+                  <mat-card-header>
+                    <mat-card-title>Ajo</mat-card-title>
+                    <mat-card-subtitle>Allium sativum</mat-card-subtitle>
+                    <div class="logo-siembra">
+                      <img src="https://mejorconsalud.com/wp-content/uploads/2018/09/ajo-500x414.jpg" alt="">
+                      <br>
+                    </div>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <p class="descr1">Temperatura AVG:</p>
+                    <p class="resp">30°</p>
+                    <p class="descr2">Sembrado:</p>
+                    <p class="resp">10-07-2020</p>
+                    <mat-icon class="riego"aria-hidden="false" aria-label="Example home icon">event
+                    </mat-icon>
+                    <mat-icon class="sed"aria-hidden="false" aria-label="Example home icon">emoji_emotions
+                    </mat-icon>
+                  </mat-card-content>
+                </mat-card>
+                <mat-card class="tarjeta-lateral">
+                  <mat-card-header>
+                    <mat-card-title>Manzana</mat-card-title>
+                    <mat-card-subtitle>Malus domestica</mat-card-subtitle>
+                    <div class="logo-siembra">
+                      <img src="http://1.bp.blogspot.com/-0V5xiGGwhBc/VK0My5TjBTI/AAAAAAAADxY/cQjkOOq9uqM/s1600/manzana-roja.png" alt="">
+                      <br>
+                    </div>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <p class="descr1">Temperatura AVG:</p>
+                    <p class="resp">30°</p>
+                    <p class="descr2">Sembrado:</p>
+                    <p class="resp">10-07-2020</p>
+                    <mat-icon class="riego"aria-hidden="false" aria-label="Example home icon">event
+                    </mat-icon>
+                    <mat-icon class="sed"aria-hidden="false" aria-label="Example home icon">emoji_emotions
+                    </mat-icon>
+                  </mat-card-content>
+                </mat-card>
+                <mat-card class="tarjeta-lateral">
+                  <mat-card-header>
+                    <mat-card-title>Zanahoria</mat-card-title>
+                    <mat-card-subtitle>Daucus carota</mat-card-subtitle>
+                    <div class="logo-siembra">
+                      <img src="http://www.imporalaska.com/uploads/products/2019/06/pic_1561152197_1561152201.jpg" alt="">
+                      <br>
+                    </div>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <p class="descr1">Temperatura AVG:</p>
+                    <p class="resp">30°</p>
+                    <p class="descr2">Sembrado:</p>
+                    <p class="resp">10-07-2020</p>
+                    <mat-icon class="riego"aria-hidden="false" aria-label="Example home icon">event
+                    </mat-icon>
+                    <mat-icon class="sed"aria-hidden="false" aria-label="Example home icon">emoji_emotions
+                    </mat-icon>
+                  </mat-card-content>
+                </mat-card>
+                <mat-card class="tarjeta-lateral">
+                  <mat-card-header>
+                    <mat-card-title>Cilantro</mat-card-title>
+                    <mat-card-subtitle>Coriandrum sativum
+                    </mat-card-subtitle>
+                    <div class="logo-siembra">
+                      <img src="https://perfumesyfragancias.online/wp-content/uploads/2018/10/coriandre.jpg" alt="">
+                      <br>
+                    </div>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <p class="descr1">Temperatura AVG:</p>
+                    <p class="resp">30°</p>
+                    <p class="descr2">Sembrado:</p>
+                    <p class="resp">10-07-2020</p>
+                    <mat-icon class="riego"aria-hidden="false" aria-label="Example home icon">event
+                    </mat-icon>
+                    <mat-icon class="sed"aria-hidden="false" aria-label="Example home icon">emoji_emotions
+                    </mat-icon>
+                  </mat-card-content>
+                </mat-card>
+                <mat-card class="tarjeta-lateral">
+                  <mat-card-header>
+                    <mat-card-title>Ajo</mat-card-title>
+                    <mat-card-subtitle>Allium sativum</mat-card-subtitle>
+                    <div class="logo-siembra">
+                      <img src="https://mejorconsalud.com/wp-content/uploads/2018/09/ajo-500x414.jpg" alt="">
+                      <br>
+                    </div>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <p class="descr1">Temperatura AVG:</p>
+                    <p class="resp">30°</p>
+                    <p class="descr2">Sembrado:</p>
+                    <p class="resp">10-07-2020</p>
+                    <mat-icon class="riego"aria-hidden="false" aria-label="Example home icon">event
+                    </mat-icon>
+                    <mat-icon class="sed"aria-hidden="false" aria-label="Example home icon">emoji_emotions
+                    </mat-icon>
+                  </mat-card-content>
+                </mat-card>
     </mat-sidenav>
 
     <mat-sidenav-content>
-      <a routerLink="data">Vamos  a muyadata</a>
-      <a routerLink="app">Vamos  al huerto</a>
-      <a routerLink="">Vamos  a Login</a>
+      <a routerLink="data">Vamos  a muyadata</a><br>
+      <a routerLink="app">Vamos  al huerto</a><br>
+      <a routerLink="map">Vamos  a Map</a><br>
+      <a routerLink="">Vamos  a Login</a><br>
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>

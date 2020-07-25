@@ -1,3 +1,4 @@
+
 .example-container {
   display: flex;
   flex-direction: column;
@@ -43,6 +44,13 @@ h1.example-app-name {
   /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
      `<body>` to be our scrolling element for mobile layouts. */
   flex: 1 0 auto;
+}
+.logo{
+  position: absolute;
+  right: 51%;
+  opacity: 1;
+  width: 50px;
+  height: 50px;
 }
 .usuario {
   position: absolute;
@@ -130,3 +138,50 @@ mat-sidenav-content {
   height: 550px;
 }
 */
+//Aqui va todo de la sidnav
+.tarjeta-lateral{
+  margin-top: 5px;
+  padding-bottom: 25px;
+  max-width: 200px;
+  max-height: 110px;
+  mat-card-content{
+    position: relative;
+    font-size: 10px;
+  }
+}
+.tarjeta-lateral:hover{
+  background:linear-gradient(to top, white,#E5E5E5);
+
+}
+.logo-siembra img{
+  border-radius: 100%;
+  border: 1px solid rgba(128, 128, 128, .5);
+  width: 60px;
+  height: 60px;
+  background-size: cover;
+}
+.descr1{
+  font-weight: bold;
+  position: absolute;
+  top: -15px;
+}
+
+.descr2{
+  font-weight: bold;
+  position: absolute;
+  top: 17px;
+}
+.riego{
+  position: absolute;
+  top: 20px;
+  right: 0px;
+}
+.sed{
+  position: absolute;
+  top: 20px;
+  right: 25px;
+}
+//Color de fondo para el content
+mat-sidenav-content{
+  background:linear-gradient(to top, white,#E5E5E5);
+}
