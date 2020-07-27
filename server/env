@@ -1,0 +1,11 @@
+NODE_ENV = 'development'
+PORT = 3000
+USER_DB = 'admin'
+PASS_DB = '12345678'
+NAME_DB = 'Huerto'
+HOST_DB = 'localhost'
+PORT_HOST_DB = '5432'
+KEY_SESSION = 'algo secreto 123'
+KEY_JWT = 'algo secreto 123'
+
+
