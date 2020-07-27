@@ -1,3 +1,5 @@
+import { RegistroComponent } from './pages/registro/registro.component';
+import { MuyaMapComponent } from './pages/muya-map/muya-map.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { MuyaDataComponent } from './pages/muya-data/muya-data.component';
 import { AppComponent } from './app.component';
@@ -9,11 +11,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-  {path: '', component:LoginComponent},
+  { path: '', component:InicioComponent},
+  { path: 'inicio', component:InicioComponent},
   {path: 'menu', component:MenuPrincipalComponent, children:
     [
       {path: 'data', component:MuyaDataComponent},
-      {path: 'app', component:MuyaAppComponent}
+      {path: 'app', component:MuyaAppComponent},
+      { path: 'map', component: MuyaMapComponent}
     ]
   },
   {path: 'login', component:LoginComponent, children:
@@ -21,7 +25,7 @@ const routes: Routes = [
     {path: 'menu', component:MenuPrincipalComponent}
   ]
   },
-  { path: 'inicio', component:InicioComponent}
+  { path: 'registro', component:RegistroComponent}
 ];
 
 @NgModule({
