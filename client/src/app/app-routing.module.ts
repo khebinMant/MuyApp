@@ -8,6 +8,7 @@ import { MuyaAppComponent } from './pages/muya-app/muya-app.component';
 import { MenuPrincipalComponent } from './pages/menu-principal/menu-principal.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ConfirmationComponent } from './pages/confirmation/confirmation.component'
 
 
 const routes: Routes = [
@@ -25,7 +26,9 @@ const routes: Routes = [
     {path: 'menu', component:MenuPrincipalComponent}
   ]
   },
-  { path: 'registro', component:RegistroComponent}
+  { path: 'registro', component:RegistroComponent},
+  { path: 'confirmation', component:ConfirmationComponent},
+
 ];
 
 @NgModule({
