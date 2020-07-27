@@ -8,6 +8,10 @@
   left: 0;
   right: 0;
 }
+.boton-menu{
+  padding: 0;
+  margin: 0;
+}
 button mat-menu-item{
   height: auto;
   width: auto;
@@ -32,6 +36,7 @@ mat-toolbar {
 }
 
 h1.example-app-name {
+  cursor: pointer;
   position: absolute;
   right: 45%;
 }
@@ -46,6 +51,7 @@ h1.example-app-name {
   flex: 1 0 auto;
 }
 .logo{
+  cursor: pointer;
   position: absolute;
   right: 51%;
   opacity: 1;
@@ -71,10 +77,34 @@ h1.example-app-name {
   border-radius: 100%;
   // border:1px solid #666;
 }
-.example-card {
+.tarjeta-usuario {
+  position: relative;
   max-width: 400px;
+  height: 200px;
+  mat-card-header{
+    img{
+      position: absolute;
+      right: 60%;
+      border-radius: 100%;
+      width: 70px;
+      height: 70px;
+    }
+  }
 }
-.example-header-image {
+.cabecera-usuario{
+  position: relative;
+  mat-card-title{
+    position: absolute;
+    right: 50%;
+    top: 100px
+  }
+  mat-card-subtitle{
+    position: absolute;
+    right: 50%;
+    top: 100px
+  }
+}
+.tarjeta-usuario-image {
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
 }
@@ -184,4 +214,101 @@ mat-sidenav-content {
 //Color de fondo para el content
 mat-sidenav-content{
   background:linear-gradient(to top, white,#E5E5E5);
+}
+
+//Estilos para el menu
+.contenido{
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  div{
+    margin-top: 55px;
+    margin-left: 40px;
+    margin-right: 40px;
+    border-color: hsla(89, 43%, 51%, 1);
+    height: 80%;
+    width: 250px;
+  }
+}
+
+.muya-app{
+  text-align: center;
+  transition: 2s ease-out;
+  cursor: pointer;
+  background-image: url('../../../assets/imagenes/app.jpg');
+  border-color: #D2FFD7;
+  opacity: 60%;
+  background-size: cover;
+  background-position: center; /* Center the image */
+  img{
+    transition: 1s ease-out;
+    margin-top: 70%;
+    width: 100px;
+    height: 100px;
+  }
+}
+.muya-data{
+  text-align: center;
+  transition: 2s ease-out;
+  cursor: pointer;
+  background-image: url('../../../assets/imagenes/data.jpg');
+  opacity: 60%;
+  background-size: cover;
+  background-position: center; /* Center the image */
+  img{
+    transition: 1s ease-out;
+    margin-top: 70%;
+    width: 100px;
+    height: 100px;
+  }
+}
+.muya-map{
+  text-align: center;
+  transition: 2s ease-out;
+  cursor: pointer;
+  background-image: url('../../../assets/imagenes/map.jpg');
+  opacity: 60%;
+  background-size: cover;
+  background-position: center; /* Center the image */
+  img{
+    transition: 1s ease-out;
+    margin-top: 70%;
+    width: 70px;
+    height: 100px;
+  }
+}
+.muya-app:hover{
+  transition: 1s ease-out;
+  opacity: 90%;
+  background-size: cover;
+  width: 101%;
+  background-position: center; /* Center the image */
+  img{
+    transition: 0.5s ease-out;
+    width: 115px;
+    height: 115px;
+  }
+}
+.muya-map:hover{
+  transition: 1s ease-out;
+  opacity: 90%;
+  background-size: cover;
+  background-position: center; /* Center the image */
+  img{
+    transition: 0.5s ease-out;
+    width: 85px;
+    height: 115px;
+  }
+}
+.muya-data:hover{
+  transition: 1s ease-out;
+  opacity: 90%;
+  background-size: cover;
+  background-position: center; /* Center the image */
+  img{
+    transition: 0.5s ease-out;
+    width: 115px;
+    height: 115px;
+  }
 }

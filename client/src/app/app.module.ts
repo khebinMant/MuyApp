@@ -54,8 +54,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { MuyaMapComponent } from './pages/muya-map/muya-map.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { RegistroComponent } from './pages/registro/registro.component';
 import { ConfirmationComponent } from './pages/confirmation/confirmation.component';
+import { MenuBotonesComponent } from './pages/menu-botones/menu-botones.component';
+import { SignUpComponent } from './pages/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -66,8 +67,9 @@ import { ConfirmationComponent } from './pages/confirmation/confirmation.compone
     LoginComponent,
     InicioComponent,
     MuyaMapComponent,
-    RegistroComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    MenuBotonesComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

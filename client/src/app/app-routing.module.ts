@@ -1,4 +1,4 @@
-import { RegistroComponent } from './pages/registro/registro.component';
+import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { MuyaMapComponent } from './pages/muya-map/muya-map.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { MuyaDataComponent } from './pages/muya-data/muya-data.component';
@@ -26,7 +26,7 @@ const routes: Routes = [
     {path: 'menu', component:MenuPrincipalComponent}
   ]
   },
-  { path: 'registro', component:RegistroComponent},
+  { path: 'signup', component:SignUpComponent},
   { path: 'confirmation', component:ConfirmationComponent},
 
 ];

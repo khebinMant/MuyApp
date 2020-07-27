@@ -1,32 +1,24 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches" >
   <mat-toolbar class="example-toolbar">
     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-    <img class="logo" src="../../../assets/iconos/huerto.png" alt="">
-    <h1 class="example-app-name">MuyApp</h1>
+      <img (click)="irComponente('menu')"class="logo" src="../../../assets/iconos/huerto.png" alt="">
+      <h1 (click)="irComponente('menu')"class="example-app-name">MuyApp</h1>
     <div class="usuario" fxFlex="4%">
       <button mat-fab color="primary" [matMenuTriggerFor]="menuPersona">
         <img src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="">
      </button>
       <mat-menu #menuPersona="matMenu" xPosition="before">
-          <mat-card class="example-card">
-            <mat-card-header>
-              <div mat-card-avatar class="example-header-image"></div>
+          <mat-card class="tarjeta-usuario">
+            <mat-card-header class="cabecera-usuario">
+              <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
               <mat-card-title>Shiba Inu</mat-card-title>
               <mat-card-subtitle>Dog Breed</mat-card-subtitle>
             </mat-card-header>
-            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-              <p>
-                The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-                A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-                bred for hunting.
-              </p>
-            </mat-card-content>
             <mat-card-actions>
               <button mat-button>
                 <a routerLink="">Cerrar Sesion</a>
               </button>
-              <button mat-button>SHARE</button>
+              <button mat-button>Cofiguracion</button>
             </mat-card-actions>
           </mat-card>
 
@@ -141,11 +133,22 @@
                 </mat-card>
     </mat-sidenav>
 
-    <mat-sidenav-content>
-      <a routerLink="data">Vamos  a muyadata</a><br>
-      <a routerLink="app">Vamos  al huerto</a><br>
-      <a routerLink="map">Vamos  a Map</a><br>
-      <a routerLink="">Vamos  a Login</a><br>
+    <mat-sidenav-content >
+      <div class="contenido"*ngIf="content"  >
+        <div (click)="cambio()" routerLink="data" class="muya-data">
+          <img src="../../../assets/iconos/data.png" alt="">
+        </div>
+
+        <div (click)="cambio()" routerLink="app" class="muya-app">
+          <img src="../../../assets/iconos/huerto.png" alt="">
+        </div >
+
+        <div (click)="cambio()"  routerLink="map" class="muya-map">
+          <img src="../../../assets/iconos/map.png" alt="">
+        </div>
+      </div>
+
+
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
