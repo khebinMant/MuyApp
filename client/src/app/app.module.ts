@@ -54,6 +54,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { MuyaMapComponent } from './pages/muya-map/muya-map.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { RegistroComponent } from './pages/registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MuyaAppComponent,
     LoginComponent,
     InicioComponent,
-    MuyaMapComponent
+    MuyaMapComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
