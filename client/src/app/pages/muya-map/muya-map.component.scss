@@ -3,19 +3,25 @@
 .todo{
   display: flex;
   flex-direction: row;
-  height: 90%;
   margin: 15px;
+  height: 100%;
 
   .mp{
+    height: 90%;
     border: 1px solid rgba(128, 128, 128, .5);
     width: 65%;
   }
   .opciones{
+    margin-top: 50px;
+    height: 40%;
     position: relative;
     background:linear-gradient(to top,#D2FFD7,white);
     border: 1px solid rgba(128, 128, 128, .5);
     margin-left: 100px;
-    width: 20%;
+    width: 40%;
+    mat-accordion{
+      margin-top: 40%;
+    }
   }
 }
 mat-form-field {

@@ -1,4 +1,3 @@
-
 ;
 const EXPRESS = require('express')
 const MULTIPARTY = require('connect-multiparty')
@@ -10,6 +9,7 @@ let api = EXPRESS.Router(),
 
 
 //End Point
+
 api.get('/hola-mundo', pruebaControl.mensajeHolamundo)
 
 module.exports = api

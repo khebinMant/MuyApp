@@ -3,18 +3,116 @@
     <div class ="mp"id="map"></div>
 
     <div class="opciones">
-      <mat-form-field appearance="fill">
-        <mat-label>Toppings</mat-label>
-        <mat-select [formControl]="toppings" multiple>
-          <mat-select-trigger>
-            {{toppings.value ? toppings.value[0] : ''}}
-            <span *ngIf="toppings.value?.length > 1" class="example-additional-selection">
-              (+{{toppings.value.length - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
-            </span>
-          </mat-select-trigger>
-          <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
-        </mat-select>
-      </mat-form-field>
+      <mat-accordion>
+
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              MuyMap
+            </mat-panel-title>
+            <mat-panel-description>
+              Ubicaciones
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>Aqui podras encontrar puntos de organizaciones parques .....</p>
+        </mat-expansion-panel>
+
+        <mat-divider></mat-divider>
+
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Puntos de reciclaje
+            </mat-panel-title>
+            <mat-panel-description>
+              Aqui puede marcar para ver puntos de reciclaje
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>Mostrar Puntos de reciclaje
+            <mat-slide-toggle (click)="menuPuntos('reciclaje')" class="example-margin" color="warn" checked="false" disabled="false">
+          </mat-slide-toggle>
+          </p>
+        </mat-expansion-panel>
+
+        <mat-divider></mat-divider>
+
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Puntos de Ongs
+            </mat-panel-title>
+            <mat-panel-description>
+              Aqui puede ver puntos de ONGS
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>Mostrar Puntos de Ongs
+            <mat-slide-toggle (click)="menuPuntos('ong')" class="example-margin" color="warn" checked="false" disabled="false">
+          </mat-slide-toggle>
+          </p>
+        </mat-expansion-panel>
+
+
+        <mat-divider></mat-divider>
+
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Puntos de Entidades Gubernamentales
+            </mat-panel-title>
+            <mat-panel-description>
+              Aqui puede ver puntos de Entidades Gubernamentales
+
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>Mostrar Puntos de Entidades Gubernamentales
+            <mat-slide-toggle (click)="menuPuntos('entidades')" class="example-margin" color="warn" checked="false" disabled="false">
+          </mat-slide-toggle>
+          </p>
+        </mat-expansion-panel>
+
+
+        <mat-divider></mat-divider>
+
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Puntos de Parques
+            </mat-panel-title>
+            <mat-panel-description>
+              Aqui puede ver puntos de Parques
+
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>Mostrar Puntos de Parques
+            <mat-slide-toggle (click)="menuPuntos('parques')" class="example-margin" color="warn" checked="false" disabled="false">
+          </mat-slide-toggle>
+          </p>
+        </mat-expansion-panel>
+
+
+        <mat-divider></mat-divider>
+
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Puntos de Reservas Naturales
+            </mat-panel-title>
+            <mat-panel-description>
+              Aqui puede ver puntos de Reservas Naturales
+
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>Mostrar Puntos de Reservas Naturales
+            <mat-slide-toggle (click)="menuPuntos('reservas')" class="example-margin" color="warn" checked="false" disabled="false">
+          </mat-slide-toggle>
+          </p>
+        </mat-expansion-panel>
+      </mat-accordion>
     </div>
 </div>
 
