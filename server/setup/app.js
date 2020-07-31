@@ -48,27 +48,6 @@ app.use(passport.initialize())
 app.use(passport.session());
 
 
-/*app.use((req, res, next) => {
-    if (!req.session.views) {
-        req.session.views = {}
-    }
-    let pathname = parseurl(req).pathname
-    req.session.views[pathname] = (req.session.views[pathname] || 0) + 1
-    next()
-})
-
-app.get('/foo', (req, res, next) => {
-    res.send('las visitas de esta página son ' + req.session.views['/foo'])
-    console.log(req.session)
-    console.log(req.sessionID)
-})
-
-app.get('/bar', (req, res, next) => {
-    res.send('las visitas de esta página son ' + req.session.views['/bar'])
-    console.log(req.session)
-    console.log(req.sessionID)
-})*/
-
 modelos.sequelize.sync().then(() => {
     console.log('DB en línea...')
 }).catch(err => {
