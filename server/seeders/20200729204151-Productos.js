@@ -13,6 +13,8 @@ module.exports = {
         imagen: 'url de la imagen',
         descripcion: 'La manzana es el fruto comestible de la especie Malus domestica, llamada comúnmente manzano. Es una fruta pomácea de forma redonda y sabor más o menos dulce, dependiendo de la variedad.',
         dificultad: 'Medio',
+        fechaCosecha: 5,
+        estado:true,
         createdAt: new Date(),
         updatedAt: new Date()
       }

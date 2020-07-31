@@ -9,6 +9,7 @@ module.exports = {
           tipoSuelo: 'Arcilloso Caliza Humus Arenoso',
           espacioRecomendado: 80,
           profundidadSemilla: 3,
+          estado:true,
           createdAt: new Date(),
           updatedAt: new Date()
         }

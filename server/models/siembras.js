@@ -5,7 +5,12 @@ module.exports = (sequelize, DataTypes) => {
     fechaSiembra: DataTypes.DATE,
     fechaCosecha: DataTypes.DATE,
     estadoRiego: DataTypes.BOOLEAN,
-    cosechado: DataTypes.BOOLEAN
+    cosechado: DataTypes.BOOLEAN,
+    estado: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+      allowNull: true
+    }
   }
   , {});
   Siembras.associate = function(models) {

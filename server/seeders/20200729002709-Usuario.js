@@ -9,6 +9,7 @@ module.exports = {
           apellido: 'Guachagmira',
           correoElectronico: 'kevinguachagmira@gmail.com',
           contraseña: '12345678',
+          estado:true,
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -17,6 +18,7 @@ module.exports = {
           apellido: 'Alvarado',
           correoElectronico: 'henryAlvarado@gmail.com',
           contraseña: '12345678',
+          estado:true,
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -25,6 +27,7 @@ module.exports = {
           apellido: 'Sanchez',
           correoElectronico: 'jazminSanchez@gmail.com',
           contraseña: '12345678',
+          estado:true,
           createdAt: new Date(),
           updatedAt: new Date()
         }

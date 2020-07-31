@@ -8,6 +8,7 @@ module.exports = {
           frecuenciaRiego: 3,
           cantidadRiego: 200,
           resistenciaFrio: 'debil',
+          estado:true,
           createdAt: new Date(),
           updatedAt: new Date()
         }

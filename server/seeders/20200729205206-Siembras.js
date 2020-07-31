@@ -11,6 +11,7 @@ module.exports = {
           fechaCosecha: new Date(),
           estadoRiego: true,
           cosechado: true,
+          estado:true,
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -21,6 +22,7 @@ module.exports = {
           fechaCosecha: new Date(),
           estadoRiego: true,
           cosechado: true,
+          estado:true,
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -31,6 +33,7 @@ module.exports = {
           fechaCosecha: new Date(),
           estadoRiego: true,
           cosechado: true,
+          estado:true,
           createdAt: new Date(),
           updatedAt: new Date()
         }

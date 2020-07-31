@@ -2,7 +2,16 @@
 module.exports = (sequelize, DataTypes) => {
   const Huertos = sequelize.define('Huertos', 
     {
-      detalle: DataTypes.STRING
+      detalle: DataTypes.STRING,
+      region: DataTypes.STRING,
+      fruta: DataTypes.BOOLEAN,
+      legumbre: DataTypes.BOOLEAN,
+      hierba: DataTypes.BOOLEAN,
+      estado: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+        allowNull: true
+      }
     }
   , {});
   Huertos.associate = function(models) {

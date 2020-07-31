@@ -4,7 +4,12 @@ module.exports = (sequelize, DataTypes) => {
     exposicionSol: DataTypes.STRING,
     tipoSuelo: DataTypes.STRING,
     espacioRecomendado: DataTypes.INTEGER,
-    profundidadSemilla: DataTypes.INTEGER
+    profundidadSemilla: DataTypes.INTEGER,
+    estado: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+      allowNull: true
+    }
   }, {});
   Condiciones.associate = function(models) {
     Condiciones.hasMany(models.Productos,{

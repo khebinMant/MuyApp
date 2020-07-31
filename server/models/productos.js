@@ -7,7 +7,12 @@ module.exports = (sequelize, DataTypes) => {
     imagen: DataTypes.STRING,
     descripcion: DataTypes.STRING,
     dificultad: DataTypes.STRING,
-    temporada: DataTypes.STRING
+    fechaCosecha: DataTypes.DECIMAL,
+    estado: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+      allowNull: true
+    }
   }, {});
   Productos.associate = function(models) {
     Productos.hasMany(models.Siembras,{

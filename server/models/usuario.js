@@ -4,7 +4,12 @@ module.exports = (sequelize, DataTypes) => {
     nombre: DataTypes.STRING,
     apellido: DataTypes.STRING,
     correoElectronico: DataTypes.STRING,
-    contraseña: DataTypes.STRING
+    contraseña: DataTypes.STRING,
+    estado: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+      allowNull: true
+    }
   }, {});
   Usuario.associate = function(models) {
     Usuario.hasMany(models.Huertos,{
@@ -15,15 +20,6 @@ module.exports = (sequelize, DataTypes) => {
         unique: false
       },
       sourceKey: 'id'
-    }),
-    Usuario.hasOne(models.Configuraciones,{
-      foreignKey:{  
-        typoe: DataTypes.INTEGER,
-        name: 'idUsuario',
-        allowNull:false,
-        unique:false
-      },
-      sourceKey:'id'
     })
   };
   return Usuario;
