@@ -60,13 +60,24 @@ let traerSiembras = (req, res) => {
 
     modelos.Siembras.findAll({
         where:{
-            "idHuerto": data.idHuerto
+            "idHuerto": data.idHuerto,
+            "estado":true
         },
         include:[
             {
                 model:modelos.Productos,
                 attributes:['categoria','nombreComun','nombreCientifico','imagen','descripcion','dificultad','fechaCosecha'],
-                required: true
+                required: true,
+                include:[
+                    {
+                        model:modelos.Condiciones,
+                        required:true
+                    },
+                    {
+                        model:modelos.Cuidados,
+                        required:true
+                    }
+                ]
             },
             {
                 model: modelos.Huertos,
@@ -77,11 +88,11 @@ let traerSiembras = (req, res) => {
         exclude: [
             'estado'
         ]
-    }).then(eventos => {
+    }).then(respuesta => {
         res.status(200).json({
             transaccion: true,
-            data: eventos,
-            msg: eventos.length
+            data: respuesta,
+            msg: respuesta.length
         }) 
     }).catch(err => {
         res.status(500).json({
@@ -91,8 +102,34 @@ let traerSiembras = (req, res) => {
         })
     })
 }
+let eliminarSiembra =(req,res)=>{
+    let data = req.body.data
+    data.estado = false
+    modelos.Siembras.update(data,{
+        where:{
+                id:data.id,
+                idHuerto:data.idHuerto,
+                idProducto:data.idProducto
+            }
+    }).then(respuesta => {
+        res.status(200).json({
+            transaccion: true,
+            data: respuesta,
+            msg: respuesta.length
+        }) 
+    }).catch(err => {
+        res.status(500).json({
+            transaccion: false,
+            data: err,
+            msg: 'Servidor no disponible'
+        })
+    })
+
+}
+
 
 module.exports = {
     añadirSiembra,
-    traerSiembras
+    traerSiembras,
+    eliminarSiembra
 }

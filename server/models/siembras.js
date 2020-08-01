@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
   {
     fechaSiembra: DataTypes.DATE,
     fechaCosecha: DataTypes.DATE,
+    fechaRiego: DataTypes.DATE,
     estadoRiego: DataTypes.BOOLEAN,
     cosechado: DataTypes.BOOLEAN,
     estado: {

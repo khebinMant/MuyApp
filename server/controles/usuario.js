@@ -38,8 +38,6 @@ let loginUsuario = (req, res) => {
     })
 }   
 
-
-
 let crearUsuario = (req, res) => {
 
     let data = req.body.data
@@ -90,11 +88,11 @@ let traerUsuarios = (req, res) => {
                 estado: true
             }
         }
-    }).then(eventos => {
+    }).then(respuesta => {
         res.status(200).json({
             transaccion: true,
-            data: eventos,
-            msg: eventos.length
+            data: respuesta,
+            msg: respuesta.length
         }) 
     }).catch(err => {
         res.status(500).json({
