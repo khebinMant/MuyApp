@@ -4,7 +4,6 @@ module.exports = {
     up: (queryInterface, Sequelize) => {
 
         return queryInterface.bulkInsert('Condiciones', [{
-                exposicionSol: '',
                 tipoSuelo: 'Arenoso Fértil',
                 espacioRecomendado: 100,
                 profundidadSemilla: 5,
@@ -13,7 +12,6 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                exposicionSol: '',
                 tipoSuelo: 'Arcilloso Caliza Humus Arenoso',
                 espacioRecomendado: 80,
                 profundidadSemilla: 3,
@@ -22,7 +20,6 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                exposicionSol: '',
                 tipoSuelo: 'Calizos de Baja Fertilidad',
                 espacioRecomendado: 80,
                 profundidadSemilla: 1,
@@ -31,7 +28,6 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                exposicionSol: '',
                 tipoSuelo: 'Franco Arenoso Lómico',
                 espacioRecomendado: 200,
                 profundidadSemilla: 1,
@@ -40,7 +36,6 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                exposicionSol: '',
                 tipoSuelo: 'Franco Arcilloso',
                 espacioRecomendado: 200,
                 profundidadSemilla: 2,
@@ -49,7 +44,6 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                exposicionSol: '',
                 tipoSuelo: 'Limoso Humus',
                 espacioRecomendado: 180,
                 profundidadSemilla: 3,
@@ -58,7 +52,6 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                exposicionSol: '',
                 tipoSuelo: 'Franco Arenoso',
                 espacioRecomendado: 100,
                 profundidadSemilla: 5,
@@ -67,7 +60,6 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                exposicionSol: '',
                 tipoSuelo: 'Turba Humus',
                 espacioRecomendado: 150,
                 profundidadSemilla: 5,
@@ -76,7 +68,6 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                exposicionSol: '',
                 tipoSuelo: 'Franco Arcilloso o Arenoso',
                 espacioRecomendado: 180,
                 profundidadSemilla: 6,
@@ -85,7 +76,6 @@ module.exports = {
                 updatedAt: new Date()
             },
             {
-                exposicionSol: '',
                 tipoSuelo: 'Franco Arcilloso',
                 espacioRecomendado: 100,
                 profundidadSemilla: 8,
