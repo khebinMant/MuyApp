@@ -3,7 +3,9 @@
 module.exports = {
     up: (queryInterface, Sequelize) => {
 
-        return queryInterface.bulkInsert('Cuidados', [{
+        return queryInterface.bulkInsert('Cuidados', [
+            //manzana
+            {
                 frecuenciaRiego: 4,
                 cantidadRiego: 1000,
                 resistenciaFrio: 'Debil',
@@ -11,6 +13,7 @@ module.exports = {
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
+            //pera
             {
                 frecuenciaRiego: 5,
                 cantidadRiego: 900,
@@ -19,6 +22,7 @@ module.exports = {
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
+            //uva
             {
                 frecuenciaRiego: 5,
                 cantidadRiego: 800,
@@ -27,6 +31,7 @@ module.exports = {
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
+            //sandia
             {
                 frecuenciaRiego: 4,
                 cantidadRiego: 1800,
@@ -35,6 +40,7 @@ module.exports = {
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
+            //melon
             {
                 frecuenciaRiego: 3,
                 cantidadRiego: 1500,
@@ -43,6 +49,7 @@ module.exports = {
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
+            //papaya
             {
                 frecuenciaRiego: 5,
                 cantidadRiego: 700,
@@ -51,6 +58,7 @@ module.exports = {
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
+            //fresa
             {
                 frecuenciaRiego: 4,
                 cantidadRiego: 500,
@@ -59,6 +67,7 @@ module.exports = {
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
+            //mandarina
             {
                 frecuenciaRiego: 3,
                 cantidadRiego: 1200,
@@ -67,6 +76,7 @@ module.exports = {
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
+            //durtazno
             {
                 frecuenciaRiego: 3,
                 cantidadRiego: 800,
@@ -75,6 +85,7 @@ module.exports = {
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
+            //mora
             {
                 frecuenciaRiego: 3,
                 cantidadRiego: 500,
