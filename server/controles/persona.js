@@ -11,14 +11,63 @@ if (config.use_env_variable) {
 let modelos = require('../models')
 let Op = Sequelize.Op;
 
-
 // Estudiante
 
-let loginUsuario = (req, res) => {
+let login = (req, res) => {
+
+    let correoElectronico = req.body.correoElectronico
+    let psw = req.body.psw
+    modelos.Personas.findOne({
+        where: {
+            correoElectronico: correoElectronico,
+            psw: psw
+        }
+    }).then(data => {
+        return res.status(200).json({
+            transaccion: true,
+            data: data,
+            msg: data.length
+        })
+    }).catch(err => {
+        return res.status(500).json({
+            transaccion: false,
+            data: null,
+            msg: 'Persona no registrada'
+        })
+    })
+}   
+
+let crearPersona = (req, res) => {
+
+    let data = req.body.data
+
+    data.estado = true
+    data.createdAt = new Date(Date.now())
+    data.updatedAt = new Date(Date.now())
+
+    //Crear a la persona
+    modelos.Personas.create(data)
+    .then(respuesta => {
+        res.status(200).json({
+            transaccion: true,
+            data: [respuesta.dataValues],
+            msg: data.length
+        })
+    }).catch(err => {
+        return res.status(500).json({
+            transaccion: false,
+            data: null,
+            msg: 'Error del servidor'
+        })
+    })
+}
+
+
+let buscarPersona = (req, res) => {
     
     let correoElectronico = req.body.data.correoElectronico
     let contraseña = req.body.data.contraseña
-    modelos.Usuario.findAll({
+    modelos.Personas.findAll({
         where: {
             correoElectronico: correoElectronico,
             contraseña: contraseña
@@ -36,9 +85,10 @@ let loginUsuario = (req, res) => {
             msg: 'Error del servidor'
         })
     })
-}   
+} 
 
-let crearUsuario = (req, res) => {
+
+let crearRolPersona = (req, res) => {
 
     let data = req.body.data
 
@@ -46,40 +96,25 @@ let crearUsuario = (req, res) => {
     data.createdAt = new Date(Date.now())
     data.updatedAt = new Date(Date.now())
 
-    
-    modelos.Usuario.create(data)
+    //Crear a la persona
+    modelos.PersonasRoles.create(data)
     .then(respuesta => {
-        console.log(respuesta.dataValues)
         res.status(200).json({
             transaccion: true,
             data: [respuesta.dataValues],
             msg: data.length
         })
-    })
-    .catch(err => {
-        console.log(err)
-        let errors = []
-        let msg = ''
-        if (err.parent) {
-            errors.push(err.parent.detail)
-            msg = 'Registro duplicado'
-        }
-        if (err.errors.length > 0) {
-            err.errors.forEach(element => {
-                errors.push(element.path)
-            });
-            msg = 'Datos no validos'
-        }
-        res.status(400).json({
+    }).catch(err => {
+        return res.status(500).json({
             transaccion: false,
-            data: errors,
-            msg: msg
+            data: null,
+            msg: 'Error del servidor'
         })
     })
 }
 
-let traerUsuarios = (req, res) => {
-    modelos.Usuario.findAll({
+let traerPersonas = (req, res) => {
+    modelos.Personas.findAll({
         attributes: {
             exclude: [
                 'estado'
@@ -104,7 +139,9 @@ let traerUsuarios = (req, res) => {
 }
 
 module.exports = {
-    crearUsuario,
-    loginUsuario,
-    traerUsuarios
+    login,
+    crearRolPersona,
+    crearPersona,
+    traerPersonas,
+    buscarPersona
 }

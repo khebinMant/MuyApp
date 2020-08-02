@@ -11,14 +11,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   Cuidados.associate = function(models) {
-    Cuidados.hasMany(models.Productos,{
+    Cuidados.belongsTo(models.Productos,{
       foreignKey:{
         type:DataTypes.INTEGER,
-        name: 'idCuidado',
+        name: 'idProducto',
         allowNull: false,
         unique:false
       },
-      sourceKey: 'id'
+      targetKey: 'id'
     })
   };
   return Cuidados;

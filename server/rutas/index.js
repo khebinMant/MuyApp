@@ -6,17 +6,21 @@ const huerto = require('../controles/huerto')
 const productos = require('../models/productos')
 
 let api = EXPRESS.Router(),
-    usuarioControl = require('../controles/usuario')
+    personaControl = require('../controles/persona')
     huertoControl = require('../controles/huerto')
     siembraControl = require('../controles/siembra')
     productoControl = require('../controles/producto')
 //End Points
 
 
-//End Point para usuarios
-api.post('/crear-usuarios', usuarioControl.crearUsuario)
-api.get('/buscar-usuarios', usuarioControl.loginUsuario)
-api.get('/traer-usuarios',usuarioControl.traerUsuarios)
+//End Point para personas y usuarios
+api.post('/crear-personas', personaControl.crearPersona)
+api.get('/buscar-personas', personaControl.buscarPersona)
+api.post('/crear-persona-rol',personaControl.crearRolPersona)
+api.post('/login',personaControl.login)
+//todas las personas
+api.get('/traer-personas',personaControl.traerPersonas)
+
 
 //End Point para huertos
 api.post('/crear-huerto',huertoControl.crearHuertos)

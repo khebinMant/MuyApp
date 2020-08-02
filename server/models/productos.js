@@ -23,23 +23,23 @@ module.exports = (sequelize, DataTypes) => {
       },
       sourceKey:'id'
     }),
-    Productos.belongsTo(models.Condiciones,{
+    Productos.hasMany(models.Condiciones,{
       foreignKey:{
         type: DataTypes.INTEGER,
-        name: 'idCondicion',
+        name: 'idProducto',
         allowNull:false,
         unique: false
       },
-      targetKey: 'id'
+      sourceKey: 'id'
     }),
-    Productos.belongsTo(models.Cuidados,{
+    Productos.hasMany(models.Cuidados,{
       foreignKey:{
         type: DataTypes.INTEGER,
-        name: 'idCuidado',
+        name: 'idProducto',
         allowNull:false,
         unique: false
       },
-      targetKey: 'id'
+      sourceKey: 'id'
     })
   };
   return Productos;

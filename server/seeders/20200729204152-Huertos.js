@@ -5,8 +5,8 @@ module.exports = {
 
       return queryInterface.bulkInsert('Huertos', [
         {
-          detalle: 'Huerto Kevin',
-          idUsuario: '1',
+          detalle: 'Huerto Pedro',
+          idPersonaRol: 4,
           region: 'Costa',
           fruta: true,
           legumbre: true,
@@ -16,8 +16,8 @@ module.exports = {
           updatedAt: new Date()
         },
         {
-          detalle: 'Huerto Jazmin',
-          idUsuario: '3',
+          detalle: 'Huerto Juan',
+          idPersonaRol: 5,
           region: 'Oriente',
           fruta: true,
           legumbre: true,
@@ -28,7 +28,7 @@ module.exports = {
         },
         {
           detalle: 'Huerto Henry',
-          idUsuario: '2',
+          idPersonaRol: 2,
           region: 'Sierra',
           fruta: true,
           legumbre: false,
