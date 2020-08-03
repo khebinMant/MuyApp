@@ -9,6 +9,7 @@ module.exports = {
           apellido: 'Guachagmira',
           correoElectronico: 'kevinguachagmira@gmail.com',
           psw: '12345678',
+          foto: 'a8vN04xVCj2kn58pKPOo-WMj.jpg',
           estado:true,
           createdAt: new Date(),
           updatedAt: new Date()
@@ -18,6 +19,7 @@ module.exports = {
           apellido: 'Alvarado',
           correoElectronico: 'henryAlvarado@gmail.com',
           psw: '12345678',
+          foto: 'admin_henry.png',
           estado:true,
           createdAt: new Date(),
           updatedAt: new Date()
@@ -27,6 +29,7 @@ module.exports = {
           apellido: 'Sanchez',
           correoElectronico: 'jazminSanchez@gmail.com',
           psw: '12345678',
+          foto: 'admin_jazmin.png',
           estado:true,
           createdAt: new Date(),
           updatedAt: new Date()
@@ -36,6 +39,7 @@ module.exports = {
           apellido: 'Garcia',
           correoElectronico: 'pedroGarcia@gmail.com',
           psw: '12345678',
+          foto: 'a8vN04xVCj2kn58pKPOo-WMj.jpg',
           estado:true,
           createdAt: new Date(),
           updatedAt: new Date()
@@ -45,6 +49,7 @@ module.exports = {
           apellido: 'Sanchez',
           correoElectronico: 'juanSanchez@gmail.com',
           psw: '12345678',
+          foto: 'a8vN04xVCj2kn58pKPOo-WMj.jpg',
           estado:true,
           createdAt: new Date(),
           updatedAt: new Date()

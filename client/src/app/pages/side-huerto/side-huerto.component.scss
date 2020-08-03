@@ -1,0 +1,48 @@
+.tarjeta-lateral{
+  margin-top: 5px;
+  padding-bottom: 25px;
+  max-width: 200px;
+  max-height: 110px;
+  mat-card-content{
+    position: relative;
+    font-size: 10px;
+  }
+}
+.tarjeta-lateral:hover{
+  background:linear-gradient(to top, white,#E5E5E5);
+
+}
+//Aqui va todo de la sidnav
+
+.logo-siembra img{
+  border-radius: 100%;
+  border: 1px solid rgba(128, 128, 128, .5);
+  width: 60px;
+  height: 60px;
+  background-size: cover;
+}
+.descr1{
+  font-weight: bold;
+  position: absolute;
+  top: -15px;
+}
+
+.descr2{
+  font-weight: bold;
+  position: absolute;
+  top: 17px;
+}
+.riego{
+  position: absolute;
+  top: 20px;
+  right: 0px;
+}
+.sed{
+  position: absolute;
+  top: 20px;
+  right: 25px;
+}
+.example-custom-date-class {
+  background: orange;
+  border-radius: 100%;
+}

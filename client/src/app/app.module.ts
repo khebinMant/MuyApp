@@ -1,3 +1,4 @@
+import { UsuarioActualService } from './servicios/usuario-actual.service';
 import { ServerService } from './servicios/server.service';
 import { LogService } from './servicios/log.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -62,6 +63,7 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule} from "@angular/common/http";
+import { SideHuertoComponent } from './pages/side-huerto/side-huerto.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +76,8 @@ import { HttpClientModule} from "@angular/common/http";
     MuyaMapComponent,
     ConfirmationComponent,
     MenuBotonesComponent,
-    SignUpComponent
+    SignUpComponent,
+    SideHuertoComponent
   ],
   imports: [
     ToastrModule.forRoot(),
@@ -131,7 +134,8 @@ import { HttpClientModule} from "@angular/common/http";
   ],
   providers: [
     ServerService,
-    LogService
+    LogService,
+    UsuarioActualService
   ],
   bootstrap: [AppComponent],
   schemas: [

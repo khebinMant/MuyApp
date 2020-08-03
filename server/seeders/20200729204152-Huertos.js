@@ -27,8 +27,8 @@ module.exports = {
           updatedAt: new Date()
         },
         {
-          detalle: 'Huerto Henry',
-          idPersonaRol: 2,
+          detalle: 'Huerto Kevin',
+          idPersonaRol: 1,
           region: 'Sierra',
           fruta: true,
           legumbre: false,

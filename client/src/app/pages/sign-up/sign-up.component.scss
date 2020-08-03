@@ -4,9 +4,11 @@
 
 .container {
   position: relative;
-  background-image: url("../../../assets/imagenes/inicio.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background: url("../../../assets/imagenes/inicio.jpg")no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   opacity: 95%;
   width: 100%;
   height: 100%;
@@ -20,7 +22,7 @@
 }
 
 .logoG {
-  left: 23%;
+  left: 15%;
   margin: 30px;
   position: relative;
   img {
@@ -45,14 +47,16 @@
 }
 
 .signup {
-  width: 400px;
-  height: 100%;
+  border-radius: 3%;
+  margin-top: 20px;
+  width: 425px;
+  height: 80%;
   margin-left: 100px;
   background-color: rgba($color: #D2FFD7, $alpha: 0.4);
 }
 
 .botones {
-  padding: 40px 40px;
+  padding: 20px 20px;
   justify-content: start;
   text-align: center;
   margin-bottom: 100px;
@@ -93,7 +97,7 @@ mat-icon {
 .footer {
   background: linear-gradient(to top, #D2FFD7, white);
   opacity: 80%;
-  position: absolute;
+  position: fixed;
   width: 100%;
   bottom: 0px;
   height: 60px;

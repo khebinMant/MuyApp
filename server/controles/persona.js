@@ -18,10 +18,23 @@ let login = (req, res) => {
     let correoElectronico = req.body.correoElectronico
     let psw = req.body.psw
     modelos.Personas.findOne({
+        attributes:{
+            exclude:[
+                "estado",
+                "createdAt",
+                "updatedAt"
+            ]
+        },
         where: {
             correoElectronico: correoElectronico,
             psw: psw
-        }
+        },
+        include:[
+            {
+                model: modelos.PersonasRoles,
+                required:true,
+            }
+        ]
     }).then(data => {
         return res.status(200).json({
             transaccion: true,
