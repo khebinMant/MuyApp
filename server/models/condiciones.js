@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     tipoSuelo: DataTypes.STRING,
     espacioRecomendado: DataTypes.INTEGER,
     profundidadSemilla: DataTypes.INTEGER,
-    estado: {
+    estado:{
       type: DataTypes.BOOLEAN,
       defaultValue: true,
       allowNull: true
