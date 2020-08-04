@@ -24,10 +24,10 @@ module.exports = (sequelize, DataTypes) => {
       },
       sourceKey: 'id'
     }),
-    Huertos.belongsTo(models.Usuario,{
+    Huertos.belongsTo(models.PersonasRoles,{
       foreignKey:{
         type: DataTypes.INTEGER,
-        name: 'idUsuario',
+        name: 'idPersonaRol',
         allowNull: false,
         unique: false
       },

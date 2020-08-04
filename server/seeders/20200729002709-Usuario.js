@@ -3,12 +3,13 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
 
-      return queryInterface.bulkInsert('Usuario', [
+      return queryInterface.bulkInsert('Personas', [
         {
           nombre: 'Kevin',
           apellido: 'Guachagmira',
           correoElectronico: 'kevinguachagmira@gmail.com',
-          contraseña: '12345678',
+          psw: '12345678',
+          foto: 'a8vN04xVCj2kn58pKPOo-WMj.jpg',
           estado:true,
           createdAt: new Date(),
           updatedAt: new Date()
@@ -17,7 +18,8 @@ module.exports = {
           nombre: 'Henry',
           apellido: 'Alvarado',
           correoElectronico: 'henryAlvarado@gmail.com',
-          contraseña: '12345678',
+          psw: '12345678',
+          foto: 'admin_henry.png',
           estado:true,
           createdAt: new Date(),
           updatedAt: new Date()
@@ -26,7 +28,28 @@ module.exports = {
           nombre: 'Jazmin',
           apellido: 'Sanchez',
           correoElectronico: 'jazminSanchez@gmail.com',
-          contraseña: '12345678',
+          psw: '12345678',
+          foto: 'admin_jazmin.png',
+          estado:true,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          nombre: 'Pedro',
+          apellido: 'Garcia',
+          correoElectronico: 'pedroGarcia@gmail.com',
+          psw: '12345678',
+          foto: 'a8vN04xVCj2kn58pKPOo-WMj.jpg',
+          estado:true,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          nombre: 'Juan',
+          apellido: 'Sanchez',
+          correoElectronico: 'juanSanchez@gmail.com',
+          psw: '12345678',
+          foto: 'a8vN04xVCj2kn58pKPOo-WMj.jpg',
           estado:true,
           createdAt: new Date(),
           updatedAt: new Date()
@@ -37,6 +60,6 @@ module.exports = {
 
   down: (queryInterface, Sequelize) => {
 
-      return queryInterface.bulkDelete('Usuario', null, {});
+      return queryInterface.bulkDelete('Personas', null, {});
   }
 };

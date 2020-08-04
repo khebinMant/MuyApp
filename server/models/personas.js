@@ -1,26 +1,28 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Usuario = sequelize.define('Usuario', {
+  const Personas = sequelize.define('Personas', {
     nombre: DataTypes.STRING,
     apellido: DataTypes.STRING,
     correoElectronico: DataTypes.STRING,
-    contraseña: DataTypes.STRING,
+    psw: DataTypes.STRING,
+    foto: DataTypes.STRING,
     estado: {
       type: DataTypes.BOOLEAN,
       defaultValue: true,
       allowNull: true
     }
   }, {});
-  Usuario.associate = function(models) {
-    Usuario.hasMany(models.Huertos,{
+  Personas.associate = function(models) {
+    Personas.hasMany(models.PersonasRoles,{
       foreignKey:{
         type: DataTypes.INTEGER,
-        name: 'idUsuario',
+        name: 'idPersona',
         allowNull: false,
         unique: false
       },
       sourceKey: 'id'
     })
+
   };
-  return Usuario;
+  return Personas;
 };

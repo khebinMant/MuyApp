@@ -14,32 +14,6 @@ let Op = Sequelize.Op;
 
 // Estudiante
 
-let buscarHuertos = (req, res) => {
-    
-    let correoElectronico = req.body.data.correoElectronico
-    let contraseña = req.body.data.contraseña
-    modelos.Usuario.findAll({
-        where: {
-            correoElectronico: correoElectronico,
-            contraseña: contraseña
-        }
-    }).then(data => {
-        return res.status(200).json({
-            transaccion: true,
-            data: data,
-            msg: data.length
-        })
-    }).catch(err => {
-        return res.status(500).json({
-            transaccion: false,
-            data: null,
-            msg: 'Error del servidor'
-        })
-    })
-}   
-
-
-
 let crearHuertos = (req, res) => {
 
     let data = req.body.data
@@ -82,6 +56,5 @@ let crearHuertos = (req, res) => {
 
 
 module.exports = {
-    crearHuertos,
-    buscarHuertos
+    crearHuertos
 }

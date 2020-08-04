@@ -1,3 +1,6 @@
+import { UsuarioActualService } from './servicios/usuario-actual.service';
+import { ServerService } from './servicios/server.service';
+import { LogService } from './servicios/log.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
@@ -57,6 +60,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { ConfirmationComponent } from './pages/confirmation/confirmation.component';
 import { MenuBotonesComponent } from './pages/menu-botones/menu-botones.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule} from "@angular/common/http";
+import { SideHuertoComponent } from './pages/side-huerto/side-huerto.component';
 
 @NgModule({
   declarations: [
@@ -69,9 +76,11 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
     MuyaMapComponent,
     ConfirmationComponent,
     MenuBotonesComponent,
-    SignUpComponent
+    SignUpComponent,
+    SideHuertoComponent
   ],
   imports: [
+    ToastrModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     A11yModule,
@@ -118,9 +127,16 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
     PortalModule,
     ScrollingModule,
     BrowserAnimationsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    ServerService,
+    LogService,
+    UsuarioActualService
+  ],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

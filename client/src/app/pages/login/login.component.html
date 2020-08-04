@@ -8,18 +8,31 @@
         </div>
 
         <div class="registro-formulario">
-            <form action="" >
+            <form action="" [formGroup]="loginForm" >
               <mat-form-field  appearance="outline">
-                <mat-label >Outline form field</mat-label>
-                <input matInput placeholder="">
-                <mat-hint>Solo letras no numeros</mat-hint>
+                <mat-label >Correo Electronico</mat-label>
+                <input matInput formControlName="correoElectronico" placeholder="Ej: muyapp@gmail.com">
+                <mat-error *ngIf="loginForm.get('correoElectronico').hasError('pattern')">
+                  Por favor ingrese un email válido
+                </mat-error>
+                <mat-error *ngIf="loginForm.get('correoElectronico').hasError('required')">
+                  Email es <strong>necesario</strong>
+                </mat-error>
               </mat-form-field>
+
               <mat-form-field appearance="outline">
-                <mat-label>Outline form field</mat-label>
-                <input matInput placeholder="Placeholder">
-                <mat-hint>Hint</mat-hint>
+                <mat-label>Contraseña</mat-label>
+                <input matInput formControlName="psw" type="password">
+                <mat-error *ngIf="loginForm.get('psw').hasError('pattern')">
+                  Ingrese una contraseña válida
+                </mat-error>
+                <mat-error *ngIf="loginForm.get('psw').hasError('required')">
+                  La contraseña es <strong>necesaria</strong>
+                </mat-error>
               </mat-form-field>
-              <button mat-raised-button routerLink="../menu">INICIAR SESION</button>
+
+              <button mat-raised-button [disabled]="loginForm.invalid" (click)="logIn()">
+                INICIAR SESION</button>
             </form>
         </div>
 
