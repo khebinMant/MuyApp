@@ -22,15 +22,6 @@ module.exports = (sequelize, DataTypes) => {
       },
       targetKey:'id'
     })
-    PersonasRoles.hasMany(models.Huertos,{
-      foreignKey:{
-        type: DataTypes.INTEGER,
-        name: 'idPersonaRol',
-        allowNull: false,
-        unique: false
-      },
-      sourceKey: 'id'
-    })
   };
   return PersonasRoles;
 };

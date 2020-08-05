@@ -53,8 +53,31 @@ let crearHuertos = (req, res) => {
     })
 }
 
+let traerHuertos = (req, res) => {
+    
+    let data = req.body.data
+    let idPersona = req.body.idPersona
+    modelos.Huertos.findOne({
+        where: {
+            idPersona: idPersona
+        }
+    }).then(data => {
+        return res.status(200).json({
+            transaccion: true,
+            data: data,
+            msg: data.length
+        })
+    }).catch(err => {
+        return res.status(500).json({
+            transaccion: false,
+            data: null,
+            msg: 'Error del servidor'
+        })
+    })
+} 
 
 
 module.exports = {
-    crearHuertos
+    crearHuertos,
+    traerHuertos
 }

@@ -320,7 +320,7 @@ module.exports = {
         nombreCientifico: 'Petroselinum crispum' ,
         imagen: '29.jpg',
         dificultad: 'Facil',
-        fechaCosecha: '90',
+        fechaCosecha: 90,
         estado:true,
         createdAt: new Date(),
         updatedAt: new Date()
@@ -331,7 +331,7 @@ module.exports = {
         nombreCientifico: 'Mentha' ,
         imagen: '30.jpg',
         dificultad: 'Facil',
-        fechaCosecha: '180',
+        fechaCosecha: 180,
         estado:true,
         createdAt: new Date(),
         updatedAt: new Date()

@@ -32,15 +32,19 @@ api.get('/traer-personas',personaControl.traerPersonas)
 
 //End Point para huertos
 api.post('/crear-huerto',huertoControl.crearHuertos)
-
+api.post('/traer-huerto',huertoControl.traerHuertos)
 
 //End Point para siembras
+//post agregar
+//delete borrra
+//update actulizacion
+
 api.post('/sembrar-producto',siembraControl.añadirSiembra) 
-api.get('/obtener-siembras',siembraControl.traerSiembras) 
+api.post('/obtener-siembras',siembraControl.traerSiembras) 
 api.post('/eliminar-siembras',siembraControl.eliminarSiembra) 
 
 //End Point para productos
-api.get('/traer-productos',productoControl.traerProductos)
+api.post('/traer-productos',productoControl.traerProductos)
 
 
 //End Point para  cargar archivos

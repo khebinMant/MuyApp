@@ -1,18 +1,23 @@
-<mat-card class="tarjeta-lateral">
+<table mat-table [dataSource]="dataSource">
+  <ng-container matColumnDef="unico" >
+    <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size:medium;" >Siembras</th>
+    <td mat-cell style="width: auto;"*matCellDef="let element">
+
+      <mat-card class="tarjeta-lateral">
         <mat-card-header>
-          <mat-card-title>Ajo</mat-card-title>
-          <mat-card-subtitle>Allium sativum</mat-card-subtitle>
+          <mat-card-title>{{element.Producto.nombreComun}}</mat-card-title>
+          <mat-card-subtitle class="nom-cientifico">{{element.Producto.nombreCientifico}}</mat-card-subtitle>
           <div class="logo-siembra">
-            <img src="https://mejorconsalud.com/wp-content/uploads/2018/09/ajo-500x414.jpg" alt="">
+            <img src="{{url}}ver-archivo/{{element.Producto.imagen}}/imagen-producto" alt="">
             <br>
           </div>
         </mat-card-header>
         <mat-card-content>
-          <p class="descr1">Temperatura AVG:</p>
-          <p class="resp">30°</p>
+          <p class="descr1">Resistencia:</p>
+          <p class="resp">{{element.Producto.Cuidado.resistenciaFrio}}</p>
           <p class="descr2">Sembrado:</p>
-          <p class="resp">10-07-2020</p>
-          <mat-icon (click)="picker.open()" class="riego"aria-hidden="false" aria-label="Example home icon">event
+          <p class="resp">{{element.fechaSiembra | date: 'short'}}</p>
+          <mat-icon (click)="picker.open(); verquefechasalen()" class="riego"aria-hidden="false" aria-label="Example home icon">event
               <input matInput [matDatepicker]="picker">
               <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
           </mat-icon>
@@ -20,92 +25,9 @@
           </mat-icon>
         </mat-card-content>
       </mat-card>
-      <mat-card class="tarjeta-lateral">
-        <mat-card-header>
-          <mat-card-title>Manzana</mat-card-title>
-          <mat-card-subtitle>Malus domestica</mat-card-subtitle>
-          <div class="logo-siembra">
-            <img src="http://1.bp.blogspot.com/-0V5xiGGwhBc/VK0My5TjBTI/AAAAAAAADxY/cQjkOOq9uqM/s1600/manzana-roja.png" alt="">
-            <br>
-          </div>
-        </mat-card-header>
-        <mat-card-content>
-          <p class="descr1">Temperatura AVG:</p>
-          <p class="resp">30°</p>
-          <p class="descr2">Sembrado:</p>
-          <p class="resp">10-07-2020</p>
-          <mat-icon (click)="picker.open(); verquefechasalen()" class="riego"aria-hidden="false" aria-label="Example home icon">event
-            <input matInput [matDatepicker]="picker">
-            <mat-datepicker  [dateClass]="dateClass" #picker></mat-datepicker>
-          </mat-icon>
-          <mat-icon class="sed"aria-hidden="false" aria-label="Example home icon">emoji_emotions
-          </mat-icon>
-        </mat-card-content>
-      </mat-card>
-      <mat-card class="tarjeta-lateral">
-        <mat-card-header>
-          <mat-card-title>Zanahoria</mat-card-title>
-          <mat-card-subtitle>Daucus carota</mat-card-subtitle>
-          <div class="logo-siembra">
-            <img src="http://www.imporalaska.com/uploads/products/2019/06/pic_1561152197_1561152201.jpg" alt="">
-            <br>
-          </div>
-        </mat-card-header>
-        <mat-card-content>
-          <p class="descr1">Temperatura AVG:</p>
-          <p class="resp">30°</p>
-          <p class="descr2">Sembrado:</p>
-          <p class="resp">10-07-2020</p>
-          <mat-icon (click)="picker.open()" class="riego"aria-hidden="false" aria-label="Example home icon">event
-            <input matInput [matDatepicker]="picker">
-            <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
-        </mat-icon>
-          <mat-icon class="sed"aria-hidden="false" aria-label="Example home icon">emoji_emotions
-          </mat-icon>
-        </mat-card-content>
-      </mat-card>
-      <mat-card class="tarjeta-lateral">
-        <mat-card-header>
-          <mat-card-title>Cilantro</mat-card-title>
-          <mat-card-subtitle>Coriandrum sativum
-          </mat-card-subtitle>
-          <div class="logo-siembra">
-            <img src="https://perfumesyfragancias.online/wp-content/uploads/2018/10/coriandre.jpg" alt="">
-            <br>
-          </div>
-        </mat-card-header>
-        <mat-card-content>
-          <p class="descr1">Temperatura AVG:</p>
-          <p class="resp">30°</p>
-          <p class="descr2">Sembrado:</p>
-          <p class="resp">10-07-2020</p>
-          <mat-icon (click)="picker.open()" class="riego"aria-hidden="false" aria-label="Example home icon">event
-            <input matInput [matDatepicker]="picker">
-            <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
-        </mat-icon>
-          <mat-icon class="sed"aria-hidden="false" aria-label="Example home icon">emoji_emotions
-          </mat-icon>
-        </mat-card-content>
-      </mat-card>
-      <mat-card class="tarjeta-lateral">
-        <mat-card-header>
-          <mat-card-title>Ajo</mat-card-title>
-          <mat-card-subtitle>Allium sativum</mat-card-subtitle>
-          <div class="logo-siembra">
-            <img src="https://mejorconsalud.com/wp-content/uploads/2018/09/ajo-500x414.jpg" alt="">
-            <br>
-          </div>
-        </mat-card-header>
-        <mat-card-content>
-          <p class="descr1">Temperatura AVG:</p>
-          <p class="resp">30°</p>
-          <p class="descr2">Sembrado:</p>
-          <p class="resp">10-07-2020</p>
-          <mat-icon (click)="picker.open()" class="riego"aria-hidden="false" aria-label="Example home icon">event
-            <input matInput [matDatepicker]="picker">
-            <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
-        </mat-icon>
-          <mat-icon class="sed"aria-hidden="false" aria-label="Example home icon">emoji_emotions
-          </mat-icon>
-        </mat-card-content>
-</mat-card>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

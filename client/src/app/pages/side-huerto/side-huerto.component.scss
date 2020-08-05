@@ -8,6 +8,15 @@
     font-size: 10px;
   }
 }
+table{
+  ng-container{
+    width: 200px;
+  }
+}
+.nom-cientifico{
+  font-size: 13px;
+
+}
 .tarjeta-lateral:hover{
   background:linear-gradient(to top, white,#E5E5E5);
 
@@ -45,4 +54,23 @@
 .example-custom-date-class {
   background: orange;
   border-radius: 100%;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
