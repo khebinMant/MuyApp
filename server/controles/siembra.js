@@ -57,16 +57,16 @@ let añadirSiembra = (req, res) => {
 let traerSiembras = (req, res) => {
 
     let data = req.body.data
-
+    console.log(data)
+    console.log("entre a bsucar siembras")
     modelos.Siembras.findAll({
         where:{
-            "idHuerto": data.idHuerto,
+            "idHuerto": data.id,
             "estado":true
         },
         include:[
             {
                 model:modelos.Productos,
-                attributes:['categoria','nombreComun','nombreCientifico','imagen','descripcion','dificultad','fechaCosecha'],
                 required: true,
                 include:[
                     {
@@ -79,14 +79,6 @@ let traerSiembras = (req, res) => {
                     }
                 ]
             },
-            {
-                model: modelos.Huertos,
-                attributes:['detalle'],
-                required: true
-            }
-        ],
-        exclude: [
-            'estado'
         ]
     }).then(respuesta => {
         res.status(200).json({

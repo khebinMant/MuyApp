@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       sourceKey:'id'
     }),
-    Productos.hasMany(models.Condiciones,{
+    Productos.hasOne(models.Condiciones,{
       foreignKey:{
         type: DataTypes.INTEGER,
         name: 'idProducto',
@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       sourceKey: 'id'
     }),
-    Productos.hasMany(models.Cuidados,{
+    Productos.hasOne(models.Cuidados,{
       foreignKey:{
         type: DataTypes.INTEGER,
         name: 'idProducto',

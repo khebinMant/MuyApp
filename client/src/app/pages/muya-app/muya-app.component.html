@@ -1,1 +1,68 @@
-<p>muya-app works!</p>
+<div>
+  <main style="justify-content: center;" class="contenedorTabla" >
+    <table class="centro" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!--Columnas-->
+      <ng-container matColumnDef="foto">
+        <th mat-header-cell *matHeaderCellDef> Fotografía </th>
+        <td mat-cell style="justify-content: center;" *matCellDef="let element">
+          <img class="fotografiaProducto" src="{{url}}ver-archivo/{{element.Producto.imagen}}/imagen-producto">
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.Producto.nombreComun}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nombreCientifico">
+        <th mat-header-cell *matHeaderCellDef> Nombre Científico </th>
+        <td mat-cell *matCellDef="let element"> {{element.Producto.nombreCientifico}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="dificultad">
+        <th mat-header-cell *matHeaderCellDef> Dificultad </th>
+        <td mat-cell *matCellDef="let element"> {{element.Producto.dificultad}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fechaSiembra">
+        <th mat-header-cell *matHeaderCellDef> Fecha de Siembra </th>
+        <td mat-cell *matCellDef="let element"> {{element.fechaSiembra | date: 'short'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fechaCosecha">
+        <th mat-header-cell *matHeaderCellDef> Fecha de Cosecha </th>
+        <td mat-cell *matCellDef="let element"> {{element.fechaCosecha | date: 'short'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="tipoSuelo">
+        <th mat-header-cell *matHeaderCellDef> Periodo Lectivo </th>
+        <td mat-cell *matCellDef="let element"> {{element.Producto.Condicione.tipoSuelo}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="tipo">
+        <th mat-header-cell *matHeaderCellDef> Categoria </th>
+        <td mat-cell *matCellDef="let element"> {{element.Producto.categoria}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="evento" stickyEnd>
+        <th mat-header-cell *matHeaderCellDef>Revisar</th>
+        <td mat-cell *matCellDef="let element; let i = index">
+          <button matTooltip=" Eliminar {{element.Producto.nombreComun}}" mat-icon-button
+            color="primary" aria-label="Revisar" (click)="eliminarProducto()">
+            <mat-icon>delete_forever</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" class="encabezadoTabla"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+  </main>
+  <main class="paginador">
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </main>
+
+</div>

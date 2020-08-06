@@ -16,7 +16,8 @@ export class LogService {
   constructor(
     private http: HttpClient,
     private server: ServerService
-  ) {
+  )
+  {
     this.url = this.server.getUrl();
   }
 

@@ -22,7 +22,15 @@ module.exports = (sequelize, DataTypes) => {
       },
       sourceKey: 'id'
     })
-
+    Personas.hasMany(models.Huertos,{
+      foreignKey:{
+        type: DataTypes.INTEGER,
+        name: 'idPersona',
+        allowNull: false,
+        unique: false
+      },
+      sourceKey: 'id'
+    })
   };
   return Personas;
 };
