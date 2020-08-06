@@ -17,7 +17,7 @@
           <p class="resp">{{element.Producto.Cuidado.resistenciaFrio}}</p>
           <p class="descr2">Sembrado:</p>
           <p class="resp">{{element.fechaSiembra | date: 'short'}}</p>
-          <mat-icon (click)="picker.open(); verquefechasalen()" class="riego"aria-hidden="false" aria-label="Example home icon">event
+          <mat-icon (click)="verquefechasalen(element.id);picker.open()" class="riego"aria-hidden="false" aria-label="Example home icon">event
               <input matInput [matDatepicker]="picker">
               <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
           </mat-icon>

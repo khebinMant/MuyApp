@@ -8,9 +8,9 @@ module.exports = {
         {
           idProducto: 11,
           idHuerto: 1,
-          fechaSiembra: new Date(),
-          fechaCosecha: new Date(),
-          fechaRiego: new Date(),
+          fechaSiembra: '05/08/2020',
+          fechaCosecha: '15/10/2020',
+          fechaRiego: '05/08/2020',
           estadoRiego: true,
           cosechado: true,
           estado:true,
