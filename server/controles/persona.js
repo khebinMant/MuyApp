@@ -4,9 +4,9 @@ const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.js')[env]
 let sequelize;
 if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+    sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
+    sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 let modelos = require('../models')
 let Op = Sequelize.Op;
@@ -18,8 +18,8 @@ let login = (req, res) => {
     let correoElectronico = req.body.correoElectronico
     let psw = req.body.psw
     modelos.Personas.findOne({
-        attributes:{
-            exclude:[
+        attributes: {
+            exclude: [
                 "estado",
                 "createdAt",
                 "updatedAt"
@@ -29,12 +29,10 @@ let login = (req, res) => {
             correoElectronico: correoElectronico,
             psw: psw
         },
-        include:[
-            {
-                model: modelos.PersonasRoles,
-                required:true,
-            }
-        ]
+        include: [{
+            model: modelos.PersonasRoles,
+            required: true,
+        }]
     }).then(data => {
         return res.status(200).json({
             transaccion: true,
@@ -48,7 +46,7 @@ let login = (req, res) => {
             msg: 'Persona no registrada'
         })
     })
-}   
+}
 
 let crearPersona = (req, res) => {
 
@@ -60,24 +58,24 @@ let crearPersona = (req, res) => {
 
     //Crear a la persona
     modelos.Personas.create(data)
-    .then(respuesta => {
-        res.status(200).json({
-            transaccion: true,
-            data: [respuesta.dataValues],
-            msg: data.length
+        .then(respuesta => {
+            res.status(200).json({
+                transaccion: true,
+                data: [respuesta.dataValues],
+                msg: data.length
+            })
+        }).catch(err => {
+            return res.status(500).json({
+                transaccion: false,
+                data: null,
+                msg: 'Error del servidor'
+            })
         })
-    }).catch(err => {
-        return res.status(500).json({
-            transaccion: false,
-            data: null,
-            msg: 'Error del servidor'
-        })
-    })
 }
 
 
 let buscarPersona = (req, res) => {
-    
+
     let correoElectronico = req.body.data.correoElectronico
     let contraseña = req.body.data.contraseña
     modelos.Personas.findAll({
@@ -98,7 +96,7 @@ let buscarPersona = (req, res) => {
             msg: 'Error del servidor'
         })
     })
-} 
+}
 
 
 let crearRolPersona = (req, res) => {
@@ -111,19 +109,19 @@ let crearRolPersona = (req, res) => {
 
     //Crear a la persona
     modelos.PersonasRoles.create(data)
-    .then(respuesta => {
-        res.status(200).json({
-            transaccion: true,
-            data: [respuesta.dataValues],
-            msg: data.length
+        .then(respuesta => {
+            res.status(200).json({
+                transaccion: true,
+                data: [respuesta.dataValues],
+                msg: data.length
+            })
+        }).catch(err => {
+            return res.status(500).json({
+                transaccion: false,
+                data: null,
+                msg: 'Error del servidor'
+            })
         })
-    }).catch(err => {
-        return res.status(500).json({
-            transaccion: false,
-            data: null,
-            msg: 'Error del servidor'
-        })
-    })
 }
 
 let traerPersonas = (req, res) => {
@@ -132,7 +130,7 @@ let traerPersonas = (req, res) => {
             exclude: [
                 'estado'
             ],
-            where:{
+            where: {
                 estado: true
             }
         }
@@ -141,7 +139,7 @@ let traerPersonas = (req, res) => {
             transaccion: true,
             data: respuesta,
             msg: respuesta.length
-        }) 
+        })
     }).catch(err => {
         res.status(500).json({
             transaccion: false,
