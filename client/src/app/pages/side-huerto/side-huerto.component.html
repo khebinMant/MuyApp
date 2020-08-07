@@ -1,7 +1,7 @@
-<table mat-table [dataSource]="dataSource">
-  <ng-container matColumnDef="unico" >
-    <th mat-header-cell *matHeaderCellDef style="text-align: center; font-size:medium;" >Siembras</th>
-    <td mat-cell style="width: auto;"*matCellDef="let element">
+<table class="sera" mat-table [dataSource]="dataSource">
+  <ng-container class="sera" matColumnDef="unico" >
+    <th class="sera" mat-header-cell *matHeaderCellDef style="text-align: center; font-size:medium;" >Siembras</th>
+    <td class="sera" mat-cell *matCellDef="let element">
 
       <mat-card class="tarjeta-lateral">
         <mat-card-header>
@@ -16,18 +16,18 @@
           <p class="descr1">Resistencia:</p>
           <p class="resp">{{element.Producto.Cuidado.resistenciaFrio}}</p>
           <p class="descr2">Sembrado:</p>
-          <p class="resp">{{element.fechaSiembra | date: 'short'}}</p>
+          <p class="resp">{{element.fechaSiembra | date:"dd/MM/yyyy":"+0000"}}</p>
           <mat-icon (click)="verquefechasalen(element.id);picker.open()" class="riego"aria-hidden="false" aria-label="Example home icon">event
-              <input matInput [matDatepicker]="picker">
-              <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
           </mat-icon>
+            <input matInput [matDatepicker]="picker">
+              <mat-datepicker [dateClass]="dateClass(element.id)" #picker></mat-datepicker>
           <mat-icon class="sed"aria-hidden="false" aria-label="Example home icon">emoji_emotions
           </mat-icon>
         </mat-card-content>
       </mat-card>
     </td>
   </ng-container>
-  <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <tr class="sera" mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+  <tr class="sera" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 

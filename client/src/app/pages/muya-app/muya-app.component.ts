@@ -48,9 +48,14 @@ export class MuyaAppComponent implements OnInit {
     ];
     this.dataSource = new MatTableDataSource(this.siembras);
     this.dataSource.paginator = this.paginator;
-
   }
   eliminarProducto(){
 
   }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
 }

@@ -1,10 +1,11 @@
 import { ServerService } from './../../servicios/server.service';
 import { PersonaLogin } from './../../modelos/persona-login';
 import { UsuarioActualService } from './../../servicios/usuario-actual.service';
-import { Component, OnInit, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewEncapsulation, ViewChild } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
 import { MatCalendarCellCssClasses } from '@angular/material/datepicker';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-menu-principal',
@@ -14,17 +15,14 @@ import { MatCalendarCellCssClasses } from '@angular/material/datepicker';
 })
 export class MenuPrincipalComponent implements OnInit {
 
-  dateClass = (d: Date): MatCalendarCellCssClasses => {
-    const date = d.getDate();
+  @ViewChild('snav') sidenav: MatSidenav;
 
-    // Highlight the 1st and 20th day of each month.
-    return (date === 1 || date === 20) ? 'example-custom-date-class' : '';
-  }
   content: boolean;
   mobileQuery: MediaQueryList;
   fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);
   personaLog: PersonaLogin;
   url: string;
+  verSiembra: boolean;
 
   private _mobileQueryListener: () => void;
   constructor(
@@ -46,6 +44,8 @@ export class MenuPrincipalComponent implements OnInit {
     this.mobileQuery.removeListener(this._mobileQueryListener);
     this.content=true;
     this.informacionPersona();
+    this.verSiembra = false;
+
   }
   cambio(){
     this.content=!this.content;
@@ -61,6 +61,7 @@ export class MenuPrincipalComponent implements OnInit {
     }
 
   }
+
   informacionPersona(){
     this.personaLog = this.personaLogeadaVerificacion.getPersonaLogeada()
     console.log(this.personaLog)
@@ -75,5 +76,4 @@ export class MenuPrincipalComponent implements OnInit {
       this.router.navigate(['/login']);
     }
   }
-  //"{{url}}ver-archivo/{{personaLog.foto}}/imagen-persona"
 }
