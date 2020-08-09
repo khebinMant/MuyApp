@@ -36,18 +36,22 @@
                   <app-side-huerto></app-side-huerto>
     </mat-sidenav>
 
-    <mat-sidenav-content >
+    <mat-sidenav-content class="fondillo">
       <div class="contenido"*ngIf="content"  >
+
         <div (click)="cambio()" routerLink="data" class="muya-data">
           <img src="../../../assets/iconos/data.png" alt="">
+          <p>MuyaData</p>
         </div>
 
         <div (click)="cambio()" routerLink="app" class="muya-app">
           <img src="../../../assets/iconos/huerto.png" alt="">
+          <p>MuyApp</p>
         </div >
 
         <div (click)="cambio()"  routerLink="map" class="muya-map">
           <img src="../../../assets/iconos/map.png" alt="">
+          <p>MuyaMap</p>
         </div>
       </div>
 

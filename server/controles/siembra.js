@@ -83,6 +83,9 @@ let traerSiembras = (req, res) => {
                     }
                 ]
             },
+        ],
+        order: [
+            ['createdAt']
         ]
     }).then(respuesta => {
         res.status(200).json({

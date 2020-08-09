@@ -17,11 +17,11 @@
           <p class="resp">{{element.Producto.Cuidado.resistenciaFrio}}</p>
           <p class="descr2">Sembrado:</p>
           <p class="resp">{{element.fechaSiembra | date:"dd/MM/yyyy"}}</p>
-          <mat-icon (click)="verquefechasalen(element.id);picker.open()" class="riego"aria-hidden="false" aria-label="Example home icon">event
+          <mat-icon matTooltip="Fechas de riego {{element.Producto.nombreComun}}" (click)="verquefechasalen(element.id);picker.open()" class="riego"aria-hidden="false" aria-label="Example home icon">event
           </mat-icon>
             <input matInput [matDatepicker]="picker">
               <mat-datepicker [dateClass]="dateClass(i)" #picker></mat-datepicker>
-          <mat-icon class="sed"aria-hidden="false" aria-label="Example home icon">emoji_emotions
+          <mat-icon class="sed"aria-hidden="false" aria-label="Example home icon">💧
           </mat-icon>
         </mat-card-content>
       </mat-card>

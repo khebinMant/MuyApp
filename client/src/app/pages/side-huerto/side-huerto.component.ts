@@ -22,6 +22,7 @@ export class SideHuertoComponent implements OnInit {
   huerto: Huerto;
   riegos: any;
   SiembraDate: any;
+  emoji: any;
   CosechaDate: any;
   constructor(
     private api: ServiceApiService,
@@ -32,6 +33,7 @@ export class SideHuertoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.emoji=true;
     this.traerSiembrasHuertoPersonaLogeada();
   }
 
@@ -91,10 +93,9 @@ export class SideHuertoComponent implements OnInit {
         while(fechaDeRiegoUTC<fechaCosechaTopeUTC)
       }
     }
-
-
-
     this.riegos = riego;
   }
-
+  setEmoji(){
+    this.emoji=!this.emoji;
+  }
 }

@@ -12,7 +12,7 @@ module.exports = {
           fechaCosecha: '15/10/2020',
           fechaRiego: '05/08/2020',
           estadoRiego: true,
-          cosechado: true,
+          cosechado: false,
           estado:true,
           createdAt: new Date(),
           updatedAt: new Date()
@@ -36,7 +36,7 @@ module.exports = {
           fechaCosecha: new Date(),
           fechaRiego: new Date(),
           estadoRiego: true,
-          cosechado: true,
+          cosechado: false,
           estado:true,
           createdAt: new Date(),
           updatedAt: new Date()
@@ -48,7 +48,7 @@ module.exports = {
           fechaCosecha: new Date(),
           fechaRiego: new Date(),
           estadoRiego: true,
-          cosechado: true,
+          cosechado: false,
           estado:true,
           createdAt: new Date(),
           updatedAt: new Date()
@@ -60,7 +60,7 @@ module.exports = {
           fechaCosecha: new Date(),
           fechaRiego: new Date(),
           estadoRiego: true,
-          cosechado: true,
+          cosechado: false,
           estado:true,
           createdAt: new Date(),
           updatedAt: new Date()
@@ -72,7 +72,7 @@ module.exports = {
           fechaCosecha: new Date(),
           fechaRiego: new Date(),
           estadoRiego: true,
-          cosechado: true,
+          cosechado: false,
           estado:true,
           createdAt: new Date(),
           updatedAt: new Date()
@@ -84,7 +84,7 @@ module.exports = {
           fechaCosecha: new Date(),
           fechaRiego: new Date(),
           estadoRiego: true,
-          cosechado: true,
+          cosechado: false,
           estado:true,
           createdAt: new Date(),
           updatedAt: new Date()
@@ -96,7 +96,7 @@ module.exports = {
           fechaCosecha: new Date(),
           fechaRiego: new Date(),
           estadoRiego: true,
-          cosechado: true,
+          cosechado: false,
           estado:true,
           createdAt: new Date(),
           updatedAt: new Date()
@@ -108,7 +108,7 @@ module.exports = {
           fechaCosecha: '25/10/2020',
           fechaRiego: '06/08/2020',
           estadoRiego: true,
-          cosechado: true,
+          cosechado: false,
           estado: true,
           createdAt: new Date(),
           updatedAt: new Date()
@@ -120,7 +120,7 @@ module.exports = {
           fechaCosecha: '15/09/2020',
           fechaRiego: '04/08/2020',
           estadoRiego: true,
-          cosechado: true,
+          cosechado: false,
           estado: true,
           createdAt: new Date(),
           updatedAt: new Date()
@@ -133,7 +133,7 @@ module.exports = {
           fechaCosecha: '03/08/2030',
           fechaRiego: '03/08/2020',
           estadoRiego: true,
-          cosechado: true,
+          cosechado: false,
           estado: true,
           createdAt: new Date(),
           updatedAt: new Date()
@@ -145,7 +145,7 @@ module.exports = {
           fechaCosecha: '31/07/2030',
           fechaRiego: '31/07/2020',
           estadoRiego: true,
-          cosechado: true,
+          cosechado: false,
           estado: true,
           createdAt: new Date(),
           updatedAt: new Date()

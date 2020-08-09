@@ -72,30 +72,30 @@
 
   </div>
   <div  class="tabSiembra"*ngIf="addSiembra">
-    <mat-tab-group  animationDuration="1000ms" mat-align-tabs="center">
-      <mat-tab class="contenido-tab" label="Frutas">
+    <mat-tab-group   class="borde-tab" animationDuration="1000ms" mat-align-tabs="center">
+      <mat-tab class="contenido-tab" style="font-weight: bold;" label="Frutas">
 
         <table class="sera" mat-table [dataSource]="dataSourceFruta">
 
           <ng-container matColumnDef="fotos">
-            <th mat-header-cell *matHeaderCellDef> Fotografía </th>
+            <th mat-header-cell style="font-weight: bold;" *matHeaderCellDef> Fotografía </th>
             <td mat-cell style="justify-content: center;" *matCellDef="let element">
               <img class="fotografiaProducto" src="{{url}}ver-archivo/{{element.imagen}}/imagen-producto">
             </td>
           </ng-container>
 
           <ng-container matColumnDef="nombres">
-            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <th mat-header-cell style="font-weight: bold;" *matHeaderCellDef> Nombre </th>
             <td mat-cell *matCellDef="let element"> {{element.nombreComun}} </td>
           </ng-container>
 
           <ng-container matColumnDef="dificultad">
-            <th mat-header-cell *matHeaderCellDef> Dificultad </th>
+            <th mat-header-cell style="font-weight: bold;" *matHeaderCellDef> Dificultad </th>
             <td mat-cell *matCellDef="let element"> {{element.dificultad}} </td>
           </ng-container>
 
           <ng-container matColumnDef="eventos" stickyEnd>
-            <th mat-header-cell *matHeaderCellDef>Añadir</th>
+            <th mat-header-cell style="font-weight: bold;" *matHeaderCellDef>Añadir</th>
             <td mat-cell *matCellDef="let element; let i = index">
               <button matTooltip=" Añadir {{element.nombreComun}} al huerto" mat-icon-button
                 color="primary" aria-label="Revisar"  (click)="openDialog(element.id)" >
@@ -109,29 +109,29 @@
         </table>
 
       </mat-tab>
-      <mat-tab label="Legumbres">
+      <mat-tab style="font-weight: bold;" label="Legumbres">
 
         <table class="sera" mat-table [dataSource]="dataSourceLegumbre">
 
           <ng-container matColumnDef="fotos">
-            <th mat-header-cell *matHeaderCellDef> Fotografía </th>
+            <th mat-header-cell  style="font-weight: bold;" *matHeaderCellDef> Fotografía </th>
             <td mat-cell style="justify-content: center;" *matCellDef="let element">
               <img class="fotografiaProducto" src="{{url}}ver-archivo/{{element.imagen}}/imagen-producto">
             </td>
           </ng-container>
 
           <ng-container matColumnDef="nombres">
-            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <th mat-header-cell style="font-weight: bold;" *matHeaderCellDef> Nombre </th>
             <td mat-cell *matCellDef="let element"> {{element.nombreComun}} </td>
           </ng-container>
 
           <ng-container matColumnDef="dificultad">
-            <th mat-header-cell *matHeaderCellDef> Dificultad </th>
+            <th mat-header-cell style="font-weight: bold;" *matHeaderCellDef> Dificultad </th>
             <td mat-cell *matCellDef="let element"> {{element.dificultad}} </td>
           </ng-container>
 
           <ng-container matColumnDef="eventos" stickyEnd>
-            <th mat-header-cell *matHeaderCellDef>Añadir</th>
+            <th mat-header-cell style="font-weight: bold;" *matHeaderCellDef>Añadir</th>
             <td mat-cell *matCellDef="let element; let i = index">
               <button matTooltip=" Añadir {{element.nombreComun}} al huerto" mat-icon-button
                 color="primary" aria-label="Revisar" (click)="openDialog(element.id)">
@@ -144,28 +144,28 @@
           <tr class="sera" mat-row *matRowDef="let row; columns: displayedColumnsLegumbres;"></tr>
         </table>
       </mat-tab>
-      <mat-tab label="Hierbas">
+      <mat-tab  style="font-weight: bold;" label="Hierbas">
         <table class="sera" mat-table [dataSource]="dataSourceHierbas">
 
           <ng-container matColumnDef="fotos">
-            <th mat-header-cell *matHeaderCellDef> Fotografía </th>
+            <th mat-header-cell style="font-weight: bold;" *matHeaderCellDef> Fotografía </th>
             <td mat-cell style="justify-content: center;" *matCellDef="let element">
               <img class="fotografiaProducto" src="{{url}}ver-archivo/{{element.imagen}}/imagen-producto">
             </td>
           </ng-container>
 
           <ng-container matColumnDef="nombres">
-            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <th mat-header-cell  style="font-weight: bold;" *matHeaderCellDef> Nombre </th>
             <td mat-cell *matCellDef="let element"> {{element.nombreComun}} </td>
           </ng-container>
 
           <ng-container matColumnDef="dificultad">
-            <th mat-header-cell *matHeaderCellDef> Dificultad </th>
+            <th mat-header-cell style="font-weight: bold;" *matHeaderCellDef> Dificultad </th>
             <td mat-cell *matCellDef="let element"> {{element.dificultad}} </td>
           </ng-container>
 
           <ng-container matColumnDef="eventos" stickyEnd>
-            <th mat-header-cell *matHeaderCellDef>Añadir</th>
+            <th mat-header-cell  style="font-weight: bold;" *matHeaderCellDef>Añadir</th>
             <td mat-cell *matCellDef="let element; let i = index">
               <button matTooltip=" Añadir {{element.nombreComun}} al huerto" mat-icon-button
                 color="primary" aria-label="Revisar"(click)="openDialog(element.id)">

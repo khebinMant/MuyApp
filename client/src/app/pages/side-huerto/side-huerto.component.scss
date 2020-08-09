@@ -15,8 +15,7 @@
   width: auto;
 }
 .nom-cientifico{
-  font-size: 13px;
-
+  font-size: 11px;
 }
 .tarjeta-lateral:hover{
   background:linear-gradient(to top, white,#E5E5E5);
@@ -46,11 +45,23 @@
   position: absolute;
   top: 20px;
   right: 0px;
+  transition: 0.1s ease-in-out;
+}
+.riego:hover{
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: 0.2s ease-in-out;
 }
 .sed{
+  transition: 0.1s ease-in-out;
   position: absolute;
   top: 20px;
   right: 25px;
+}
+.sed:hover{
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: 0.2s ease-in-out;
 }
 .example-custom-date-class {
   background: #3CD3F9;
