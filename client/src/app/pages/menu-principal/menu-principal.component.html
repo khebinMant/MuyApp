@@ -1,8 +1,10 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches" >
   <mat-toolbar class="example-toolbar">
     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <div  (click)="irComponente('menu')" class="centradito">
       <img (click)="irComponente('menu')"class="logo" src="../../../assets/iconos/huerto.png" alt="">
       <h1 (click)="irComponente('menu')"class="example-app-name">MuyApp</h1>
+    </div>
     <div class="usuario" fxFlex="4%">
       <button mat-fab color="primary" [matMenuTriggerFor]="menuPersona">
         <img src="{{url}}ver-archivo/{{personaLog.foto}}/imagen-persona" alt="">

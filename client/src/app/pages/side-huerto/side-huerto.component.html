@@ -21,8 +21,27 @@
           </mat-icon>
             <input matInput [matDatepicker]="picker">
               <mat-datepicker [dateClass]="dateClass(i)" #picker></mat-datepicker>
-          <mat-icon class="sed"aria-hidden="false" aria-label="Example home icon">💧
+          <mat-icon [matMenuTriggerFor]="menuInfo" class="sed"aria-hidden="false" aria-label="Example home icon">💧
           </mat-icon>
+          <mat-menu  #menuInfo="matMenu" xPosition="before">
+
+            <mat-card class="tarjeta-usuario">
+              <img mat-card-image src="">
+              <mat-card-header class="cabecera-usuario">
+                <mat-card-title></mat-card-title>
+                <mat-card-subtitle></mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-actions>
+                <button class="btnMenu" mat-button>
+                  Cofiguracion
+                </button>
+                <button class="btnMenu" mat-button>
+                  <a routerLink="">Cerrar Sesion</a>
+                </button>
+              </mat-card-actions>
+            </mat-card>
+
+        </mat-menu>
         </mat-card-content>
       </mat-card>
     </td>

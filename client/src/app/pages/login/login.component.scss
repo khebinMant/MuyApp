@@ -91,3 +91,54 @@
     }
   }
 }
+
+//RESPONSIVE DESING
+/* bigger laptops */
+/* Desktops and laptops ----------- */
+@media only screen and (min-width: 850px) and (max-width: 1024px) {
+  .registro{
+    margin-top: 10% ;
+  }
+}
+@media screen and (min-width: 650px) and (max-width: 849px) {
+  .registro{
+    margin-top: 15% ;
+  }
+  .footer{
+    ul{
+      li{
+        font-size: 10px;
+      }
+    }
+  }
+}
+@media screen and (min-width: 450px) and (max-width: 649px) {
+  .registro{
+    margin-top: 15% ;
+    height: 80%;
+  }
+  .footer{
+    ul{
+      li{
+        display: none;
+      }
+    }
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 449px) {
+  .registro{
+    width: 420px;
+    margin-top: 15% ;
+    height: 100%;
+  }
+  .footer{
+    width: 0px;
+    height: 0px;
+    display: none;
+    ul{
+      li{
+        display: none;
+      }
+    }
+  }
+}
