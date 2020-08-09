@@ -10,6 +10,13 @@
   tipo:(width: 4rem,aling: center),
   evento:(width: 9rem,aling: center)
 ));
+@include mat-table-columns((
+  fotos: (width: -3rem, padding-left: 0.1rem,aling: center),
+  nombres: (width: 8rem,aling: center),
+  dificultad:(width: 4rem,aling: center),
+  eventos:(width: 4rem,aling: center)
+));
+
 .fotografiaProducto{
   border-radius: 100%;
   border: 4px solid greenyellow;
@@ -29,4 +36,41 @@
   margin-left: 20px;
   padding: 0;
   margin-top: 5px;
+}
+.add-product{
+  width: 100%;
+  button{
+    background-color: lawngreen;
+    margin-top: 4px ;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    right: -90%;
+  }
+}
+.tabSiembra{
+  border-radius: 5%;
+  height: auto;
+  width: 60%;
+  right: 400px;
+  background: linear-gradient(to top, white,#D2FFD7);
+  border: 1px solid greenyellow;
+  margin: 70px 20px 30px 25px;
+}
+.contenido-tab{
+  display: flex;
+  flex-direction: row;
+  text-align:center;
+  align-items: center;
+  justify-content:center;
+}
+.sera{
+  width: 100%;
+}
+.todo{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
 }

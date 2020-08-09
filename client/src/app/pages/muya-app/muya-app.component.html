@@ -1,67 +1,184 @@
+<div class="todo">
+  <div *ngIf="seeSiembras">
+    <div class="add-product">
+      <button (click)="cambio(); traerProductos()" mat-mini-fab>
+        <mat-icon matTooltip="Añadir Siembra" >add_circle_outline</mat-icon>
+      </button>
+    </div>
+    <main style="justify-content: center;" class="contenedorTabla" >
+      <table class="centro" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
+        <!--Columnas-->
+        <ng-container matColumnDef="foto">
+          <th mat-header-cell *matHeaderCellDef> Fotografía </th>
+          <td mat-cell style="justify-content: center;" *matCellDef="let element">
+            <img class="fotografiaProducto" src="{{url}}ver-archivo/{{element.Producto.imagen}}/imagen-producto">
+          </td>
+        </ng-container>
 
-  <main style="justify-content: center;" class="contenedorTabla" >
-    <table class="centro" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.Producto.nombreComun}} </td>
+        </ng-container>
 
-      <!--Columnas-->
-      <ng-container matColumnDef="foto">
-        <th mat-header-cell *matHeaderCellDef> Fotografía </th>
-        <td mat-cell style="justify-content: center;" *matCellDef="let element">
-          <img class="fotografiaProducto" src="{{url}}ver-archivo/{{element.Producto.imagen}}/imagen-producto">
-        </td>
-      </ng-container>
+        <ng-container matColumnDef="nombreCientifico">
+          <th mat-header-cell *matHeaderCellDef> Nombre Científico </th>
+          <td mat-cell *matCellDef="let element"> {{element.Producto.nombreCientifico}} </td>
+        </ng-container>
 
-      <ng-container matColumnDef="nombre">
-        <th mat-header-cell *matHeaderCellDef> Nombre </th>
-        <td mat-cell *matCellDef="let element"> {{element.Producto.nombreComun}} </td>
-      </ng-container>
+        <ng-container matColumnDef="dificultad">
+          <th mat-header-cell *matHeaderCellDef> Dificultad </th>
+          <td mat-cell *matCellDef="let element"> {{element.Producto.dificultad}} </td>
+        </ng-container>
 
-      <ng-container matColumnDef="nombreCientifico">
-        <th mat-header-cell *matHeaderCellDef> Nombre Científico </th>
-        <td mat-cell *matCellDef="let element"> {{element.Producto.nombreCientifico}} </td>
-      </ng-container>
+        <ng-container matColumnDef="fechaSiembra">
+          <th mat-header-cell *matHeaderCellDef> Fecha de Siembra </th>
+          <td mat-cell *matCellDef="let element"> {{element.fechaSiembra | date:"dd/MM/yyyy hh:mm a "}} </td>
+        </ng-container>
 
-      <ng-container matColumnDef="dificultad">
-        <th mat-header-cell *matHeaderCellDef> Dificultad </th>
-        <td mat-cell *matCellDef="let element"> {{element.Producto.dificultad}} </td>
-      </ng-container>
+        <ng-container matColumnDef="fechaCosecha">
+          <th mat-header-cell *matHeaderCellDef> Fecha de Cosecha </th>
+          <td mat-cell *matCellDef="let element"> {{element.fechaCosecha  | date:"dd/MM/yyyy hh:mm a "}} </td>
+        </ng-container>
 
-      <ng-container matColumnDef="fechaSiembra">
-        <th mat-header-cell *matHeaderCellDef> Fecha de Siembra </th>
-        <td mat-cell *matCellDef="let element"> {{element.fechaSiembra | date:"dd/MM/yyyy hh:mm a ":"+0000"}} </td>
-      </ng-container>
+        <ng-container matColumnDef="tipoSuelo">
+          <th mat-header-cell *matHeaderCellDef> Tipo de suelo </th>
+          <td mat-cell *matCellDef="let element"> {{element.Producto.Condicione.tipoSuelo}} </td>
+        </ng-container>
 
-      <ng-container matColumnDef="fechaCosecha">
-        <th mat-header-cell *matHeaderCellDef> Fecha de Cosecha </th>
-        <td mat-cell *matCellDef="let element"> {{element.fechaCosecha  | date:"dd/MM/yyyy hh:mm a ":"+0000"}} </td>
-      </ng-container>
+        <ng-container matColumnDef="tipo">
+          <th mat-header-cell *matHeaderCellDef> Categoria </th>
+          <td mat-cell *matCellDef="let element"> {{element.Producto.categoria}} </td>
+        </ng-container>
 
-      <ng-container matColumnDef="tipoSuelo">
-        <th mat-header-cell *matHeaderCellDef> Tipo de suelo </th>
-        <td mat-cell *matCellDef="let element"> {{element.Producto.Condicione.tipoSuelo}} </td>
-      </ng-container>
+        <ng-container matColumnDef="evento" stickyEnd>
+          <th mat-header-cell *matHeaderCellDef>Revisar</th>
+          <td mat-cell *matCellDef="let element; let i = index">
+            <button matTooltip=" Eliminar {{element.Producto.nombreComun}}" mat-icon-button
+              color="warn" aria-label="Revisar" (click)="eliminarProducto()">
+              <mat-icon>delete_forever</mat-icon>
+            </button>
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="tipo">
-        <th mat-header-cell *matHeaderCellDef> Categoria </th>
-        <td mat-cell *matCellDef="let element"> {{element.Producto.categoria}} </td>
-      </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" class="encabezadoTabla"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
-      <ng-container matColumnDef="evento" stickyEnd>
-        <th mat-header-cell *matHeaderCellDef>Revisar</th>
-        <td mat-cell *matCellDef="let element; let i = index">
-          <button matTooltip=" Eliminar {{element.Producto.nombreComun}}" mat-icon-button
-            color="warn" aria-label="Revisar" (click)="eliminarProducto()">
-            <mat-icon>delete_forever</mat-icon>
-          </button>
-        </td>
-      </ng-container>
+      </table>
+    </main>
+    <main class="paginador">
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </main>
 
+  </div>
+  <div  class="tabSiembra"*ngIf="addSiembra">
+    <mat-tab-group  animationDuration="1000ms" mat-align-tabs="center">
+      <mat-tab class="contenido-tab" label="Frutas">
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" class="encabezadoTabla"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <table class="sera" mat-table [dataSource]="dataSourceFruta">
 
-    </table>
-  </main>
-  <main class="paginador">
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-  </main>
+          <ng-container matColumnDef="fotos">
+            <th mat-header-cell *matHeaderCellDef> Fotografía </th>
+            <td mat-cell style="justify-content: center;" *matCellDef="let element">
+              <img class="fotografiaProducto" src="{{url}}ver-archivo/{{element.imagen}}/imagen-producto">
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="nombres">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td mat-cell *matCellDef="let element"> {{element.nombreComun}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="dificultad">
+            <th mat-header-cell *matHeaderCellDef> Dificultad </th>
+            <td mat-cell *matCellDef="let element"> {{element.dificultad}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="eventos" stickyEnd>
+            <th mat-header-cell *matHeaderCellDef>Añadir</th>
+            <td mat-cell *matCellDef="let element; let i = index">
+              <button matTooltip=" Añadir {{element.nombreComun}} al huerto" mat-icon-button
+                color="primary" aria-label="Revisar"  (click)="openDialog(element.id)" >
+                <mat-icon>add_circle_outline</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr class="sera" mat-header-row *matHeaderRowDef="displayedColumnsFrutas; sticky: true"></tr>
+          <tr class="sera" mat-row *matRowDef="let row; columns: displayedColumnsFrutas;"></tr>
+        </table>
+
+      </mat-tab>
+      <mat-tab label="Legumbres">
+
+        <table class="sera" mat-table [dataSource]="dataSourceLegumbre">
+
+          <ng-container matColumnDef="fotos">
+            <th mat-header-cell *matHeaderCellDef> Fotografía </th>
+            <td mat-cell style="justify-content: center;" *matCellDef="let element">
+              <img class="fotografiaProducto" src="{{url}}ver-archivo/{{element.imagen}}/imagen-producto">
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="nombres">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td mat-cell *matCellDef="let element"> {{element.nombreComun}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="dificultad">
+            <th mat-header-cell *matHeaderCellDef> Dificultad </th>
+            <td mat-cell *matCellDef="let element"> {{element.dificultad}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="eventos" stickyEnd>
+            <th mat-header-cell *matHeaderCellDef>Añadir</th>
+            <td mat-cell *matCellDef="let element; let i = index">
+              <button matTooltip=" Añadir {{element.nombreComun}} al huerto" mat-icon-button
+                color="primary" aria-label="Revisar" (click)="openDialog(element.id)">
+                <mat-icon>add_circle_outline</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr class="sera" mat-header-row *matHeaderRowDef="displayedColumnsLegumbres; sticky: true"></tr>
+          <tr class="sera" mat-row *matRowDef="let row; columns: displayedColumnsLegumbres;"></tr>
+        </table>
+      </mat-tab>
+      <mat-tab label="Hierbas">
+        <table class="sera" mat-table [dataSource]="dataSourceHierbas">
+
+          <ng-container matColumnDef="fotos">
+            <th mat-header-cell *matHeaderCellDef> Fotografía </th>
+            <td mat-cell style="justify-content: center;" *matCellDef="let element">
+              <img class="fotografiaProducto" src="{{url}}ver-archivo/{{element.imagen}}/imagen-producto">
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="nombres">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td mat-cell *matCellDef="let element"> {{element.nombreComun}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="dificultad">
+            <th mat-header-cell *matHeaderCellDef> Dificultad </th>
+            <td mat-cell *matCellDef="let element"> {{element.dificultad}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="eventos" stickyEnd>
+            <th mat-header-cell *matHeaderCellDef>Añadir</th>
+            <td mat-cell *matCellDef="let element; let i = index">
+              <button matTooltip=" Añadir {{element.nombreComun}} al huerto" mat-icon-button
+                color="primary" aria-label="Revisar"(click)="openDialog(element.id)">
+                <mat-icon>add_circle_outline</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr class="sera" mat-header-row *matHeaderRowDef="displayedColumnsHierbas; sticky: true"></tr>
+          <tr class="sera" mat-row *matRowDef="let row; columns: displayedColumnsHierbas;"></tr>
+        </table>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+</div>

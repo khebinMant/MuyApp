@@ -7,7 +7,6 @@ import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import {A11yModule} from '@angular/cdk/a11y';
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import {DragDropModule} from '@angular/cdk/drag-drop';
@@ -64,6 +63,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule} from "@angular/common/http";
 import { SideHuertoComponent } from './pages/side-huerto/side-huerto.component';
+import { AgregarSiembraComponent } from './pages/muya-app/agregar-siembra/agregar-siembra.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +77,8 @@ import { SideHuertoComponent } from './pages/side-huerto/side-huerto.component';
     ConfirmationComponent,
     MenuBotonesComponent,
     SignUpComponent,
-    SideHuertoComponent
+    SideHuertoComponent,
+    AgregarSiembraComponent
   ],
   imports: [
     ToastrModule.forRoot(),

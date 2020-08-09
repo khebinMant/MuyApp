@@ -1,7 +1,7 @@
 <table class="sera" mat-table [dataSource]="dataSource">
   <ng-container class="sera" matColumnDef="unico" >
     <th class="sera" mat-header-cell *matHeaderCellDef style="text-align: center; font-size:medium;" >Siembras</th>
-    <td class="sera" mat-cell *matCellDef="let element">
+    <td class="sera" mat-cell *matCellDef="let element; let i = index">
 
       <mat-card class="tarjeta-lateral">
         <mat-card-header>
@@ -16,11 +16,11 @@
           <p class="descr1">Resistencia:</p>
           <p class="resp">{{element.Producto.Cuidado.resistenciaFrio}}</p>
           <p class="descr2">Sembrado:</p>
-          <p class="resp">{{element.fechaSiembra | date:"dd/MM/yyyy":"+0000"}}</p>
+          <p class="resp">{{element.fechaSiembra | date:"dd/MM/yyyy"}}</p>
           <mat-icon (click)="verquefechasalen(element.id);picker.open()" class="riego"aria-hidden="false" aria-label="Example home icon">event
           </mat-icon>
             <input matInput [matDatepicker]="picker">
-              <mat-datepicker [dateClass]="dateClass(element.id)" #picker></mat-datepicker>
+              <mat-datepicker [dateClass]="dateClass(i)" #picker></mat-datepicker>
           <mat-icon class="sed"aria-hidden="false" aria-label="Example home icon">emoji_emotions
           </mat-icon>
         </mat-card-content>

@@ -56,36 +56,42 @@ export class SideHuertoComponent implements OnInit {
   }
   async verquefechasalen(index:number){
     let riego = [];
+    console.log(index)
+    for(let i=0;i<this.siembras.length;i++){
+      if(this.siembras[i].id==index)
+      {
+        await console.log(`Lo sembre en esta  fecha: ${this.siembras[i].fechaSiembra}`)
+        await console.log(`Cada ${this.siembras[i].Producto.Cuidado.frecuenciaRiego} dias debo regarla`)
 
-    await console.log(`Lo sembre en esta  fecha: ${this.siembras[index-1].fechaSiembra}`)
-    await console.log(`Cada ${this.siembras[index-1].Producto.Cuidado.frecuenciaRiego} dias debo regarla`)
+        //Fecha de siembra
+        let fechaSiembra = new Date(this.siembras[i].fechaSiembra);
+        let fechaSiembraUTC = new Date(fechaSiembra.getTime()+fechaSiembra.getTimezoneOffset()*60000);
+        //this.SiembraDate = fechaSiembraUTC
+        let fechaSiembraUTCMili =  fechaSiembraUTC.getTime();
+        //Fecha de cosecha
+        let fechaCosecha =  new Date(this.siembras[i].fechaCosecha);
+        let fechaCosechaUTC = new Date(fechaCosecha.getTime()+fechaCosecha.getTimezoneOffset()*60000);
+        let fechaCosechaUTCMili = fechaCosechaUTC.getTime();
 
-    //Fecha de siembra
-    let fechaSiembra = new Date(this.siembras[index-1].fechaSiembra);
-    let fechaSiembraUTC = new Date(fechaSiembra.getTime()+fechaSiembra.getTimezoneOffset()*60000);
-    //this.SiembraDate = fechaSiembraUTC
-    let fechaSiembraUTCMili =  fechaSiembraUTC.getTime();
-    //Fecha de cosecha
-    let fechaCosecha =  new Date(this.siembras[index-1].fechaCosecha);
-    let fechaCosechaUTC = new Date(fechaCosecha.getTime()+fechaCosecha.getTimezoneOffset()*60000);
-    let fechaCosechaUTCMili = fechaCosechaUTC.getTime();
+        //Fecha de Riego
+        let fechaDeRiego;
+        let frecuenciaDeRiegoMilisegundos = await 1000 * 60 * 60 * 24 * (this.siembras[i].Producto.Cuidado.frecuenciaRiego);
+        let fechaDeRiegoUTC;
+        //Establecer un tope al while
+        let fechaCosechaTope =  new Date(fechaCosechaUTCMili-frecuenciaDeRiegoMilisegundos)
+        let fechaCosechaTopeUTC = new Date(fechaCosechaTope.getTime()+fechaCosechaTope.getTimezoneOffset()*60000)
 
-    //Fecha de Riego
-    let fechaDeRiego;
-    let frecuenciaDeRiegoMilisegundos = await 1000 * 60 * 60 * 24 * (this.siembras[index-1].Producto.Cuidado.frecuenciaRiego);
-    let fechaDeRiegoUTC;
-    //Establecer un tope al while
-    let fechaCosechaTope =  new Date(fechaCosechaUTCMili-frecuenciaDeRiegoMilisegundos)
-    let fechaCosechaTopeUTC = new Date(fechaCosechaTope.getTime()+fechaCosechaTope.getTimezoneOffset()*60000)
-
-    do{
-      fechaDeRiego = await new Date(fechaSiembraUTCMili+frecuenciaDeRiegoMilisegundos)
-      fechaDeRiegoUTC = await new Date(fechaDeRiego.getTime()+fechaDeRiego.getTimezoneOffset()*60000)
-      fechaSiembraUTCMili = fechaDeRiegoUTC.getTime();
-      fechaSiembraUTC = fechaDeRiegoUTC
-      riego.push(fechaSiembraUTC)
+        do{
+          fechaDeRiego = await new Date(fechaSiembraUTCMili+frecuenciaDeRiegoMilisegundos)
+          fechaDeRiegoUTC = await new Date(fechaDeRiego.getTime()+fechaDeRiego.getTimezoneOffset()*60000)
+          fechaSiembraUTCMili = fechaDeRiegoUTC.getTime();
+          fechaSiembraUTC = fechaDeRiegoUTC
+          riego.push(fechaSiembraUTC)
+        }
+        while(fechaDeRiegoUTC<fechaCosechaTopeUTC)
+      }
     }
-    while(fechaDeRiegoUTC<fechaCosechaTopeUTC)
+
 
 
     this.riegos = riego;
