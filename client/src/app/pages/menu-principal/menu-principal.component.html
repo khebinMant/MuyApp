@@ -9,7 +9,7 @@
       <button mat-fab color="primary" [matMenuTriggerFor]="menuPersona">
         <img src="{{url}}ver-archivo/{{personaLog.foto}}/imagen-persona" alt="">
      </button>
-      <mat-menu  #menuPersona="matMenu" xPosition="before">
+      <mat-menu class="persona-menu" #menuPersona="matMenu" xPosition="before">
 
           <mat-card class="tarjeta-usuario">
             <img mat-card-image src="{{url}}ver-archivo/{{personaLog.foto}}/imagen-persona">
@@ -22,7 +22,7 @@
                 Cofiguracion
               </button>
               <button class="btnMenu" mat-button>
-                <a routerLink="">Cerrar Sesion</a>
+                <a routerLink="/login">Cerrar Sesion</a>
               </button>
             </mat-card-actions>
           </mat-card>
