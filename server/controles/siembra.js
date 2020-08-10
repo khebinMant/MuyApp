@@ -18,10 +18,14 @@ let añadirSiembra = (req, res) => {
 
     let data = req.body.data
 
+
+    data.fechaSiembra = new Date(Date.now())
+    data.fechaRiego = new Date(Date.now())
+    data.estadoRiego = true
+    data.cosechado = false,
     data.estado = true
     data.createdAt = new Date(Date.now())
     data.updatedAt = new Date(Date.now())
-    data.fechaSiembra = new Date(Date.now())
 
     modelos.Siembras.create(data)
     .then(respuesta => {
@@ -79,6 +83,9 @@ let traerSiembras = (req, res) => {
                     }
                 ]
             },
+        ],
+        order: [
+            ['createdAt']
         ]
     }).then(respuesta => {
         res.status(200).json({

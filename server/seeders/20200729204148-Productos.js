@@ -52,8 +52,8 @@ module.exports = {
       {
           categoria: 'Fruta',
           nombreComun: 'Melón',
-          nombreCientifico: 'melon.jpg',
-          imagen: 'url de la imagen',
+          nombreCientifico: 'Cucumis melo',
+          imagen: 'melon.jpg',
           dificultad: 'Dificil',
           fechaCosecha: 120,
           estado: true,
@@ -61,9 +61,10 @@ module.exports = {
           updatedAt: new Date()
       },
       {
-          categoria: 'Papaya',
-          nombreCientifico: 'papaya.jpg',
-          imagen: 'url de la imagen',
+          categoria: 'Fruta',
+          nombreComun: 'Papaya',
+          nombreCientifico: 'Carica papaya',
+          imagen: 'papaya.jpg',
           dificultad: 'Facil',
           fechaCosecha: 360,
           estado: true,

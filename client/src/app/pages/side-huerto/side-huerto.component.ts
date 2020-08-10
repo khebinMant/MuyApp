@@ -21,6 +21,9 @@ export class SideHuertoComponent implements OnInit {
   url: string;
   huerto: Huerto;
   riegos: any;
+  SiembraDate: any;
+  emoji: any;
+  CosechaDate: any;
   constructor(
     private api: ServiceApiService,
     private personaActual:UsuarioActualService,
@@ -30,26 +33,23 @@ export class SideHuertoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.emoji=true;
     this.traerSiembrasHuertoPersonaLogeada();
   }
 
-  dateClass = (d: Date): MatCalendarCellCssClasses => {
-    const date = d.getDate();
-    //const riego = new Date(this.riegos[0])
-    if(date===this.riegos){
-      return 'example-custom-date-class';
-
-    }
-    else{
-      return '';
-    }
-    // Highlight the 1st and 20th day of each month.
-    //return (date === this.riegos) ? 'example-custom-date-class' : '';
+  dateClass(index:number) {
+    return (date: Date): MatCalendarCellCssClasses => {
+      const highlightDate = this.riegos
+        .map(strDate => new Date(strDate))
+        .some(d => d.getDate() === date.getDate() && d.getMonth() === date.getMonth() && d.getFullYear() === date.getFullYear());
+      return highlightDate ? 'example-custom-date-class' : '';
+    };
   }
 
    async traerSiembrasHuertoPersonaLogeada(){
     this.huerto = await this.api.sendApi('traer-huerto');
     this.siembras = await this.api.sendApi('obtener-siembras',this.huerto);
+    //this.SiembraDate  = new Date(this.)
     console.log(this.siembras);
     this.displayedColumns = [
       'unico',
@@ -57,27 +57,45 @@ export class SideHuertoComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.siembras);
   }
   async verquefechasalen(index:number){
+    let riego = [];
+    console.log(index)
+    for(let i=0;i<this.siembras.length;i++){
+      if(this.siembras[i].id==index)
+      {
+        await console.log(`Lo sembre en esta  fecha: ${this.siembras[i].fechaSiembra}`)
+        await console.log(`Cada ${this.siembras[i].Producto.Cuidado.frecuenciaRiego} dias debo regarla`)
 
-    await console.log(`Lo sembre en esta  fecha: ${this.siembras[index-1].fechaSiembra}`)
-    await console.log(`Cada ${this.siembras[index-1].Producto.Cuidado.frecuenciaRiego} dias debo regarla`)
+        //Fecha de siembra
+        let fechaSiembra = new Date(this.siembras[i].fechaSiembra);
+        let fechaSiembraUTC = new Date(fechaSiembra.getTime()+fechaSiembra.getTimezoneOffset()*60000);
+        //this.SiembraDate = fechaSiembraUTC
+        let fechaSiembraUTCMili =  fechaSiembraUTC.getTime();
+        //Fecha de cosecha
+        let fechaCosecha =  new Date(this.siembras[i].fechaCosecha);
+        let fechaCosechaUTC = new Date(fechaCosecha.getTime()+fechaCosecha.getTimezoneOffset()*60000);
+        let fechaCosechaUTCMili = fechaCosechaUTC.getTime();
 
+        //Fecha de Riego
+        let fechaDeRiego;
+        let frecuenciaDeRiegoMilisegundos = await 1000 * 60 * 60 * 24 * (this.siembras[i].Producto.Cuidado.frecuenciaRiego);
+        let fechaDeRiegoUTC;
+        //Establecer un tope al while
+        let fechaCosechaTope =  new Date(fechaCosechaUTCMili-frecuenciaDeRiegoMilisegundos)
+        let fechaCosechaTopeUTC = new Date(fechaCosechaTope.getTime()+fechaCosechaTope.getTimezoneOffset()*60000)
 
-    let fechaSiembra = new Date(this.siembras[index-1].fechaSiembra);
-    let fechaSiembraUTC = new Date(fechaSiembra.getTime()+fechaSiembra.getTimezoneOffset()*60000).getTime();
-
-    let frecuenciaDeRiegoMilisegundos = await 1000 * 60 * 60 * 24 * (this.siembras[index-1].Producto.Cuidado.frecuenciaRiego)
-
-
-    let fechaDeRiego = await new Date(fechaSiembraUTC+frecuenciaDeRiegoMilisegundos)
-
-    let fechaDeRiegoUTC = await new Date(fechaDeRiego.getTime()+fechaDeRiego.getTimezoneOffset()*60000)
-
-
-    await console.log("Por tanto debo regarlo este dia: " + fechaDeRiegoUTC);
-
-    this.riegos =  fechaDeRiegoUTC.getUTCDate()
-    console.log(fechaDeRiegoUTC.getUTCDate());
-
+        do{
+          fechaDeRiego = await new Date(fechaSiembraUTCMili+frecuenciaDeRiegoMilisegundos)
+          fechaDeRiegoUTC = await new Date(fechaDeRiego.getTime()+fechaDeRiego.getTimezoneOffset()*60000)
+          fechaSiembraUTCMili = fechaDeRiegoUTC.getTime();
+          fechaSiembraUTC = fechaDeRiegoUTC
+          riego.push(fechaSiembraUTC)
+        }
+        while(fechaDeRiegoUTC<fechaCosechaTopeUTC)
+      }
+    }
+    this.riegos = riego;
   }
-
+  setEmoji(){
+    this.emoji=!this.emoji;
+  }
 }

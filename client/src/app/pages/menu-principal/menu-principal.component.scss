@@ -1,4 +1,13 @@
-
+.fondillo{
+  position: relative;
+  background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("../../../assets/imagenes/fondillo.jpg")no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
 .example-container {
   display: flex;
   flex-direction: column;
@@ -35,11 +44,6 @@ mat-toolbar {
   z-index: 2;
 }
 
-h1.example-app-name {
-  cursor: pointer;
-  position: absolute;
-  right: 45%;
-}
 .example-sidenav-container {
   /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
      causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
@@ -50,14 +54,26 @@ h1.example-app-name {
      `<body>` to be our scrolling element for mobile layouts. */
   flex: 1 0 auto;
 }
-.logo{
-  cursor: pointer;
+.centradito{
+  h1{
+    margin-top: -10px;
+    display: inline-block;
+  }
+  img{
+    cursor: pointer;
+    opacity: 1;
+    width: 50px;
+    height: 50px;
+  }
+  right: 45%;
+  height: 20px;
+  display: flex;
   position: absolute;
-  right: 51%;
-  opacity: 1;
-  width: 50px;
-  height: 50px;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
 }
+
 .usuario {
   position: absolute;
   right: 25px;
@@ -192,10 +208,9 @@ mat-sidenav-content{
   flex-direction: row;
   justify-content: space-between;
   div{
-    margin-top: 55px;
+    margin-top: 40px;
     margin-left: 40px;
     margin-right: 40px;
-    border-color: hsla(89, 43%, 51%, 1);
     height: 80%;
     width: 250px;
   }
@@ -206,8 +221,34 @@ mat-sidenav-content{
   transition: 2s ease-out;
   cursor: pointer;
   background-image: url('../../../assets/imagenes/app.jpg');
-  border-color: #D2FFD7;
-  opacity: 60%;
+  border-radius: 3%;
+  opacity: 70%;
+  background-size: cover;
+  background-position: center; /* Center the image */
+  img{
+    transition: 1s ease-out;
+    margin-top: 70%;
+    width: 110px;
+    height: 110px;
+  }
+  p{
+    transition: 1s ease-out;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 71%;
+  }
+}
+.muya-data{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  margin: auto;
+  transition: 2s ease-out;
+  cursor: pointer;
+  border-radius: 3%;
+  background-image: url('../../../assets/imagenes/data.jpg');
+  opacity: 70%;
   background-size: cover;
   background-position: center; /* Center the image */
   img{
@@ -216,28 +257,20 @@ mat-sidenav-content{
     width: 100px;
     height: 100px;
   }
-}
-.muya-data{
-  text-align: center;
-  transition: 2s ease-out;
-  cursor: pointer;
-  background-image: url('../../../assets/imagenes/data.jpg');
-  opacity: 60%;
-  background-size: cover;
-  background-position: center; /* Center the image */
-  img{
+  p{
     transition: 1s ease-out;
-    margin-top: 70%;
-    width: 100px;
-    height: 100px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 76%;
   }
 }
 .muya-map{
   text-align: center;
   transition: 2s ease-out;
   cursor: pointer;
+  border-radius: 3%;
   background-image: url('../../../assets/imagenes/map.jpg');
-  opacity: 60%;
+  opacity: 70%;
   background-size: cover;
   background-position: center; /* Center the image */
   img{
@@ -246,22 +279,33 @@ mat-sidenav-content{
     width: 70px;
     height: 100px;
   }
+  p{
+    transition: 1s ease-out;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 74%;
+  }
 }
 .muya-app:hover{
   transition: 1s ease-out;
-  opacity: 90%;
+  opacity: 95%;
   background-size: cover;
   width: 101%;
   background-position: center; /* Center the image */
   img{
     transition: 0.5s ease-out;
-    width: 115px;
-    height: 115px;
+    width: 125px;
+    height: 125px;
+  }
+  p{
+    transition: 0.5s ease-out;
+    font-size: 25px;
+    font-weight: bold;
   }
 }
 .muya-map:hover{
   transition: 1s ease-out;
-  opacity: 90%;
+  opacity: 95%;
   background-size: cover;
   background-position: center; /* Center the image */
   img{
@@ -269,10 +313,16 @@ mat-sidenav-content{
     width: 85px;
     height: 115px;
   }
+  p{
+    transition: 0.5s ease-out;
+    font-size: 25px;
+    font-weight: bold;
+  }
+
 }
 .muya-data:hover{
   transition: 1s ease-out;
-  opacity: 90%;
+  opacity: 95%;
   background-size: cover;
   background-position: center; /* Center the image */
   img{
@@ -280,8 +330,122 @@ mat-sidenav-content{
     width: 115px;
     height: 115px;
   }
+  p{
+    transition: 0.5s ease-out;
+    font-size: 25px;
+    font-weight: bold;
+  }
 }
-.example-custom-date-class {
-  background: orange;
-  border-radius: 100%;
+.sideNav{
+  width: auto;
+}
+/* bigger laptops */
+@media only screen and (min-width: 1224px) {}
+/* Desktops and laptops ----------- */
+@media only screen and (min-width: 850px) and (max-width: 1024px) {}
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-width: 500px) and (max-width: 800px) {
+  .contenido{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 30px 0px;
+    div{
+      height: 250px;
+      width: 300px;
+    }
+    .muya-data{
+      text-align: center;
+      align-items: center;
+      margin: auto;
+      img{
+        margin-top: 20%;
+        width: 70px;
+        height: 70px;
+      }
+      p{
+        margin-top: 10%;
+      }
+    }
+    .muya-map{
+      text-align: center;
+      align-items: center;
+      margin: auto;
+      img{
+        margin-top: 20%;
+        width: 70px;
+        height: 70px;
+      }
+      p{
+        margin-top: 10%;
+      }
+    }
+    .muya-app{
+      text-align: center;
+      align-items: center;
+      margin: auto;
+      img{
+        margin-top: 20%;
+        width: 70px;
+        height: 70px;
+      }
+      p{
+        margin-top: 10%;
+      }
+    }
+  }
+}
+/* mobiles (landscape and portrait) */
+@media only screen and (min-width: 320px) and (max-width: 500px) {
+  .contenido{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 30px 0px;
+    div{
+      height: 250px;
+      width: 300px;
+    }
+    .muya-data{
+      text-align: center;
+      align-items: center;
+      margin: auto;
+      img{
+        margin-top: 20%;
+        width: 70px;
+        height: 70px;
+      }
+      p{
+        margin-top: 10%;
+      }
+    }
+    .muya-map{
+      text-align: center;
+      align-items: center;
+      margin: auto;
+      img{
+        margin-top: 20%;
+        width: 70px;
+        height: 70px;
+      }
+      p{
+        margin-top: 10%;
+      }
+    }
+    .muya-app{
+      text-align: center;
+      align-items: center;
+      margin: auto;
+      img{
+        margin-top: 20%;
+        width: 70px;
+        height: 70px;
+      }
+      p{
+        margin-top: 10%;
+      }
+    }
+  }
 }

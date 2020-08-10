@@ -1,0 +1,137 @@
+
+<mat-horizontal-stepper *ngIf="mostrar" animationDuration="1000ms"  linear #stepper>
+
+  <mat-step  class="contenedor-siembra" [stepControl]="firstFormGroup" [editable]="isEditable">
+    <form class="contenedor-siembra" [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Condiciones</ng-template>
+      <mat-radio-group class="contenedor-check1">
+        <p style="font-weight: bold;">Herramientas</p>
+          <mat-checkbox formControlName="slide1Ctrl" class="example-margin" required>Pala
+            <mat-error style="display: inline-block;" *ngIf="firstFormGroup.get('slide1Ctrl').hasError('required')">
+              <strong>Necesario</strong>
+            </mat-error>
+          </mat-checkbox>
+
+          <mat-checkbox formControlName="slide2Ctrl" class="example-margin" required>Abono
+            <mat-error style="display: inline-block;" *ngIf="firstFormGroup.get('slide2Ctrl').hasError('required')">
+              <strong>Necesario</strong>
+            </mat-error>
+          </mat-checkbox>
+          <mat-checkbox formControlName="slide3Ctrl" class="example-margin" required>Agua
+            <mat-error style="display: inline-block;" *ngIf="firstFormGroup.get('slide3Ctrl').hasError('required')">
+              <strong>Necesario</strong>
+            </mat-error>
+          </mat-checkbox>
+          <mat-checkbox formControlName="slide4Ctrl" class="example-margin" required>Rastrillo
+            <mat-error style="display: inline-block;" *ngIf="firstFormGroup.get('slide4Ctrl').hasError('required')">
+              <strong>Necesario</strong>
+            </mat-error>
+          </mat-checkbox>
+          <p style="font-weight: bold;">Recomendaciones</p>
+          <p style="color: #36A505;">Para una {{data.nombreComun}} es recomendable un suelo {{suelo}}</p>
+          <p style="color: #36A505;">Tener un espacio de {{espacio}} cm alrededor</p>
+          <button class="boton-condiciones" mat-button matStepperNext  [disabled]="firstFormGroup.invalid" >Siguiente</button>
+      </mat-radio-group>
+
+    </form>
+  </mat-step>
+
+  <mat-step  class="contenedor-siembra" [stepControl]="secondFormGroup" [editable]="isEditable">
+    <form class="contenedor-siembra" [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Preparar el terreno</ng-template>
+      <mat-radio-group class="contenedor-check1">
+        <p style="font-weight: bold;">Preparar el terreno</p>
+          <mat-checkbox formControlName="slide1Ctrl" class="example-margin" required>Limpiar la malesa
+            <mat-error style="display: inline-block;" *ngIf="secondFormGroup.get('slide1Ctrl').hasError('required')">
+              <strong>*</strong>
+            </mat-error>
+          </mat-checkbox>
+
+          <mat-checkbox formControlName="slide2Ctrl" class="example-margin" required>Cavar un agujero
+            <mat-error style="display: inline-block;" *ngIf="secondFormGroup.get('slide2Ctrl').hasError('required')">
+              <strong>*</strong>
+            </mat-error>
+          </mat-checkbox>
+          <mat-checkbox formControlName="slide3Ctrl" class="example-margin" required>Humedecer el terreno
+            <mat-error style="display: inline-block;" *ngIf="secondFormGroup.get('slide3Ctrl').hasError('required')">
+              <strong>*</strong>
+            </mat-error>
+          </mat-checkbox>
+          <mat-checkbox formControlName="slide4Ctrl" class="example-margin" required>Abonar el terreno
+            <mat-error style="display: inline-block;" *ngIf="secondFormGroup.get('slide4Ctrl').hasError('required')">
+              <strong>*</strong>
+            </mat-error>
+          </mat-checkbox>
+          <p style="font-weight: bold;">Recomendaciones</p>
+          <p style="color: #36A505;">Se recomienda cabar aproximadamente {{proFundidadAgujero}} cm para una semilla de {{data.nombreComun}}</p>
+          <br>
+          <br>
+          <br>
+          <button class="boton-condiciones1" mat-button matStepperNext  [disabled]="secondFormGroup.invalid" >Siguiente</button>
+      </mat-radio-group>
+    </form>
+  </mat-step>
+
+  <mat-step   class="contenedor-siembra" [stepControl]="thirdFormGroup" [editable]="isEditable">
+    <form class="contenedor-siembra" [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Sembrar</ng-template>
+      <mat-radio-group class="contenedor-check1">
+        <p style="font-weight: bold;">Sembrar</p>
+          <mat-checkbox formControlName="slide1Ctrl" class="example-margin" required>Coloca la semilla de {{data.nombreComun}}
+            a  {{data.Condicione.profundidadSemilla}} cm del suelo
+            <mat-error style="display: inline-block;" *ngIf="thirdFormGroup.get('slide1Ctrl').hasError('required')">
+              <strong>*</strong>
+            </mat-error>
+          </mat-checkbox>
+
+          <mat-checkbox formControlName="slide2Ctrl" class="example-margin" required>Cubrir la semilla con suficiente tierra
+            <mat-error style="display: inline-block;" *ngIf="thirdFormGroup.get('slide2Ctrl').hasError('required')">
+              <strong>*</strong>
+            </mat-error>
+          </mat-checkbox>
+          <mat-checkbox formControlName="slide3Ctrl" class="example-margin" required>Humedece nuevamente el terreno
+            <mat-error style="display: inline-block;" *ngIf="thirdFormGroup.get('slide3Ctrl').hasError('required')">
+              <strong>*</strong>
+            </mat-error>
+          </mat-checkbox>
+          <br>
+          <br>
+          <p style="font-weight: bold; color: #36A505;">No olvides abonar y regar tus plantas frecuentemente</p>
+          <button class="boton-condiciones1" mat-button matStepperNext (click)="cambio();sembrarSemilla();openSnackBar()" [disabled]="thirdFormGroup.invalid" >Sembrar</button>
+      </mat-radio-group>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>
+<div class="final-siembra" *ngIf="!mostrar">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <img class="fotografiaProducto" src="{{url}}ver-archivo/{{data.imagen}}/imagen-producto">
+      <mat-card-title>{{data.nombreComun}}</mat-card-title>
+      <mat-card-subtitle>{{data.nombreCientifico}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+
+      <p style="font-weight: bold">
+        Fecha de siembra
+      </p>
+      <p>
+        {{fechaExtra2 | date:"dd/MM/yyyy"}}
+      </p>
+
+      <p style="font-weight: bold">
+        Fecha de cosecha
+      </p>
+      <p>
+       {{fechaExtra1 | date:"dd/MM/yyyy"}}
+      </p>
+
+      <p style="font-weight: bold; color: #36A505;">
+        Regar {{data.Cuidado.frecuenciaRiego}} dias por semana
+      </p>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="volver()" [mat-dialog-close]="cerrar" >Aceptar</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,8 +1,10 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches" >
   <mat-toolbar class="example-toolbar">
     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <div  (click)="irComponente('menu')" class="centradito">
       <img (click)="irComponente('menu')"class="logo" src="../../../assets/iconos/huerto.png" alt="">
       <h1 (click)="irComponente('menu')"class="example-app-name">MuyApp</h1>
+    </div>
     <div class="usuario" fxFlex="4%">
       <button mat-fab color="primary" [matMenuTriggerFor]="menuPersona">
         <img src="{{url}}ver-archivo/{{personaLog.foto}}/imagen-persona" alt="">
@@ -31,23 +33,27 @@
 
   <mat-sidenav-container class="example-sidenav-container"
                          [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+    <mat-sidenav class="sideNav" #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
                  [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
                   <app-side-huerto></app-side-huerto>
     </mat-sidenav>
 
-    <mat-sidenav-content >
+    <mat-sidenav-content class="fondillo">
       <div class="contenido"*ngIf="content"  >
+
         <div (click)="cambio()" routerLink="data" class="muya-data">
           <img src="../../../assets/iconos/data.png" alt="">
+          <p>MuyaData</p>
         </div>
 
         <div (click)="cambio()" routerLink="app" class="muya-app">
           <img src="../../../assets/iconos/huerto.png" alt="">
+          <p>MuyApp</p>
         </div >
 
         <div (click)="cambio()"  routerLink="map" class="muya-map">
           <img src="../../../assets/iconos/map.png" alt="">
+          <p>MuyaMap</p>
         </div>
       </div>
 

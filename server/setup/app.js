@@ -43,7 +43,7 @@ app.use(BODYPARSER.json())
 app.use(cors(corsOptions))
 app.use(morgan('combined'))
 
-app.use(session(sess))
+app.use(session({secret:'somevalue'}))
 app.use(passport.initialize())
 app.use(passport.session());
 
