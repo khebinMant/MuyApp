@@ -10,6 +10,7 @@ module.exports = {
           correoElectronico: 'kevinguachagmira@gmail.com',
           psw: '12345678',
           foto: 'a8vN04xVCj2kn58pKPOo-WMj.jpg',
+          confirmacion: true,
           estado:true,
           createdAt: new Date(),
           updatedAt: new Date()
@@ -20,6 +21,7 @@ module.exports = {
           correoElectronico: 'henryAlvarado@gmail.com',
           psw: '12345678',
           foto: 'admin_henry.png',
+          confirmacion: true,
           estado:true,
           createdAt: new Date(),
           updatedAt: new Date()
@@ -30,6 +32,7 @@ module.exports = {
           correoElectronico: 'jazminSanchez@gmail.com',
           psw: '12345678',
           foto: 'admin_jazmin.png',
+          confirmacion: true,
           estado:true,
           createdAt: new Date(),
           updatedAt: new Date()
@@ -40,6 +43,7 @@ module.exports = {
           correoElectronico: 'pedroGarcia@gmail.com',
           psw: '12345678',
           foto: 'a8vN04xVCj2kn58pKPOo-WMj.jpg',
+          confirmacion: true,
           estado:true,
           createdAt: new Date(),
           updatedAt: new Date()
@@ -50,6 +54,7 @@ module.exports = {
           correoElectronico: 'juanSanchez@gmail.com',
           psw: '12345678',
           foto: 'a8vN04xVCj2kn58pKPOo-WMj.jpg',
+          confirmacion: true,
           estado:true,
           createdAt: new Date(),
           updatedAt: new Date()

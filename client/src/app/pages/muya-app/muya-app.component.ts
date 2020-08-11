@@ -1,3 +1,5 @@
+import { PersonaLogin } from './../../modelos/persona-login';
+import { Router } from '@angular/router';
 import { AgregarSiembraComponent } from './agregar-siembra/agregar-siembra.component';
 import { MatDialog } from '@angular/material/dialog';
 import { element } from 'protractor';
@@ -10,6 +12,8 @@ import { ServiceApiService } from './../../servicios/service-api.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { ConfirmacionEliminacionComponent } from './confirmacion-eliminacion/confirmacion-eliminacion.component';
+import { Persona } from 'src/app/modelos/persona';
 
 @Component({
   selector: 'app-muya-app',
@@ -34,11 +38,13 @@ export class MuyaAppComponent implements OnInit {
   proFruta: Producto[];
   proLegumbre: Producto[];
   proHierba: Producto[];
+  perActual: Persona;
   huerto: Huerto;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   constructor(
     private dialog: MatDialog,
     private api: ServiceApiService,
+    private router: Router,
     private personaActual:UsuarioActualService,
     private server : ServerService
   ) {
@@ -49,6 +55,7 @@ export class MuyaAppComponent implements OnInit {
     this.addSiembra=false
     this.seeSiembras=true;
     this.traerSiembrasHuertoPersonaLogeada();
+    this.perActual= this.personaActual.getPersonaLogeada();
   }
   async traerSiembrasHuertoPersonaLogeada(){
     this.huerto = await this.api.sendApi('traer-huerto');
@@ -68,10 +75,6 @@ export class MuyaAppComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.siembras);
     this.dataSource.paginator = this.paginator;
   }
-  eliminarProducto(){
-
-  }
-
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -141,5 +144,20 @@ export class MuyaAppComponent implements OnInit {
      // this.leerSolcicitudes();
     });
   }
+  openDialogDelete(siembra:Siembra): void {
+    console.log(siembra);
+    const dialogRef = this.dialog.open(ConfirmacionEliminacionComponent, {
+      width: '250px',
+      data: siembra
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+  volver(){
+    this.router.navigateByUrl('', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/menu/app']);
+  });
+  }
 }

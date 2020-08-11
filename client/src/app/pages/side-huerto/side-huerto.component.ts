@@ -3,9 +3,10 @@ import { Huerto } from './../../modelos/huerto';
 import { ServiceApiService } from './../../servicios/service-api.service';
 import { Siembra } from './../../modelos/siembra';
 import { UsuarioActualService } from './../../servicios/usuario-actual.service';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Inject } from '@angular/core';
 import { MatCalendarCellCssClasses } from '@angular/material/datepicker';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-side-huerto',
@@ -27,7 +28,8 @@ export class SideHuertoComponent implements OnInit {
   constructor(
     private api: ServiceApiService,
     private personaActual:UsuarioActualService,
-    private server : ServerService
+    private server : ServerService,
+    public dialog: MatDialog
   ) {
     this.url = server.getUrl();
   }
@@ -99,3 +101,4 @@ export class SideHuertoComponent implements OnInit {
     this.emoji=!this.emoji;
   }
 }
+

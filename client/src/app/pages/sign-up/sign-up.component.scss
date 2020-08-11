@@ -21,15 +21,15 @@
 }
 
 .logoG {
-  left: 15%;
-  margin: 30px;
+  left: 25%;
+  margin: 15px;
   position: relative;
   img {
       width: 60px;
       height: 60px;
   }
   .titulo {
-      font-size: 35px;
+      font-size: 25px;
       top: 20px;
       left: 60px;
       position: absolute;
@@ -49,16 +49,19 @@
   border-radius: 3%;
   margin-top: 20px;
   width: 425px;
-  height: 80%;
+  height: 75%;
   margin-left: 100px;
   background-color: rgba($color: #D2FFD7, $alpha: 0.6);
 }
 
 .botones {
-  padding: 20px 20px;
+  padding: 10px 20px;
   justify-content: start;
   text-align: center;
   margin-bottom: 100px;
+  button{
+    background-color: greenyellow;
+  }
 }
 
 .botones button {

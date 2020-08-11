@@ -62,8 +62,9 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule} from "@angular/common/http";
-import { SideHuertoComponent } from './pages/side-huerto/side-huerto.component';
+import { SideHuertoComponent} from './pages/side-huerto/side-huerto.component';
 import { AgregarSiembraComponent } from './pages/muya-app/agregar-siembra/agregar-siembra.component';
+import { ConfirmacionEliminacionComponent } from './pages/muya-app/confirmacion-eliminacion/confirmacion-eliminacion.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { AgregarSiembraComponent } from './pages/muya-app/agregar-siembra/agrega
     MenuBotonesComponent,
     SignUpComponent,
     SideHuertoComponent,
-    AgregarSiembraComponent
+    AgregarSiembraComponent,
+    ConfirmacionEliminacionComponent
   ],
   imports: [
     ToastrModule.forRoot(),

@@ -17,7 +17,7 @@ import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition
 export class AgregarSiembraComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
-  durationInSeconds = 4;
+  durationInSeconds = 6;
   firstFormGroup: FormGroup;
   cerrar : boolean;
   secondFormGroup: FormGroup;
@@ -111,10 +111,11 @@ export class AgregarSiembraComponent implements OnInit {
 
   cambio(){
     this.mostrar=!this.mostrar
+    this.dialogRef.disableClose = true;
   }
   async volver(){
     this.siembra = await this.api.sendApi('sembrar-producto',this.siembra);
-    this.router.navigateByUrl('', { skipLocationChange: true }).then(() => {
+    await this.router.navigateByUrl('', { skipLocationChange: true }).then(() => {
       this.router.navigate(['/menu/app']);
   });
   }
@@ -131,7 +132,7 @@ export class AgregarSiembraComponent implements OnInit {
   templateUrl: 'snack-bar-component-example-snack.html',
   styles: [`
     .example-pizza-party {
-      color: hotpink;
+      color: green;
     }
   `],
 })

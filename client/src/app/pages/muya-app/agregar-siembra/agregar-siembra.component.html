@@ -8,23 +8,23 @@
         <p style="font-weight: bold;">Herramientas</p>
           <mat-checkbox formControlName="slide1Ctrl" class="example-margin" required>Pala
             <mat-error style="display: inline-block;" *ngIf="firstFormGroup.get('slide1Ctrl').hasError('required')">
-              <strong>Necesario</strong>
+              <strong matTooltip="Es recomendable tener una pala a mano">*</strong>
             </mat-error>
           </mat-checkbox>
 
           <mat-checkbox formControlName="slide2Ctrl" class="example-margin" required>Abono
             <mat-error style="display: inline-block;" *ngIf="firstFormGroup.get('slide2Ctrl').hasError('required')">
-              <strong>Necesario</strong>
+              <strong matTooltip="Es recomendable el uso del abono">*</strong>
             </mat-error>
           </mat-checkbox>
           <mat-checkbox formControlName="slide3Ctrl" class="example-margin" required>Agua
             <mat-error style="display: inline-block;" *ngIf="firstFormGroup.get('slide3Ctrl').hasError('required')">
-              <strong>Necesario</strong>
+              <strong matTooltip="La vida no es posible sin agua">*</strong>
             </mat-error>
           </mat-checkbox>
           <mat-checkbox formControlName="slide4Ctrl" class="example-margin" required>Rastrillo
             <mat-error style="display: inline-block;" *ngIf="firstFormGroup.get('slide4Ctrl').hasError('required')">
-              <strong>Necesario</strong>
+              <strong matTooltip="Es recomendable tener un rastrillo" >*</strong>
             </mat-error>
           </mat-checkbox>
           <p style="font-weight: bold;">Recomendaciones</p>
@@ -43,23 +43,23 @@
         <p style="font-weight: bold;">Preparar el terreno</p>
           <mat-checkbox formControlName="slide1Ctrl" class="example-margin" required>Limpiar la malesa
             <mat-error style="display: inline-block;" *ngIf="secondFormGroup.get('slide1Ctrl').hasError('required')">
-              <strong>*</strong>
+              <strong matTooltip="Es recomendable eliminar la malesa para el libre crecimiento de la planta" >*</strong>
             </mat-error>
           </mat-checkbox>
 
           <mat-checkbox formControlName="slide2Ctrl" class="example-margin" required>Cavar un agujero
             <mat-error style="display: inline-block;" *ngIf="secondFormGroup.get('slide2Ctrl').hasError('required')">
-              <strong>*</strong>
+              <strong matTooltip="Es recomendable cabar aproximadamente {{proFundidadAgujero}} cm para una semilla de {{data.nombreComun}}">*</strong>
             </mat-error>
           </mat-checkbox>
           <mat-checkbox formControlName="slide3Ctrl" class="example-margin" required>Humedecer el terreno
             <mat-error style="display: inline-block;" *ngIf="secondFormGroup.get('slide3Ctrl').hasError('required')">
-              <strong>*</strong>
+              <strong  matTooltip="Es recomendable humeder el terreno">*</strong>
             </mat-error>
           </mat-checkbox>
           <mat-checkbox formControlName="slide4Ctrl" class="example-margin" required>Abonar el terreno
             <mat-error style="display: inline-block;" *ngIf="secondFormGroup.get('slide4Ctrl').hasError('required')">
-              <strong>*</strong>
+              <strong matTooltip="Es recomendable abonar el terreno">*</strong>
             </mat-error>
           </mat-checkbox>
           <p style="font-weight: bold;">Recomendaciones</p>
@@ -80,18 +80,18 @@
           <mat-checkbox formControlName="slide1Ctrl" class="example-margin" required>Coloca la semilla de {{data.nombreComun}}
             a  {{data.Condicione.profundidadSemilla}} cm del suelo
             <mat-error style="display: inline-block;" *ngIf="thirdFormGroup.get('slide1Ctrl').hasError('required')">
-              <strong>*</strong>
+              <strong matTooltip="Coloca la semilla">*</strong>
             </mat-error>
           </mat-checkbox>
 
           <mat-checkbox formControlName="slide2Ctrl" class="example-margin" required>Cubrir la semilla con suficiente tierra
             <mat-error style="display: inline-block;" *ngIf="thirdFormGroup.get('slide2Ctrl').hasError('required')">
-              <strong>*</strong>
+              <strong matTooltip="Cubre la semilla">*</strong>
             </mat-error>
           </mat-checkbox>
           <mat-checkbox formControlName="slide3Ctrl" class="example-margin" required>Humedece nuevamente el terreno
             <mat-error style="display: inline-block;" *ngIf="thirdFormGroup.get('slide3Ctrl').hasError('required')">
-              <strong>*</strong>
+              <strong matTooltip="Humedece el terreno">*</strong>
             </mat-error>
           </mat-checkbox>
           <br>
@@ -131,7 +131,7 @@
 
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button (click)="volver()" [mat-dialog-close]="cerrar" >Aceptar</button>
+      <button mat-button class="btn-back" (click)="volver()" [mat-dialog-close]="cerrar" >Aceptar</button>
     </mat-card-actions>
   </mat-card>
 </div>
