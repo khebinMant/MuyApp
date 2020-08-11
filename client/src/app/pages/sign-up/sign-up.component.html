@@ -9,29 +9,40 @@
       </div>
 
       <div class="ingreso">
-          <form action="" >
+          <form action="" [formGroup]="registerForm" >
+
             <mat-form-field  appearance="outline">
-              <mat-label >Nombre de Usuario</mat-label>
+              <mat-label >Nombre</mat-label>
                <input matInput formControlName="nombre" placeholder="Ej: Carlitos">
                <mat-icon matPrefix color="primary"></mat-icon>
             </mat-form-field>
+
+            <mat-form-field  appearance="outline">
+              <mat-label >Apellido</mat-label>
+               <input matInput formControlName="apellido" placeholder="Ej: Taco">
+               <mat-icon matPrefix color="primary"></mat-icon>
+            </mat-form-field>
+
             <mat-form-field appearance="outline">
               <mat-label>Dirección de correo </mat-label>
-              <input matInput formControlName="email" placeholder="Ej: jaz@dominio.com">
+              <input matInput formControlName="correoElectronico" placeholder="Ej: jaz@dominio.com">
             </mat-form-field>
+
             <mat-form-field appearance="outline">
               <mat-label>Contraseña</mat-label>
-              <input matInput formControlName="Contraseña" placeholder="Ej: contraseña">
+              <input type="password" matInput formControlName="psw" placeholder="Ej: contraseña">
               <mat-icon matPrefix color="primary"></mat-icon>
             </mat-form-field>
+
             <mat-form-field appearance="outline">
               <mat-label>Confirma Contraseña</mat-label>
-              <input matInput formControlName="confirmaContraseña" placeholder="Ej: contraseña">
+              <input type="password" matInput formControlName="psw" placeholder="Ej: contraseña">
               <mat-icon matPrefix color="primary"></mat-icon>
             </mat-form-field>
+
             <div class="botones">
-            <button mat-raised-button (click)="irComponente()">Registrarse</button>
-            </div>
+            <button [disabled]="registerForm.invalid" mat-raised-button (click)="crearUsuario()">Registrarse</button>
+          </div>
           </form>
       </div>
 

@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     correoElectronico: DataTypes.STRING,
     psw: DataTypes.STRING,
     foto: DataTypes.STRING,
+    confirmacion: DataTypes.BOOLEAN,
     estado: {
       type: DataTypes.BOOLEAN,
       defaultValue: true,

@@ -11,7 +11,6 @@ if (config.use_env_variable) {
 let modelos = require('../models')
 let Op = Sequelize.Op;
 
-// Estudiante
 
 let login = (req, res) => {
 
@@ -27,7 +26,8 @@ let login = (req, res) => {
         },
         where: {
             correoElectronico: correoElectronico,
-            psw: psw
+            psw: psw,
+            confirmacion:true
         },
         include:[
             {
@@ -57,7 +57,7 @@ let crearPersona = (req, res) => {
     data.estado = true
     data.createdAt = new Date(Date.now())
     data.updatedAt = new Date(Date.now())
-
+    data.confirmacion = false
     //Crear a la persona
     modelos.Personas.create(data)
     .then(respuesta => {
@@ -103,13 +103,17 @@ let buscarPersona = (req, res) => {
 
 let crearRolPersona = (req, res) => {
 
-    let data = req.body.data
+    console.log("Entre a crear el rol")
+    console.log(req.body.data)
+    let data=req.body.data;
 
+    data.idPersona = data.id
+    data.idRol = 1
     data.estado = true
     data.createdAt = new Date(Date.now())
     data.updatedAt = new Date(Date.now())
 
-    //Crear a la persona
+    //Crear a la persona-rol
     modelos.PersonasRoles.create(data)
     .then(respuesta => {
         res.status(200).json({

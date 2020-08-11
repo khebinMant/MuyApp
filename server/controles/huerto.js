@@ -12,7 +12,6 @@ let modelos = require('../models')
 let Op = Sequelize.Op;
 
 
-// Estudiante
 
 let crearHuertos = (req, res) => {
 

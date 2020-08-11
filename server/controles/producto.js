@@ -12,8 +12,6 @@ let modelos = require('../models')
 let Op = Sequelize.Op;
 
 
-// Estudiante
-
 let traerProductos = (req, res) => {
     modelos.Productos.findAll({
         attributes: {

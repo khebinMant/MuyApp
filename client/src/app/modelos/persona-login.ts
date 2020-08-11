@@ -6,6 +6,7 @@ export interface PersonaLogin {
   correoElectronico:string,
   psw: string,
   foto: string,
+  confirmacion: boolean,
   createdAt?: Date,
   updatedAt?: Date,
   PersonaRol: PersonaRol[]
