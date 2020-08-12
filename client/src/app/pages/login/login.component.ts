@@ -33,8 +33,8 @@ export class LoginComponent implements OnInit {
   }
   crearLoginForm() {
     this.loginForm = this.fb.group({
-      correoElectronico: ['', [Validators.required, Validators.pattern('^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
-      psw: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]*$')]]
+      correoElectronico: ['', [Validators.required,  Validators.email]],
+      psw: ['', [Validators.required,Validators.pattern('^[a-zA-Z0-9 ñÑ]*$')]]
     });
   }
   logIn(){

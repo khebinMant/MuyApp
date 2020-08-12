@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Persona } from 'src/app/modelos/persona';
+import { matchOtherValidator } from './match-other-validator';
 
 @Component({
   selector: 'app-sign-up',
@@ -34,11 +35,17 @@ export class SignUpComponent implements OnInit {
   }
   crearLRegisterForm() {
     this.registerForm = this.fb.group({
-      correoElectronico: ['', [Validators.required, Validators.pattern('^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
-      psw: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]*$')]],
-      nombre:['',[Validators.required, Validators.pattern('^[a-zA-Z0-9]*$')]],
-      apellido:['',[Validators.required, Validators.pattern('^[a-zA-Z0-9]*$')]]
-    });
+      nombre:['',[Validators.required,Validators.pattern('^[a-zA-Z0-9 áéíóúñüÁÉÍÓÚÑÜ]*$')]],
+      apellido:['',[Validators.required, Validators.pattern('^[a-zA-Z0-9 áéíóúñüÁÉÍÓÚÑÜ]*$')]],
+      correoElectronico: ['', [Validators.required,  Validators.email]],
+      psw: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9 ñÑ]*$')]],
+      pswcon: ['', [Validators.required,matchOtherValidator('psw')]]
+    }
+    );
+  }
+
+  async verificarMail(){
+    return true;
   }
   async crearUsuario(){
     if (!this.registerForm.invalid) {
@@ -51,6 +58,7 @@ export class SignUpComponent implements OnInit {
       //this.registerForm.reset();
       console.log(this.personaRegistrada)
       console.log(rol)
+      //Aqui debo hacer la llamada a la base de datos para enviar el email
       this.router.navigate(['/confirmation']);
     }
   }

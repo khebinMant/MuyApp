@@ -5,6 +5,7 @@ const filePdf = require('connect-multiparty')
 const huerto = require('../controles/huerto')
 const productos = require('../models/productos')
 
+
 let api = EXPRESS.Router(),
 
     //Controles de archivos
@@ -17,6 +18,7 @@ let api = EXPRESS.Router(),
     siembraControl = require('../controles/siembra')
     productoControl = require('../controles/producto')
     filesControl = require('../controles/files')
+    mailControl = require('../controles/mail-confirmation')
 
 //End Points
 
@@ -53,5 +55,6 @@ api.post('/imagen-producto',[imagenProductosMiddleware],filesControl.upload)
 //End Point para ver ver achivos cargado
 api.get('/ver-archivo/:urlFile/:directorio', filesControl.verArchivo)
 
-
+//End point para enviar mail de confirmacion 
+api.post('/enviar-correo', mailControl.enviarMail)
 module.exports = api

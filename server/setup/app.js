@@ -12,6 +12,8 @@ let app = EXPRESS(),
     rutas = require('../rutas/index.js'),
     modelos = require('../models'),
     cors = require('cors'),
+    nodemailer = require("nodemailer");
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
     morgan = require('morgan'),
     sess = {
         secret: process.env.KEY_SESSION,
