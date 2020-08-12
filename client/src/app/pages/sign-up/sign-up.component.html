@@ -25,7 +25,6 @@
             <mat-form-field  appearance="outline">
               <mat-label >Apellido</mat-label>
                <input matInput formControlName="apellido" placeholder="Ej: Taco">
-               <mat-icon matPrefix color="primary"></mat-icon>
                <mat-error *ngIf="registerForm.get('apellido').hasError('pattern')">
                 <strong>Por favor ingrese un apellido válido</strong>
               </mat-error>
@@ -48,7 +47,6 @@
             <mat-form-field appearance="outline">
               <mat-label>Contraseña</mat-label>
               <input type="password" matInput formControlName="psw" placeholder="Ej: contraseña">
-              <mat-icon matPrefix color="primary"></mat-icon>
               <mat-error *ngIf="registerForm.get('psw').hasError('pattern')">
                 <strong>La contraseña lleva unicamente numero y letras sin tilde</strong>
               </mat-error>
@@ -63,7 +61,6 @@
             <mat-form-field appearance="outline">
               <mat-label>Confirma Contraseña</mat-label>
               <input type="password" matInput formControlName="pswcon" placeholder="Ej: contraseña">
-              <mat-icon matPrefix color="primary"></mat-icon>
               <mat-error *ngIf="registerForm.get('pswcon').errors">
                 <strong> Las contraseñas no coinciden</strong>
               </mat-error>

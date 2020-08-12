@@ -20,32 +20,17 @@ const bodyParser = require("body-parser");
 
 let enviarMail = (req, res)=>{
 
-    console.log("request came");
+    console.log("Se entro al envio del correo");
     let user = req.body.data;
     sendMail(user, info => {
-      console.log(`The mail has beed send 😃 and the id is ${info.messageId}`);
-      res.send(info);
+      console.log(`El email ha sido enviado con exito😃  ${info.messageId}`);
+      return res.status(200).json({
+        transaccion: true,
+        data: info,
+        msg: info.length
+    })
     });
-    /*
-    user.confirmacion = true
-    modelos.Siembras.update(user,{
-        where:{
-            correoElectronico:user.correoElectronico,
-            psw:user.psw
-            }
-    }).then(respuesta => {
-        res.status(200).json({
-            transaccion: true,
-            data: respuesta,
-            msg: respuesta.length
-        }) 
-    }).catch(err => {
-        res.status(500).json({
-            transaccion: false,
-            data: err,
-            msg: 'Servidor no disponible'
-        })
-    })*/
+
 }
 async function sendMail(user, callback) {
   // create reusable transporter object using the default SMTP transport
@@ -64,10 +49,11 @@ async function sendMail(user, callback) {
     to: user.correoElectronico, // list of receivers
     subject: "Bienvenido a MuyApp tu huerto Virtual 🌱", // Subject line
     html: `<h1>Hola ${user.nombre} y bienvenido a MuyApp</h1><br>
-    <h2>Tu correo electrónico es: ${user.correoElectronico}</h2>
+    <h2 style="text-aling:center;">Tu correo electrónico es: ${user.correoElectronico}</h2>
     <h2>Tu contraseña es: ${user.psw}</h2>
-    <li><a href="http://localhost:4200/login">Ir a MuyApp Continuar</a></li>   
-    <h4>Gracias por unirte a MuyApp</h4>`
+    <h1>Click en el siguiente enlace para activar la cuenta</h1>
+    <h1><li><a href="http://localhost:3000/server/actualizar-confirmacion/${user.id}">Click Aqui para activar su cuenta</a></li></h1>
+    <h1>Gracias por unirte a MuyApp</h1>`
   };
 
   // send mail with defined transport object

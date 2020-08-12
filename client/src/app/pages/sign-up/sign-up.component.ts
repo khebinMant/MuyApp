@@ -58,6 +58,8 @@ export class SignUpComponent implements OnInit {
       //this.registerForm.reset();
       console.log(this.personaRegistrada)
       console.log(rol)
+      let final =  await this.api.sendApiRegister('enviar-correo',this.personaRegistrada)
+      console.log(final);
       //Aqui debo hacer la llamada a la base de datos para enviar el email
       this.router.navigate(['/confirmation']);
     }

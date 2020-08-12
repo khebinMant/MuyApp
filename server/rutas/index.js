@@ -28,6 +28,7 @@ api.post('/crear-personas', personaControl.crearPersona)
 api.get('/buscar-personas', personaControl.buscarPersona)
 api.post('/crear-persona-rol',personaControl.crearRolPersona)
 api.post('/login',personaControl.login)
+api.get('/actualizar-confirmacion/:id',personaControl.actualizarConfirmacion)//params de id 
 //todas las personas
 api.get('/traer-personas',personaControl.traerPersonas)
 

@@ -49,6 +49,39 @@ let login = (req, res) => {
         })
     })
 }   
+let actualizarConfirmacion = (req, res) => {
+
+    var html =`<!DOCTYPE html>
+    <html>
+       <head>
+          <title>HTML Meta Tag</title>
+          <meta http-equiv = "refresh" content = "1; url = http://localhost:4200/login" />
+       </head>
+       <body>
+          <p>Redirigiendo a MuyApp</p>
+       </body>
+    </html>`
+
+    let id = req.params.id
+    console.log(id)
+    const user={
+        confirmacion:true
+    };
+    //user.confirmacion = true
+    modelos.Personas.update(user,{
+        where:{
+                id:id
+            }
+    }).then(respuesta => {
+        res.send(html)
+    }).catch(err => {
+        res.status(500).json({
+            transaccion: false,
+            data: err,
+            msg: 'Servidor no disponible'
+        })
+    })
+}
 
 let crearPersona = (req, res) => {
 
@@ -160,5 +193,6 @@ module.exports = {
     crearRolPersona,
     crearPersona,
     traerPersonas,
-    buscarPersona
+    buscarPersona,
+    actualizarConfirmacion
 }
