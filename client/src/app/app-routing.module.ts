@@ -1,3 +1,4 @@
+import { GotoComponent } from './pages/goto/goto.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { MuyaMapComponent } from './pages/muya-map/muya-map.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
@@ -28,6 +29,7 @@ const routes: Routes = [
   },
   { path: 'signup', component:SignUpComponent},
   { path: 'confirmation', component:ConfirmationComponent},
+  { path: 'goto', component:GotoComponent},
 
 ];
 

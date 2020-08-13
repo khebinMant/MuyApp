@@ -23,7 +23,7 @@ let enviarMail = (req, res)=>{
     console.log("Se entro al envio del correo");
     let user = req.body.data;
     sendMail(user, info => {
-      console.log(`El email ha sido enviado con exito😃  ${info.messageId}`);
+      //console.log(`El email ha sido enviado con exito😃  ${info.messageId}`);
       return res.status(200).json({
         transaccion: true,
         data: info,

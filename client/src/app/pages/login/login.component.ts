@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
       let data =null;
       const login = this.loginForm.value;
       //console.log(login)
-      this.loginForm.reset();
+      //this.loginForm.reset();
       this.logService.logIn(login)
       .subscribe(res => {
         if (res.transaccion || res.data.length.toString() === res.msg.toString()) {
@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
           this.toastr.warning('Ingrese datos validos', 'Acceso denegado');
         }
       }, err => {
-        this.toastr.error(err.error.msg, 'Acceso denegado');
+        this.toastr.warning(err.error.msg, 'Acceso denegado');
       });
     } else {
       this.toastr.warning('Ingrese datos validos', 'Acceso denegado');

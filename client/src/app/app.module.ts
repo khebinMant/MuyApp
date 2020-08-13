@@ -65,6 +65,7 @@ import { HttpClientModule} from "@angular/common/http";
 import { SideHuertoComponent} from './pages/side-huerto/side-huerto.component';
 import { AgregarSiembraComponent } from './pages/muya-app/agregar-siembra/agregar-siembra.component';
 import { ConfirmacionEliminacionComponent } from './pages/muya-app/confirmacion-eliminacion/confirmacion-eliminacion.component';
+import { GotoComponent } from './pages/goto/goto.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { ConfirmacionEliminacionComponent } from './pages/muya-app/confirmacion-
     SignUpComponent,
     SideHuertoComponent,
     AgregarSiembraComponent,
-    ConfirmacionEliminacionComponent
+    ConfirmacionEliminacionComponent,
+    GotoComponent
   ],
   imports: [
     ToastrModule.forRoot(),

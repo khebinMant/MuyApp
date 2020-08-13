@@ -55,7 +55,7 @@ let actualizarConfirmacion = (req, res) => {
     <html>
        <head>
           <title>HTML Meta Tag</title>
-          <meta http-equiv = "refresh" content = "1; url = http://localhost:4200/login" />
+          <meta http-equiv = "refresh" content = "1; url = http://localhost:4200/goto" />
        </head>
        <body>
           <p>Redirigiendo a MuyApp</p>
@@ -112,11 +112,10 @@ let crearPersona = (req, res) => {
 let buscarPersona = (req, res) => {
     
     let correoElectronico = req.body.data.correoElectronico
-    let contraseña = req.body.data.contraseña
+    console.log(req.body.data)
     modelos.Personas.findAll({
         where: {
             correoElectronico: correoElectronico,
-            contraseña: contraseña
         }
     }).then(data => {
         return res.status(200).json({

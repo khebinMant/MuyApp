@@ -25,7 +25,7 @@ let api = EXPRESS.Router(),
 
 //End Point para personas y usuarios
 api.post('/crear-personas', personaControl.crearPersona)
-api.get('/buscar-personas', personaControl.buscarPersona)
+api.post('/buscar-personas', personaControl.buscarPersona)
 api.post('/crear-persona-rol',personaControl.crearRolPersona)
 api.post('/login',personaControl.login)
 api.get('/actualizar-confirmacion/:id',personaControl.actualizarConfirmacion)//params de id 
