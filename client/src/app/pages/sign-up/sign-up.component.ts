@@ -67,10 +67,4 @@ export class SignUpComponent implements OnInit {
       }
     }
   }
-  //Cosas que hacer
-  /*
-    Validar todas las entradas del formulario
-    Si el correo electronico ya esta en la base de datos volver a ingresar(decir que esa persona ya esta logeada)
-    Asignar el rol a la persona que se ha registrado
-  */
 }

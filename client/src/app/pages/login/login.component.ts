@@ -1,3 +1,5 @@
+import { Huerto } from './../../modelos/huerto';
+import { ServiceApiService } from './../../servicios/service-api.service';
 import { UsuarioActualService } from './../../servicios/usuario-actual.service';
 import { Router } from '@angular/router';
 import { LogService } from './../../servicios/log.service';
@@ -17,12 +19,13 @@ import { ToastrService } from 'ngx-toastr';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-
+  huerto: Huerto[];
   constructor(
     private fb: FormBuilder,
     private logService: LogService,
     private personaActual:UsuarioActualService,
     private router: Router,
+    private api: ServiceApiService,
     private toastr: ToastrService
   ) {
     this.crearLoginForm();
@@ -46,9 +49,9 @@ export class LoginComponent implements OnInit {
       this.logService.logIn(login)
       .subscribe(res => {
         if (res.transaccion || res.data.length.toString() === res.msg.toString()) {
-            this.router.navigate(['/menu']);
             data = res.data;
             this.personaActual.guardarInformacion(data)
+            this.verificacionHuerto()
         } else {
           this.toastr.warning('Ingrese datos validos', 'Acceso denegado');
         }
@@ -57,6 +60,17 @@ export class LoginComponent implements OnInit {
       });
     } else {
       this.toastr.warning('Ingrese datos validos', 'Acceso denegado');
+    }
+  }
+
+  async verificacionHuerto(){
+    this.huerto = await this.api.sendApi('traer-huerto');
+    if(this.huerto.length==0){
+      this.router.navigate(['/setup']);
+    }
+    else
+    {
+      this.router.navigate(['/menu']);
     }
   }
 

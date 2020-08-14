@@ -1,3 +1,4 @@
+import { StartSetupComponent } from './pages/start-setup/start-setup.component';
 import { GotoComponent } from './pages/goto/goto.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { MuyaMapComponent } from './pages/muya-map/muya-map.component';
@@ -24,12 +25,14 @@ const routes: Routes = [
   },
   {path: 'login', component:LoginComponent, children:
   [
-    {path: 'menu', component:MenuPrincipalComponent}
+    {path: 'setup', component:StartSetupComponent}
   ]
   },
   { path: 'signup', component:SignUpComponent},
   { path: 'confirmation', component:ConfirmationComponent},
   { path: 'goto', component:GotoComponent},
+  { path: 'setup', component:StartSetupComponent},
+
 
 ];
 

@@ -66,6 +66,7 @@ import { SideHuertoComponent} from './pages/side-huerto/side-huerto.component';
 import { AgregarSiembraComponent } from './pages/muya-app/agregar-siembra/agregar-siembra.component';
 import { ConfirmacionEliminacionComponent } from './pages/muya-app/confirmacion-eliminacion/confirmacion-eliminacion.component';
 import { GotoComponent } from './pages/goto/goto.component';
+import { StartSetupComponent } from './pages/start-setup/start-setup.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import { GotoComponent } from './pages/goto/goto.component';
     SideHuertoComponent,
     AgregarSiembraComponent,
     ConfirmacionEliminacionComponent,
-    GotoComponent
+    GotoComponent,
+    StartSetupComponent
   ],
   imports: [
     ToastrModule.forRoot(),

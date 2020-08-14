@@ -8,6 +8,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 @Component({
   selector: 'app-agregar-siembra',
@@ -26,7 +27,7 @@ export class AgregarSiembraComponent implements OnInit {
   siembra: any;
   suelo: string;
   espacio: any;
-  huerto: Huerto;
+  huerto: Huerto[];
   mostrar: boolean;
   isEditable = true;
   url: string;
@@ -88,7 +89,7 @@ export class AgregarSiembraComponent implements OnInit {
     this.huerto = await this.api.sendApi('traer-huerto');
     this.siembra={
       idProducto: this.data.id,
-      idHuerto: this.huerto.id,
+      idHuerto: this.huerto[0].id,
       fechaCosecha: fechaCosecha
     }
     console.log(fechaCosecha)

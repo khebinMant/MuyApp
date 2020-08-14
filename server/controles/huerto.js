@@ -56,7 +56,7 @@ let traerHuertos = (req, res) => {
     
     let data = req.body.data
     let idPersona = req.body.idPersona
-    modelos.Huertos.findOne({
+    modelos.Huertos.findAll({
         where: {
             idPersona: idPersona
         }

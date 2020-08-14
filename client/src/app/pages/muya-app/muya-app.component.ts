@@ -39,7 +39,7 @@ export class MuyaAppComponent implements OnInit {
   proLegumbre: Producto[];
   proHierba: Producto[];
   perActual: Persona;
-  huerto: Huerto;
+  huerto: Huerto[];
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   constructor(
     private dialog: MatDialog,
@@ -59,7 +59,7 @@ export class MuyaAppComponent implements OnInit {
   }
   async traerSiembrasHuertoPersonaLogeada(){
     this.huerto = await this.api.sendApi('traer-huerto');
-    this.siembras = await this.api.sendApi('obtener-siembras',this.huerto);
+    this.siembras = await this.api.sendApi('obtener-siembras',this.huerto[0]);
     console.log(this.siembras);
     this.displayedColumns = [
       'foto',
