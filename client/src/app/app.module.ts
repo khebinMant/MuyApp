@@ -4,6 +4,10 @@ import { LogService } from './servicios/log.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
+import { FullCalendarModule } from '@fullcalendar/angular'; // the main connector. must go first
+import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
+import interactionPlugin from '@fullcalendar/interaction'; // a plugin
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -67,6 +71,12 @@ import { AgregarSiembraComponent } from './pages/muya-app/agregar-siembra/agrega
 import { ConfirmacionEliminacionComponent } from './pages/muya-app/confirmacion-eliminacion/confirmacion-eliminacion.component';
 import { GotoComponent } from './pages/goto/goto.component';
 import { StartSetupComponent } from './pages/start-setup/start-setup.component';
+import { CalendarComponent } from './pages/calendar/calendar.component';
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin
+]);
 
 @NgModule({
   declarations: [
@@ -84,9 +94,11 @@ import { StartSetupComponent } from './pages/start-setup/start-setup.component';
     AgregarSiembraComponent,
     ConfirmacionEliminacionComponent,
     GotoComponent,
-    StartSetupComponent
+    StartSetupComponent,
+    CalendarComponent
   ],
   imports: [
+    FullCalendarModule, // register FullCalendar with you app
     ToastrModule.forRoot(),
     BrowserModule,
     AppRoutingModule,

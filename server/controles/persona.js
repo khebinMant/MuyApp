@@ -13,7 +13,6 @@ let Op = Sequelize.Op;
 
 
 let login = (req, res) => {
-
     let correoElectronico = req.body.correoElectronico
     let psw = req.body.psw
     modelos.Personas.findOne({
@@ -74,6 +73,29 @@ let actualizarConfirmacion = (req, res) => {
             }
     }).then(respuesta => {
         res.send(html)
+    }).catch(err => {
+        res.status(500).json({
+            transaccion: false,
+            data: err,
+            msg: 'Servidor no disponible'
+        })
+    })
+}
+
+let ponerFoto =(req,res)=>{
+
+    let data= req.body.data
+    console.log(data.foto)
+    modelos.Personas.update(data,{
+        where:{
+                id:req.body.idPersona,
+            }
+    }).then(respuesta => {
+        res.status(200).json({
+            transaccion: true,
+            data: respuesta,
+            msg: respuesta.length
+        }) 
     }).catch(err => {
         res.status(500).json({
             transaccion: false,
@@ -193,5 +215,6 @@ module.exports = {
     crearPersona,
     traerPersonas,
     buscarPersona,
-    actualizarConfirmacion
+    actualizarConfirmacion,
+    ponerFoto
 }

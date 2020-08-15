@@ -14,6 +14,7 @@ export class StartSetupComponent implements OnInit {
 
   setupForm: FormGroup;
   regionSeleccionada:string;
+  nombreReal: string;
   productosSeleccionados:string;
   firstFormGroup: FormGroup
   selectedFile: File[];
@@ -25,6 +26,7 @@ export class StartSetupComponent implements OnInit {
   otro = new FormControl('auto');
   secondFormGroup: FormGroup
   personaLog: PersonaLogin;
+  otroNombre: string;
   constructor(
     private fb: FormBuilder,
     private personaLogeadaVerificacion:UsuarioActualService,
@@ -62,6 +64,13 @@ export class StartSetupComponent implements OnInit {
     console.log(huerto)
     //Crearle el huerto a la persona
     const resp = await this.api.sendApi('crear-huerto',huerto);
+    const pers={
+      foto: this.nombreReal
+    }
+    const respFoto = await this.api.sendApi('poner-foto',pers)
+    console.log(respFoto)
+    //aqui va la parte de actulizar la foto de perfil (en realidad es ponerla)
+    //porque es un usuario nuevo
     if(resp.length!=0){
       this.router.navigate(['/menu']);
     }
@@ -69,9 +78,23 @@ export class StartSetupComponent implements OnInit {
   }
 
   async sendFile(e, endPoint) {
+    let nombreReal=''
+    let j=0;
     this.selectedFile = e.target.files;
+    this.otroNombre = e.target.files[0].name
     this.nombreArchivo =  await this.api.sendFile(endPoint, this.selectedFile);
     console.log(this.nombreArchivo)
+    for(let i=this.nombreArchivo.length-1;i>0;i--){
+      if(this.nombreArchivo[i]=='\\'){
+        break;
+      }
+      else{
+        nombreReal+=this.nombreArchivo[i];
+        j++;
+      }
+    }
+    this.nombreReal=nombreReal.split('').reverse().join('')
+    console.log(this.nombreReal)
   }
 
   poner(tipo:string){

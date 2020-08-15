@@ -1,3 +1,4 @@
+import { CalendarComponent } from './pages/calendar/calendar.component';
 import { StartSetupComponent } from './pages/start-setup/start-setup.component';
 import { GotoComponent } from './pages/goto/goto.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
@@ -32,7 +33,7 @@ const routes: Routes = [
   { path: 'confirmation', component:ConfirmationComponent},
   { path: 'goto', component:GotoComponent},
   { path: 'setup', component:StartSetupComponent},
-
+  { path: 'calendar', component:CalendarComponent}
 
 ];
 
