@@ -7,6 +7,7 @@ import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FullCalendarModule } from '@fullcalendar/angular'; // the main connector. must go first
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
 import interactionPlugin from '@fullcalendar/interaction'; // a plugin
+import { DatePipe } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -75,7 +76,7 @@ import { CalendarComponent } from './pages/calendar/calendar.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
-  interactionPlugin
+  interactionPlugin,
 ]);
 
 @NgModule({
@@ -154,7 +155,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   providers: [
     ServerService,
     LogService,
-    UsuarioActualService
+    UsuarioActualService,
+    DatePipe
   ],
   bootstrap: [AppComponent],
   schemas: [

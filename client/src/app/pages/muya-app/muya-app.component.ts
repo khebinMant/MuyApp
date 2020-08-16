@@ -14,6 +14,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { ConfirmacionEliminacionComponent } from './confirmacion-eliminacion/confirmacion-eliminacion.component';
 import { Persona } from 'src/app/modelos/persona';
+import { CalendarOptions, EventInput, FullCalendarModule } from '@fullcalendar/angular'; // useful for typechecking
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-muya-app',
@@ -33,6 +35,7 @@ export class MuyaAppComponent implements OnInit {
   dataSourceHierbas: any;
   url: string;
   seeSiembras:boolean;
+  seeCalendar:boolean;
   addSiembra: boolean;
   productos: Producto[];
   proFruta: Producto[];
@@ -40,20 +43,25 @@ export class MuyaAppComponent implements OnInit {
   proHierba: Producto[];
   perActual: Persona;
   huerto: Huerto[];
+  eventoCalendar;
+  prueba;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   constructor(
     private dialog: MatDialog,
     private api: ServiceApiService,
     private router: Router,
     private personaActual:UsuarioActualService,
-    private server : ServerService
+    private server : ServerService,
+    private datePipe: DatePipe
   ) {
     this.url = server.getUrl();
   }
 
   ngOnInit(): void {
+
     this.addSiembra=false
     this.seeSiembras=true;
+    this.seeCalendar=false;
     this.traerSiembrasHuertoPersonaLogeada();
     this.perActual= this.personaActual.getPersonaLogeada();
   }
@@ -74,14 +82,36 @@ export class MuyaAppComponent implements OnInit {
     ];
     this.dataSource = new MatTableDataSource(this.siembras);
     this.dataSource.paginator = this.paginator;
+    this.eventosRiego();
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  cambio(){
-    this.addSiembra=!this.addSiembra
-    this.seeSiembras=!this.seeSiembras
+  cambio(guia:string){
+    if(guia=='añadir'){
+      this.addSiembra=!this.addSiembra
+      this.seeSiembras=!this.seeSiembras
+      if(this.seeCalendar==true){
+        this.seeCalendar=!this.seeCalendar
+      }
+    }
+    if(guia=='calendario'){
+      this.seeCalendar=!this.seeCalendar
+      this.seeSiembras=!this.seeSiembras
+      if(this.addSiembra==true){
+        this.addSiembra=!this.addSiembra
+      }
+    }
+    if(guia=='volver'){
+      if(this.seeCalendar==true){
+        this.seeCalendar=!this.seeCalendar
+      }
+      if(this.addSiembra==true){
+        this.addSiembra=!this.addSiembra
+      }
+      this.seeSiembras=!this.seeSiembras
+    }
   }
   async traerProductos(){
     this.productos = await this.api.sendApi('traer-productos')
@@ -160,4 +190,50 @@ export class MuyaAppComponent implements OnInit {
       this.router.navigate(['/menu/app']);
   });
   }
+  calendarOptions: CalendarOptions = {
+    initialView: 'dayGridMonth',
+    dateClick: this.handleDateClick.bind(this), // bind is important!
+    events: this.eventoCalendar
+  };
+
+  handleDateClick(arg) {
+    alert('date click! ' + arg.dateStr)
+
+  }
+
+  async eventosRiego(){
+    let arrayEventos=[]
+    for(let i=0; i<this.siembras.length;i++){
+      //Fecha de siembra
+      let fechaSiembra = new Date(this.siembras[i].fechaSiembra);
+      let fechaSiembraUTC = new Date(fechaSiembra.getTime()+fechaSiembra.getTimezoneOffset()*60000);
+      let fechaSiembraUTCMili =  fechaSiembraUTC.getTime();
+      //Fecha de cosecha
+      let fechaCosecha =  new Date(this.siembras[i].fechaCosecha);
+      let fechaCosechaUTC = new Date(fechaCosecha.getTime()+fechaCosecha.getTimezoneOffset()*60000);
+      let fechaCosechaUTCMili = fechaCosechaUTC.getTime();
+
+      //Fecha de Riego
+      let fechaDeRiego;
+      let frecuenciaDeRiegoMilisegundos = await 1000 * 60 * 60 * 24 * (this.siembras[i].Producto.Cuidado.frecuenciaRiego);
+      let fechaDeRiegoUTC;
+      //Establecer un tope al while
+      let fechaCosechaTope =  new Date(fechaCosechaUTCMili-frecuenciaDeRiegoMilisegundos)
+      let fechaCosechaTopeUTC = new Date(fechaCosechaTope.getTime()+fechaCosechaTope.getTimezoneOffset()*60000)
+      do{
+        fechaDeRiego = await new Date(fechaSiembraUTCMili+frecuenciaDeRiegoMilisegundos)
+        fechaDeRiegoUTC = await new Date(fechaDeRiego.getTime()+fechaDeRiego.getTimezoneOffset()*60000)
+        fechaSiembraUTCMili = fechaDeRiegoUTC.getTime();
+        fechaSiembraUTC = fechaDeRiegoUTC
+        arrayEventos.push({title:`Regar ${this.siembras[i].Producto.nombreComun}`,date:this.datePipe.transform(fechaSiembraUTC,"yyyy-MM-dd")})
+
+      }
+      while(fechaDeRiegoUTC<fechaCosechaTopeUTC)
+    }
+    this.eventoCalendar= arrayEventos;
+    console.log(this.eventoCalendar)
+    //this.calendarOptions.eventAdd = this.eventosRiego;
+    this.calendarOptions.events=this.eventoCalendar
+  }
+
 }
