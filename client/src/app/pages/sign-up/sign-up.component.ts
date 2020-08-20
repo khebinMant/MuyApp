@@ -52,7 +52,6 @@ export class SignUpComponent implements OnInit {
   async crearUsuario(){
     if (!this.registerForm.invalid) {
 
-
       const registro = this.registerForm.value;
       let result = await this.api.sendApiRegister('buscar-personas',registro)
       if(result.length==0){
@@ -61,7 +60,7 @@ export class SignUpComponent implements OnInit {
       let rol = await this.api.sendApiRegister('crear-persona-rol',this.personaRegistrada)//A la nueva persona se le agrega su rol de usuario
       let final =  await this.api.sendApiRegister('enviar-correo',this.personaRegistrada)//Se envia un correo de confirmacion a la persona creada
       this.router.navigate(['/confirmation']);//Se redirigue a la pagina de confirmation
-      }
+    }
       else{
         this.toastr.warning('El correo electronico ingresado ya pertenece a una cuenta registrada', 'Ingrese un nuevo correo electrónico');
       }

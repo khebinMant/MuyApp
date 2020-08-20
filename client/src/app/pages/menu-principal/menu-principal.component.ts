@@ -45,7 +45,6 @@ export class MenuPrincipalComponent implements OnInit {
     this.content=true;
     this.informacionPersona();
     this.verSiembra = false;
-
   }
   cambio(){
     this.content=!this.content;

@@ -1,6 +1,4 @@
 ;
-const fs = require('fs')
-
 module.exports = {
     development: {
         username: process.env.USER_DB || 'admin',

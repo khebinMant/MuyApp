@@ -73,6 +73,7 @@ import { ConfirmacionEliminacionComponent } from './pages/muya-app/confirmacion-
 import { GotoComponent } from './pages/goto/goto.component';
 import { StartSetupComponent } from './pages/start-setup/start-setup.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
+import { HuertoConfirmationComponent } from './pages/huerto-confirmation/huerto-confirmation.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -96,7 +97,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     ConfirmacionEliminacionComponent,
     GotoComponent,
     StartSetupComponent,
-    CalendarComponent
+    CalendarComponent,
+    HuertoConfirmationComponent
   ],
   imports: [
     FullCalendarModule, // register FullCalendar with you app

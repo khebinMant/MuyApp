@@ -1,3 +1,4 @@
+import { HuertoConfirmationComponent } from './pages/huerto-confirmation/huerto-confirmation.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
 import { StartSetupComponent } from './pages/start-setup/start-setup.component';
 import { GotoComponent } from './pages/goto/goto.component';
@@ -19,9 +20,10 @@ const routes: Routes = [
   { path: 'inicio', component:InicioComponent},
   {path: 'menu', component:MenuPrincipalComponent, children:
     [
-      {path: 'data', component:MuyaDataComponent},
-      {path: 'app', component:MuyaAppComponent},
-      { path: 'map', component: MuyaMapComponent}
+      { path: 'data', component:MuyaDataComponent},
+      { path: 'app', component:MuyaAppComponent},
+      { path: 'map', component: MuyaMapComponent},
+      { path: 'config-user', component: HuertoConfirmationComponent}
     ]
   },
   {path: 'login', component:LoginComponent, children:

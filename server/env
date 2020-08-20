@@ -7,5 +7,3 @@ HOST_DB = 'localhost'
 PORT_HOST_DB = '5432'
 KEY_SESSION = 'algo secreto 123'
 KEY_JWT = 'algo secreto 123'
-
-

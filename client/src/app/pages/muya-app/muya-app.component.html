@@ -95,7 +95,7 @@
       </button>
     </div>
     <mat-tab-group   class="borde-tab" animationDuration="1000ms" mat-align-tabs="center">
-      <mat-tab class="contenido-tab" style="font-weight: bold;" label="Frutas">
+      <mat-tab *ngIf="seeFruta" class="contenido-tab" style="font-weight: bold;" label="Frutas">
 
         <table class="sera" mat-table [dataSource]="dataSourceFruta">
 
@@ -131,7 +131,7 @@
         </table>
 
       </mat-tab>
-      <mat-tab style="font-weight: bold;" label="Legumbres">
+      <mat-tab *ngIf="seeLegumbre" style="font-weight: bold;" label="Legumbres">
 
         <table class="sera" mat-table [dataSource]="dataSourceLegumbre">
 
@@ -166,7 +166,7 @@
           <tr class="sera" mat-row *matRowDef="let row; columns: displayedColumnsLegumbres;"></tr>
         </table>
       </mat-tab>
-      <mat-tab  style="font-weight: bold;" label="Hierbas">
+      <mat-tab  *ngIf="seeHierba" style="font-weight: bold;" label="Hierbas">
         <table class="sera" mat-table [dataSource]="dataSourceHierbas">
 
           <ng-container matColumnDef="fotos">

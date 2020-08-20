@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { PersonaLogin } from './../../modelos/persona-login';
 import { Router } from '@angular/router';
 import { AgregarSiembraComponent } from './agregar-siembra/agregar-siembra.component';
@@ -16,6 +17,7 @@ import { ConfirmacionEliminacionComponent } from './confirmacion-eliminacion/con
 import { Persona } from 'src/app/modelos/persona';
 import { CalendarOptions, EventInput, FullCalendarModule } from '@fullcalendar/angular'; // useful for typechecking
 import { DatePipe } from '@angular/common';
+import esLocale from '@fullcalendar/core/locales/es';
 
 @Component({
   selector: 'app-muya-app',
@@ -43,7 +45,12 @@ export class MuyaAppComponent implements OnInit {
   proHierba: Producto[];
   perActual: Persona;
   huerto: Huerto[];
+  seeFruta:boolean;
+  seeHierba:boolean;
+  seeLegumbre:boolean;
   eventoCalendar;
+  cosechasCalendar;
+  siembraCalendar;
   prueba;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   constructor(
@@ -52,7 +59,9 @@ export class MuyaAppComponent implements OnInit {
     private router: Router,
     private personaActual:UsuarioActualService,
     private server : ServerService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private toastr: ToastrService
+
   ) {
     this.url = server.getUrl();
   }
@@ -64,9 +73,15 @@ export class MuyaAppComponent implements OnInit {
     this.seeCalendar=false;
     this.traerSiembrasHuertoPersonaLogeada();
     this.perActual= this.personaActual.getPersonaLogeada();
+    this.seeFruta = true;
+    this.seeLegumbre = true;
+    this.seeHierba = true;
   }
   async traerSiembrasHuertoPersonaLogeada(){
     this.huerto = await this.api.sendApi('traer-huerto');
+    this.seeFruta=this.huerto[0].fruta
+    this.seeHierba=this.huerto[0].hierba
+    this.seeLegumbre=this.huerto[0].legumbre
     this.siembras = await this.api.sendApi('obtener-siembras',this.huerto[0]);
     console.log(this.siembras);
     this.displayedColumns = [
@@ -191,18 +206,31 @@ export class MuyaAppComponent implements OnInit {
   });
   }
   calendarOptions: CalendarOptions = {
+    locales: [ esLocale],
+    locale: 'es',
     initialView: 'dayGridMonth',
     dateClick: this.handleDateClick.bind(this), // bind is important!
-    events: this.eventoCalendar
+    eventSources: [
+      {
+        events: this.eventoCalendar,
+      },
+      {
+        events: this.siembraCalendar
+      },
+      {
+        events: this.cosechasCalendar
+      },
+    ],
   };
 
   handleDateClick(arg) {
-    alert('date click! ' + arg.dateStr)
-
+    this.toastr.success(arg.dateStr,'La fecha seleccionada es');
   }
 
   async eventosRiego(){
     let arrayEventos=[]
+    let arrayCosechas=[]
+    let arraySiembras=[]
     for(let i=0; i<this.siembras.length;i++){
       //Fecha de siembra
       let fechaSiembra = new Date(this.siembras[i].fechaSiembra);
@@ -220,20 +248,27 @@ export class MuyaAppComponent implements OnInit {
       //Establecer un tope al while
       let fechaCosechaTope =  new Date(fechaCosechaUTCMili-frecuenciaDeRiegoMilisegundos)
       let fechaCosechaTopeUTC = new Date(fechaCosechaTope.getTime()+fechaCosechaTope.getTimezoneOffset()*60000)
+      arraySiembras.push({title:`Siembra de ${this.siembras[i].Producto.nombreComun}`,date:this.datePipe.transform(fechaSiembraUTC,"yyyy-MM-dd"),color:'#00e64d'})
+      arrayCosechas.push({title:`Cosecha de ${this.siembras[i].Producto.nombreComun}`,date:this.datePipe.transform(fechaCosechaUTC,"yyyy-MM-dd"),color:'#ff751a'})
       do{
         fechaDeRiego = await new Date(fechaSiembraUTCMili+frecuenciaDeRiegoMilisegundos)
         fechaDeRiegoUTC = await new Date(fechaDeRiego.getTime()+fechaDeRiego.getTimezoneOffset()*60000)
         fechaSiembraUTCMili = fechaDeRiegoUTC.getTime();
         fechaSiembraUTC = fechaDeRiegoUTC
-        arrayEventos.push({title:`Regar ${this.siembras[i].Producto.nombreComun}`,date:this.datePipe.transform(fechaSiembraUTC,"yyyy-MM-dd")})
-
+        arrayEventos.push({title:`Regar ${this.siembras[i].Producto.nombreComun}`,date:this.datePipe.transform(fechaSiembraUTC,"yyyy-MM-dd"), color:'#3377ff'})
       }
       while(fechaDeRiegoUTC<fechaCosechaTopeUTC)
     }
     this.eventoCalendar= arrayEventos;
-    console.log(this.eventoCalendar)
+    this.siembraCalendar= arraySiembras;
+    this.cosechasCalendar= arrayCosechas;
+    console.log(this.siembraCalendar)
+    console.log(this.cosechasCalendar)
     //this.calendarOptions.eventAdd = this.eventosRiego;
-    this.calendarOptions.events=this.eventoCalendar
+    this.calendarOptions.eventSources[0]=this.eventoCalendar
+    this.calendarOptions.eventSources[1]=this.siembraCalendar
+    this.calendarOptions.eventSources[2]=this.cosechasCalendar
+
   }
 
 }

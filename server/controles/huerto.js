@@ -75,6 +75,28 @@ let traerHuertos = (req, res) => {
     })
 } 
 
+let actualizarHuerto =(req,res)=>{
+
+    let data= req.body.data
+    //console.log(data.foto)
+    modelos.Huertos.update(data,{
+        where:{
+                id:req.body.idPersona,
+            }
+    }).then(respuesta => {
+        res.status(200).json({
+            transaccion: true,
+            data: respuesta,
+            msg: respuesta.length
+        }) 
+    }).catch(err => {
+        res.status(500).json({
+            transaccion: false,
+            data: err,
+            msg: 'Servidor no disponible'
+        })
+    })
+}
 
 module.exports = {
     crearHuertos,
