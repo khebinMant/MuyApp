@@ -1,3 +1,4 @@
+import { HuertoConfirmationComponent } from './../huerto-confirmation/huerto-confirmation.component';
 import { ServerService } from './../../servicios/server.service';
 import { PersonaLogin } from './../../modelos/persona-login';
 import { UsuarioActualService } from './../../servicios/usuario-actual.service';
@@ -6,6 +7,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
 import { MatCalendarCellCssClasses } from '@angular/material/datepicker';
 import { MatSidenav } from '@angular/material/sidenav';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-menu-principal',
@@ -29,6 +31,7 @@ export class MenuPrincipalComponent implements OnInit {
       private personaLogeadaVerificacion:UsuarioActualService,
       private router: Router,
       private server: ServerService,
+      private dialog: MatDialog,
       changeDetectorRef: ChangeDetectorRef,
       media: MediaMatcher,
     )
@@ -74,5 +77,17 @@ export class MenuPrincipalComponent implements OnInit {
       console.log("si nada primero logeate")
       this.router.navigate(['/login']);
     }
+  }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(HuertoConfirmationComponent, {
+      width: '750px',
+      disableClose: false,
+      maxHeight: '90vh',
+      autoFocus: false
+    });
+
+    dialogRef.afterClosed().subscribe(res => {
+     // this.leerSolcicitudes();
+    });
   }
 }

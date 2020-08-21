@@ -1,0 +1,128 @@
+*{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.container{
+  position: relative;
+  background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("../../../assets/imagenes/inicio.jpg")no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+.contenido{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 100%;
+}
+.logo-formulario{
+  left: 0%;
+  width: 50%;
+  margin: 30px 0px;
+  position: relative;
+  img{
+    left: 50px;
+    margin: auto;
+    padding-bottom: 20px;;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+  }
+  p{
+    padding-bottom: 25px;;
+    font-size: 30px;
+    top: 15px;
+    left: 120px;
+    position: absolute;
+  }
+  h2{
+    text-align: center;
+    width: 100%;
+    font-size: 15px;
+    top: 35 px;
+    left: 0px;
+    position: absolute;
+  }
+}
+.registro-formulario{
+  display: inline-block;
+  background-color: rgba(210,255,215, 0.6);
+  width: 300px;
+  height: 35%;
+  border-radius: 3%;
+  margin-top: 0% ;
+  text-align: center;
+  form{
+    display: inline;
+    margin: 50px 0px;
+    button{
+      opacity: 1.4;
+      background-color:#D2FFD7;
+      margin: 15px 0px;
+    }
+  }
+}
+
+.registro{
+  border-radius: 3%;
+  margin-top: 3% ;
+  background-color: rgba(210,255,215, 0.6);
+  border: 1px solid greenyellow;
+  width: 440px;
+  height: 70%;
+}
+
+
+
+//RESPONSIVE DESING
+/* bigger laptops */
+/* Desktops and laptops ----------- */
+@media only screen and (min-width: 850px) and (max-width: 1024px) {
+  .registro{
+    margin-top: 10% ;
+  }
+}
+@media screen and (min-width: 650px) and (max-width: 849px) {
+  .registro{
+    margin-top: 15% ;
+  }
+  .footer{
+    ul{
+      li{
+        font-size: 10px;
+      }
+    }
+  }
+}
+@media screen and (min-width: 450px) and (max-width: 649px) {
+  .registro{
+    margin-top: 15% ;
+    height: 80%;
+  }
+  .footer{
+    ul{
+      li{
+        display: none;
+      }
+    }
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 449px) {
+  .registro{
+    width: 420px;
+    margin-top: 15% ;
+    height: 100%;
+  }
+  .footer{
+    width: 0px;
+    height: 0px;
+    display: none;
+    ul{
+      li{
+        display: none;
+      }
+    }
+  }
+}

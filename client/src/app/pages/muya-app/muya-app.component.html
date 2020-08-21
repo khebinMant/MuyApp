@@ -200,6 +200,19 @@
           <tr class="sera" mat-row *matRowDef="let row; columns: displayedColumnsHierbas;"></tr>
         </table>
       </mat-tab>
+
+
+      <mat-tab  *ngIf="seeMensaje" style="font-weight: bold;" label="Mensaje">
+        <p class="titulo-tablas">
+          Hola {{perActual.nombre}} la configuración de tu huerto no admite ninguno producto
+          ve a tu configuración para cambiarlo.
+        </p>
+        <button  (click)="openDialogConfig()"  class="btnMenus" mat-button>
+          Cofiguracion
+        </button>
+      </mat-tab>
+
+
     </mat-tab-group>
   </div>
   <div style="height: auto; border: solid; width: auto;" *ngIf="seeCalendar" class="calendar">

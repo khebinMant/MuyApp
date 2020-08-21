@@ -78,10 +78,10 @@ let traerHuertos = (req, res) => {
 let actualizarHuerto =(req,res)=>{
 
     let data= req.body.data
-    //console.log(data.foto)
+    data.updatedAt = new Date(Date.now())   
     modelos.Huertos.update(data,{
         where:{
-                id:req.body.idPersona,
+             idPersona:req.body.idPersona,
             }
     }).then(respuesta => {
         res.status(200).json({
@@ -100,5 +100,6 @@ let actualizarHuerto =(req,res)=>{
 
 module.exports = {
     crearHuertos,
-    traerHuertos
+    traerHuertos,
+    actualizarHuerto
 }

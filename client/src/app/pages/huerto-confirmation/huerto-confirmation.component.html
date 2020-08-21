@@ -1,1 +1,33 @@
-<p>huerto-confirmation works!</p>
+
+  <div class="container">
+    <div class="contenido">
+      <div class="logo-formulario">
+        <img src="../../../assets/iconos/huerto.png" alt="">
+        <p>MuyApp</p>
+        <h2>Aqui puedes cambiar la configuración
+          <br>
+          de tu huerto
+        </h2>
+      </div>
+
+        <div class="registro-formulario">
+            <form  action="">
+              <mat-radio-group  class="contenedor-check1">
+                <p style="font-weight: bold;">Que productos prefieres
+                  <strong matTooltip="Se recomienda elegir almenos uno">*</strong>
+                </p>
+                  <mat-checkbox style="display: block;" (click)="poner('legumbre')"  class="example-margin" required>Legumbres
+                  </mat-checkbox>
+                  <mat-checkbox style="display: block;" (click)="poner('hierba')"  class="example-margin" required>Hierbas
+                  </mat-checkbox>
+                  <mat-checkbox style="display: block;;"  (click)="poner('fruta')"    class="example-margin" required>Frutas
+                  </mat-checkbox>
+              </mat-radio-group>
+
+              <button mat-raised-button [mat-dialog-close]="cerrar" (click)="verificarValores()" >
+                Continuar</button>
+            </form>
+        </div>
+    </div>
+  </div>
+

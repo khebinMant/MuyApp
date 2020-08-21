@@ -54,7 +54,9 @@ export class StartSetupComponent implements OnInit {
     console.log(this.regionSeleccionada)
     this.personaLog = this.personaLogeadaVerificacion.getPersonaLogeada()
     console.log(this.personaLog)
+    let huertazo = this.setupForm.value
     const huerto ={
+      detalle: huertazo.detalle,
       idPersona: this.personaLog.id,
       region: this.regionSeleccionada,
       fruta: this.fruta,
@@ -74,7 +76,6 @@ export class StartSetupComponent implements OnInit {
     if(resp.length!=0){
       this.router.navigate(['/menu']);
     }
-
   }
 
   async sendFile(e, endPoint) {

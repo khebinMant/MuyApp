@@ -1,3 +1,4 @@
+import { HuertoConfirmationComponent } from './../huerto-confirmation/huerto-confirmation.component';
 import { ToastrService } from 'ngx-toastr';
 import { PersonaLogin } from './../../modelos/persona-login';
 import { Router } from '@angular/router';
@@ -47,6 +48,7 @@ export class MuyaAppComponent implements OnInit {
   huerto: Huerto[];
   seeFruta:boolean;
   seeHierba:boolean;
+  seeMensaje:boolean;
   seeLegumbre:boolean;
   eventoCalendar;
   cosechasCalendar;
@@ -82,6 +84,12 @@ export class MuyaAppComponent implements OnInit {
     this.seeFruta=this.huerto[0].fruta
     this.seeHierba=this.huerto[0].hierba
     this.seeLegumbre=this.huerto[0].legumbre
+    if(!this.seeFruta && !this.seeHierba && !this.seeLegumbre){
+      this.seeMensaje=true
+    }
+    else{
+      this.seeMensaje=false
+    }
     this.siembras = await this.api.sendApi('obtener-siembras',this.huerto[0]);
     console.log(this.siembras);
     this.displayedColumns = [
@@ -198,6 +206,19 @@ export class MuyaAppComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+    });
+  }
+
+  openDialogConfig(): void {
+    const dialogRef = this.dialog.open(HuertoConfirmationComponent, {
+      width: '750px',
+      disableClose: false,
+      maxHeight: '90vh',
+      autoFocus: false
+    });
+
+    dialogRef.afterClosed().subscribe(res => {
+     // this.leerSolcicitudes();
     });
   }
   volver(){

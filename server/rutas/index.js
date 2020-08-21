@@ -38,7 +38,7 @@ api.get('/traer-personas',personaControl.traerPersonas)
 //End Point para huertos
 api.post('/crear-huerto',huertoControl.crearHuertos)
 api.post('/traer-huerto',huertoControl.traerHuertos)
-
+api.post('/actualizar-huerto',huertoControl.actualizarHuerto)
 //End Point para siembras
 //post agregar
 //delete borrra
