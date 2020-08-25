@@ -16,13 +16,16 @@
             <mat-card-header class="cabecera-usuario">
               <mat-card-title>{{personaLog.nombre}} {{personaLog.apellido}}</mat-card-title>
               <mat-card-subtitle>{{personaLog.correoElectronico}}</mat-card-subtitle>
+              <mat-icon class="admin" *ngIf="botonAdmin"  (click)="openDialogPro()">
+                settings
+              </mat-icon>
             </mat-card-header>
             <mat-card-actions>
-              <button  (click)="openDialog()"  class="btnMenu" mat-button>
-                Cofiguracion
+              <button style="display: inline-block; width: 110px;"  (click)="openDialog()"  class="btnMenu" mat-button>
+                <a  style="font-size: 12px;">Configuracion</a>
               </button>
-              <button  routerLink="/login" class="btnMenu" mat-button>
-                <a routerLink="/login">Cerrar Sesion</a>
+              <button style="display: inline-block; width: 100px;" routerLink="/login" class="btnMenu" mat-button>
+                <a style="font-size: 12px;" routerLink="/login">Cerrar Sesion</a>
               </button>
             </mat-card-actions>
           </mat-card>

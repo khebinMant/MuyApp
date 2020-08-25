@@ -184,18 +184,25 @@ export class MuyaAppComponent implements OnInit {
     this.dataSourceHierbas = new MatTableDataSource(this.proHierba);
   }
   openDialog(i: number): void {
-    console.log(i)
-    const dialogRef = this.dialog.open(AgregarSiembraComponent, {
-      width: '750px',
-      disableClose: false,
-      maxHeight: '90vh',
-      autoFocus: false,
-      data: this.productos[i-1]
-    });
+    for(let j=0; j<this.productos.length;j++){
+      if(this.productos[j].id==i){
 
-    dialogRef.afterClosed().subscribe(res => {
-     // this.leerSolcicitudes();
-    });
+        console.log(this.productos[j])
+        const dialogRef = this.dialog.open(AgregarSiembraComponent, {
+          width: '750px',
+          disableClose: false,
+          maxHeight: '90vh',
+          autoFocus: false,
+          data: this.productos[j]
+        });
+
+        dialogRef.afterClosed().subscribe(res => {
+          // this.leerSolcicitudes();
+          });
+      }
+    }
+
+
   }
   openDialogDelete(siembra:Siembra): void {
     console.log(siembra);

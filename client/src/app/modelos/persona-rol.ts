@@ -1,4 +1,4 @@
-export interface PersonaRol {
+export interface PersonasRoles {
   id:number,
   idPersona:number,
   idRol:number,

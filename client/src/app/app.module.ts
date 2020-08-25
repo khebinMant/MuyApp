@@ -74,6 +74,7 @@ import { GotoComponent } from './pages/goto/goto.component';
 import { StartSetupComponent } from './pages/start-setup/start-setup.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
 import { HuertoConfirmationComponent } from './pages/huerto-confirmation/huerto-confirmation.component';
+import { AdminProComponent } from './pages/admin-pro/admin-pro.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -98,7 +99,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     GotoComponent,
     StartSetupComponent,
     CalendarComponent,
-    HuertoConfirmationComponent
+    HuertoConfirmationComponent,
+    AdminProComponent
   ],
   imports: [
     FullCalendarModule, // register FullCalendar with you app

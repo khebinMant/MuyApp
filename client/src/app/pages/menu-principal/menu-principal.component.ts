@@ -1,3 +1,4 @@
+import { AdminProComponent } from './../admin-pro/admin-pro.component';
 import { HuertoConfirmationComponent } from './../huerto-confirmation/huerto-confirmation.component';
 import { ServerService } from './../../servicios/server.service';
 import { PersonaLogin } from './../../modelos/persona-login';
@@ -25,6 +26,7 @@ export class MenuPrincipalComponent implements OnInit {
   personaLog: PersonaLogin;
   url: string;
   verSiembra: boolean;
+  botonAdmin: boolean;
 
   private _mobileQueryListener: () => void;
   constructor(
@@ -64,9 +66,15 @@ export class MenuPrincipalComponent implements OnInit {
 
   }
 
-  informacionPersona(){
-    this.personaLog = this.personaLogeadaVerificacion.getPersonaLogeada()
-    console.log(this.personaLog)
+  async  informacionPersona(){
+    this.personaLog = await  this.personaLogeadaVerificacion.getPersonaLogeada()
+    console.log("Esto aqui")
+    console.log(this.personaLog.PersonasRoles)
+    for (let i=0; i<this.personaLog.PersonasRoles.length;i++){
+        if(this.personaLog.PersonasRoles[i].idRol==2){
+          this.botonAdmin=true;
+        }
+    }
   }
   verificacion(){
     if(this.personaLogeadaVerificacion.verificar()){
@@ -80,6 +88,18 @@ export class MenuPrincipalComponent implements OnInit {
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(HuertoConfirmationComponent, {
+      width: '750px',
+      disableClose: false,
+      maxHeight: '90vh',
+      autoFocus: false
+    });
+
+    dialogRef.afterClosed().subscribe(res => {
+     // this.leerSolcicitudes();
+    });
+  }
+  openDialogPro(): void {
+    const dialogRef = this.dialog.open(AdminProComponent, {
       width: '750px',
       disableClose: false,
       maxHeight: '90vh',

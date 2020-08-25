@@ -1,0 +1,26 @@
+.example-card {
+  max-width: 300px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+.contenedora{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+@media only screen and (min-width: 501px) and (max-width: 800px) {
+  .contenedora{
+    grid-template-columns: repeat(2, 2fr);
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 500px) {
+  .contenedora{
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

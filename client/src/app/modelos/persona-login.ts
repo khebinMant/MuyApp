@@ -1,4 +1,4 @@
-import { PersonaRol } from './persona-rol';
+import { PersonasRoles } from './persona-rol';
 export interface PersonaLogin {
   id:number,
   nombre:string,
@@ -9,5 +9,5 @@ export interface PersonaLogin {
   confirmacion: boolean,
   createdAt?: Date,
   updatedAt?: Date,
-  PersonaRol: PersonaRol[]
+  PersonasRoles: PersonasRoles[]
 }

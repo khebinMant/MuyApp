@@ -50,6 +50,9 @@ api.post('/eliminar-siembras',siembraControl.eliminarSiembra)
 
 //End Point para productos
 api.post('/traer-productos',productoControl.traerProductos)
+api.post('/crear-producto',productoControl.crearProducto)
+api.post('/crear-condicion',productoControl.crearCondicion)
+api.post('/crear-cuidado',productoControl.crearCuidado)
 
 
 //End Point para  cargar archivos

@@ -1,0 +1,105 @@
+
+<div class="padrecito">
+<mat-horizontal-stepper  animationDuration="1000ms"  linear #stepper>
+
+  <mat-step  class="contenedor-producto" [stepControl]="firstFormGroup" [editable]="isEditable">
+    <form class="contenedor-producto" [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Producto</ng-template>
+      <div class="ingreso">
+              <mat-form-field>
+                  <mat-select formControlName="categoria" placeholder="Categoria">
+                    <ng-container *ngFor="let categoria of categorias">
+                      <mat-option value="{{categoria.value}}">{{categoria.value}}</mat-option>
+                    </ng-container>
+                  </mat-select>
+                  <mat-error>Este campo es obligatorio</mat-error>
+                </mat-form-field>
+
+              <mat-form-field>
+                <input formControlName="nombreComun" matInput placeholder="Nombre Común">
+                <mat-error  *ngIf="firstFormGroup.get('nombreComun').hasError('required')">Es necesario</mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input formControlName="nombreCientifico" matInput placeholder="Nombre Científico">
+                <mat-error  *ngIf="firstFormGroup.get('nombreCientifico').hasError('required')">Es necesario</mat-error>
+              </mat-form-field>
+
+             <mat-form-field>
+                  <mat-select formControlName="dificultad" placeholder="Dificultad">
+                    <ng-container *ngFor="let dificultad of dificultades">
+                      <mat-option value="{{dificultad.value}}">{{dificultad.value}}</mat-option>
+                    </ng-container>
+                  </mat-select>
+                  <mat-error>Este campo es obligatorio</mat-error>
+                </mat-form-field>
+
+              <mat-form-field>
+                    <input  formControlName="fechaCosecha" matInput placeholder="Fecha de cosecha">
+                    <mat-error  *ngIf="firstFormGroup.get('fechaCosecha').hasError('required')">Es necesario</mat-error>
+                  </mat-form-field>
+              <input class="input" formControlName="imagen" class="ng-hide" id="input-file-id" (change)="sendFile($event, 'imagen-producto')" multiple type="file" />
+
+            </div>
+          <button  class="boton-condiciones" mat-button matStepperNext  [disabled]="firstFormGroup.invalid" >Siguiente</button>
+
+
+    </form>
+  </mat-step>
+
+  <mat-step  class="contenedor-producto" [stepControl]="secondFormGroup" [editable]="isEditable">
+    <form class="contenedor-producto" [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Condiciones</ng-template>
+      <div class="ingreso">
+              <mat-form-field>
+                <input formControlName="tipoSuelo" matInput placeholder="Tipo Suelo">
+                <mat-error  *ngIf="secondFormGroup.get('tipoSuelo').hasError('required')">Es necesario</mat-error>
+              </mat-form-field>
+
+                <mat-form-field>
+                <input formControlName="profundidadSemilla" matInput placeholder="Profundidad Semilla (cm)">
+                <mat-error  *ngIf="secondFormGroup.get('profundidadSemilla').hasError('required')">Es necesario</mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input formControlName="espacioRecomendado" matInput placeholder="Espacio Recomendado (cm)">
+                <mat-error  *ngIf="secondFormGroup.get('espacioRecomendado').hasError('required')">Es necesario</mat-error>
+              </mat-form-field>
+
+            </div>
+          <button class="boton-condiciones1" mat-button matStepperNext  [disabled]="secondFormGroup.invalid" >Siguiente</button>
+
+    </form>
+  </mat-step>
+
+  <mat-step   class="contenedor-producto" [stepControl]="thirdFormGroup" [editable]="isEditable">
+    <form class="contenedor-producto" [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Cuidados</ng-template>
+  <mat-form-field>
+    <mat-select formControlName="resistenciaFrio" placeholder="Resistencia al Frio">
+      <ng-container *ngFor="let resistenciaFrio of resistenciaFrios">
+        <mat-option value="{{resistenciaFrio.value}}">{{resistenciaFrio.value}}</mat-option>
+      </ng-container>
+    </mat-select>
+    <mat-error>Este campo es obligatorio</mat-error>
+  </mat-form-field>
+    <mat-form-field>
+        <input formControlName="frecuenciaRiego" matInput placeholder="Frecuencia de  Riego (por semana)">
+        <mat-error>Este campo es obligatorio</mat-error>
+        <mat-error  *ngIf="thirdFormGroup.get('frecuenciaRiego').hasError('required')">Es necesario</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input formControlName="cantidadRiego" matInput placeholder="Cantidad(militros)">
+    <mat-error>Este campo es obligatorio</mat-error>
+    <mat-error  *ngIf="thirdFormGroup.get('cantidadRiego').hasError('required')">Es necesario</mat-error>
+  </mat-form-field>
+
+          <button mat-button (click)="guardarProducto()" class="btn-back"  [mat-dialog-close]="cerrar" >Aceptar</button>
+
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>
+</div>
+
+

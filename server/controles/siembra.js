@@ -37,22 +37,10 @@ let añadirSiembra = (req, res) => {
     })
     .catch(err => {
         console.log(err)
-        let errors = []
-        let msg = ''
-        if (err.parent) {
-            errors.push(err.parent.detail)
-            msg = 'Registro duplicado'
-        }
-        if (err.errors.length > 0) {
-            err.errors.forEach(element => {
-                errors.push(element.path)
-            });
-            msg = 'Datos no validos'
-        }
-        res.status(400).json({
+        res.status(500).json({
             transaccion: false,
-            data: errors,
-            msg: msg
+            data: err,
+            msg: 'Servidor no disponible'
         })
     })
 }
