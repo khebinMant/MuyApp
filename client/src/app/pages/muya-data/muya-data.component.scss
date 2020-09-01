@@ -1,0 +1,44 @@
+.example-card {
+  max-width: 500px;
+  height: 670px;
+  display: inline-block;
+  margin-top: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 20px;
+}
+.example-header-image {
+  background-image: url('https://saborgourmet.com/wp-content/uploads/preparacion-verduras-salteadas-tiempo-de-coccion-istock.jpg');
+  background-size: cover;
+}
+.contenedora{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+@media only screen and (min-width: 500px) and (max-width: 800px) {
+  .contenedora{
+    grid-template-columns: repeat(1, 2fr);
+  }
+}
+img {
+  max-width: 330px;
+  height: 330px;
+  object-fit: cover;
+  margin-left: 90px;
+  border-radius: 40px;
+}
+.title1 {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 50px;
+}
+.tittle2 {
+  font-size: 50PX;
+  // font-family: 'Times New Roman';
+  // margin-left: 50px;
+}
+.ingred {
+  font-size: 18px;
+}

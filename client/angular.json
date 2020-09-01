@@ -128,5 +128,8 @@
       }
     }
   },
-  "defaultProject": "MuyApp"
+  "defaultProject": "MuyApp",
+  "cli": {
+    "analytics": "671e5cf0-830d-4ec9-9cec-7ee5f5d9d2bd"
+  }
 }
