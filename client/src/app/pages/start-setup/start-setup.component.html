@@ -1,0 +1,84 @@
+
+  <div class="container">
+    <div class="contenido">
+      <div class="logo-formulario">
+        <img src="../../../assets/iconos/huerto.png" alt="">
+        <p>MuyApp</p>
+        <h2>Pronto podras usar tu huerto virtual
+          <br>
+          ayudamos configurando tu primer Huerto
+        </h2>
+      </div>
+
+        <div class="registro-formulario">
+            <form style="text-align: center; align-items: center;" action="" [formGroup]="setupForm">
+
+              <mat-form-field  appearance="outline">
+                <mat-label >Ponle un nombre a tu huerto</mat-label>
+                <input matInput formControlName="detalle" placeholder="Ej: Mi huertito">
+                <mat-error *ngIf="setupForm.get('detalle').hasError('pattern')">
+                  <strong>Por favor ingrese un nombre válido</strong>
+                </mat-error>
+                <mat-error *ngIf="setupForm.get('detalle').hasError('required')">
+                   <strong>El nombre del huerto es necesario</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <p style="font-weight: bold;">Sube una foto de perfil</p>
+
+              <input class="input" formControlName="basicfile" class="ng-hide" id="input-file-id" (change)="sendFile($event, 'imagen-persona')" multiple type="file" />
+
+              <mat-error *ngIf="setupForm.get('basicfile').hasError('required')">
+                <strong>Es necesario subir una foto de perfil</strong>
+             </mat-error>
+              <br>
+
+              <mat-radio-group [(ngModel)]="regionSeleccionada" [formControl]="floatLabelControl" class="contenedor-check1">
+                <p style="font-weight: bold;">Region en la que vives
+                  <strong matTooltip="Se recomienda elegir una región">*</strong>
+                </p>
+                <mat-radio-button [checked]=true value="Costa" class="example-margin" required>Costa
+                </mat-radio-button>
+
+                  <mat-radio-button    value="Sierra" class="example-margin" required>Sierra
+                  </mat-radio-button>
+
+                  <mat-radio-button   value="Oriente" class="example-margin" required>Oriente
+                  </mat-radio-button>
+
+              </mat-radio-group>
+              <br>
+
+              <mat-radio-group  class="contenedor-check1">
+                <p style="font-weight: bold;">Que productos prefieres
+                  <strong matTooltip="Se recomienda elegir almenos uno">*</strong>
+                </p>
+                  <mat-checkbox  (click)="poner('legumbre')"  class="example-margin" required>Legumbres
+                  </mat-checkbox>
+                  <mat-checkbox    (click)="poner('hierba')"  class="example-margin" required>Hierbas
+                  </mat-checkbox>
+                  <mat-checkbox (click)="poner('fruta')"    class="example-margin" required>Frutas
+                  </mat-checkbox>
+              </mat-radio-group>
+
+
+
+              <button mat-raised-button [disabled]="setupForm.invalid" (click)="verificarValores()" >
+                Continuar</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+      <ul>
+        <img src="../../../assets/iconos/huerto.png" alt="">
+        <li> <a href="#">MuyApp 2020 ©</a> </li>
+        <li> <a href="#">Informacion</a> </li>
+        <li> <a href="#">Informacion</a> </li>
+        <li> <a href="#">Informacion</a> </li>
+        <li> <a href="#">Informacion</a> </li>
+        <li> <a href="#">Informacion</a> </li>
+      </ul>
+    </div>
+  </div>
+

@@ -1,3 +1,7 @@
+import { HuertoConfirmationComponent } from './pages/huerto-confirmation/huerto-confirmation.component';
+import { CalendarComponent } from './pages/calendar/calendar.component';
+import { StartSetupComponent } from './pages/start-setup/start-setup.component';
+import { GotoComponent } from './pages/goto/goto.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { MuyaMapComponent } from './pages/muya-map/muya-map.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
@@ -16,18 +20,22 @@ const routes: Routes = [
   { path: 'inicio', component:InicioComponent},
   {path: 'menu', component:MenuPrincipalComponent, children:
     [
-      {path: 'data', component:MuyaDataComponent},
-      {path: 'app', component:MuyaAppComponent},
-      { path: 'map', component: MuyaMapComponent}
+      { path: 'data', component:MuyaDataComponent},
+      { path: 'app', component:MuyaAppComponent},
+      { path: 'map', component: MuyaMapComponent},
+      { path: 'config-user', component: HuertoConfirmationComponent}
     ]
   },
   {path: 'login', component:LoginComponent, children:
   [
-    {path: 'menu', component:MenuPrincipalComponent}
+    {path: 'setup', component:StartSetupComponent}
   ]
   },
   { path: 'signup', component:SignUpComponent},
   { path: 'confirmation', component:ConfirmationComponent},
+  { path: 'goto', component:GotoComponent},
+  { path: 'setup', component:StartSetupComponent},
+  { path: 'calendar', component:CalendarComponent}
 
 ];
 

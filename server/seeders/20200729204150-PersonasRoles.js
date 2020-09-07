@@ -43,7 +43,14 @@ module.exports = {
           estado:true,
           createdAt: new Date(),
           updatedAt: new Date()
-        }
+        },
+        {
+          idPersona:4,
+          idRol:2,
+          estado:true,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
     ], {});
 
   },

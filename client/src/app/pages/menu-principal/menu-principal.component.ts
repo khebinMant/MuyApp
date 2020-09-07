@@ -1,3 +1,5 @@
+import { AdminProComponent } from './../admin-pro/admin-pro.component';
+import { HuertoConfirmationComponent } from './../huerto-confirmation/huerto-confirmation.component';
 import { ServerService } from './../../servicios/server.service';
 import { PersonaLogin } from './../../modelos/persona-login';
 import { UsuarioActualService } from './../../servicios/usuario-actual.service';
@@ -6,6 +8,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
 import { MatCalendarCellCssClasses } from '@angular/material/datepicker';
 import { MatSidenav } from '@angular/material/sidenav';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-menu-principal',
@@ -23,12 +26,14 @@ export class MenuPrincipalComponent implements OnInit {
   personaLog: PersonaLogin;
   url: string;
   verSiembra: boolean;
+  botonAdmin: boolean;
 
   private _mobileQueryListener: () => void;
   constructor(
       private personaLogeadaVerificacion:UsuarioActualService,
       private router: Router,
       private server: ServerService,
+      private dialog: MatDialog,
       changeDetectorRef: ChangeDetectorRef,
       media: MediaMatcher,
     )
@@ -45,7 +50,6 @@ export class MenuPrincipalComponent implements OnInit {
     this.content=true;
     this.informacionPersona();
     this.verSiembra = false;
-
   }
   cambio(){
     this.content=!this.content;
@@ -62,9 +66,15 @@ export class MenuPrincipalComponent implements OnInit {
 
   }
 
-  informacionPersona(){
-    this.personaLog = this.personaLogeadaVerificacion.getPersonaLogeada()
-    console.log(this.personaLog)
+  async  informacionPersona(){
+    this.personaLog = await  this.personaLogeadaVerificacion.getPersonaLogeada()
+    console.log("Esto aqui")
+    console.log(this.personaLog.PersonasRoles)
+    for (let i=0; i<this.personaLog.PersonasRoles.length;i++){
+        if(this.personaLog.PersonasRoles[i].idRol==2){
+          this.botonAdmin=true;
+        }
+    }
   }
   verificacion(){
     if(this.personaLogeadaVerificacion.verificar()){
@@ -75,5 +85,29 @@ export class MenuPrincipalComponent implements OnInit {
       console.log("si nada primero logeate")
       this.router.navigate(['/login']);
     }
+  }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(HuertoConfirmationComponent, {
+      width: '750px',
+      disableClose: false,
+      maxHeight: '90vh',
+      autoFocus: false
+    });
+
+    dialogRef.afterClosed().subscribe(res => {
+     // this.leerSolcicitudes();
+    });
+  }
+  openDialogPro(): void {
+    const dialogRef = this.dialog.open(AdminProComponent, {
+      width: '750px',
+      disableClose: false,
+      maxHeight: '90vh',
+      autoFocus: false
+    });
+
+    dialogRef.afterClosed().subscribe(res => {
+     // this.leerSolcicitudes();
+    });
   }
 }

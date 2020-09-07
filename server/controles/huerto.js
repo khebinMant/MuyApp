@@ -56,7 +56,7 @@ let traerHuertos = (req, res) => {
     
     let data = req.body.data
     let idPersona = req.body.idPersona
-    modelos.Huertos.findOne({
+    modelos.Huertos.findAll({
         where: {
             idPersona: idPersona
         }
@@ -75,8 +75,31 @@ let traerHuertos = (req, res) => {
     })
 } 
 
+let actualizarHuerto =(req,res)=>{
+
+    let data= req.body.data
+    data.updatedAt = new Date(Date.now())   
+    modelos.Huertos.update(data,{
+        where:{
+             idPersona:req.body.idPersona,
+            }
+    }).then(respuesta => {
+        res.status(200).json({
+            transaccion: true,
+            data: respuesta,
+            msg: respuesta.length
+        }) 
+    }).catch(err => {
+        res.status(500).json({
+            transaccion: false,
+            data: err,
+            msg: 'Servidor no disponible'
+        })
+    })
+}
 
 module.exports = {
     crearHuertos,
-    traerHuertos
+    traerHuertos,
+    actualizarHuerto
 }

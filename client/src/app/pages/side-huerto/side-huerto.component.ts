@@ -20,7 +20,7 @@ export class SideHuertoComponent implements OnInit {
   siembras: Siembra[];
   dataSource: any;
   url: string;
-  huerto: Huerto;
+  huerto: Huerto[];
   riegos: any;
   SiembraDate: any;
   emoji: any;
@@ -50,7 +50,7 @@ export class SideHuertoComponent implements OnInit {
 
    async traerSiembrasHuertoPersonaLogeada(){
     this.huerto = await this.api.sendApi('traer-huerto');
-    this.siembras = await this.api.sendApi('obtener-siembras',this.huerto);
+    this.siembras = await this.api.sendApi('obtener-siembras',this.huerto[0]);
     //this.SiembraDate  = new Date(this.)
     console.log(this.siembras);
     this.displayedColumns = [

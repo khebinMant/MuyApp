@@ -1,4 +1,4 @@
-import { PersonaRol } from './persona-rol';
+import { PersonasRoles } from './persona-rol';
 export interface Huerto {
   id: number,
   detalle: string,
@@ -10,5 +10,5 @@ export interface Huerto {
   estado?: boolean,
   createdAt?:  Date,
   updatedAt?:  Date,
-  PersonaRole: PersonaRol[],
+  PersonasRoles: PersonasRoles[],
 }

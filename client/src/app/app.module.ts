@@ -4,6 +4,11 @@ import { LogService } from './servicios/log.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
+import { FullCalendarModule } from '@fullcalendar/angular'; // the main connector. must go first
+import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
+import interactionPlugin from '@fullcalendar/interaction'; // a plugin
+import { DatePipe } from '@angular/common';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -65,6 +70,16 @@ import { HttpClientModule} from "@angular/common/http";
 import { SideHuertoComponent} from './pages/side-huerto/side-huerto.component';
 import { AgregarSiembraComponent } from './pages/muya-app/agregar-siembra/agregar-siembra.component';
 import { ConfirmacionEliminacionComponent } from './pages/muya-app/confirmacion-eliminacion/confirmacion-eliminacion.component';
+import { GotoComponent } from './pages/goto/goto.component';
+import { StartSetupComponent } from './pages/start-setup/start-setup.component';
+import { CalendarComponent } from './pages/calendar/calendar.component';
+import { HuertoConfirmationComponent } from './pages/huerto-confirmation/huerto-confirmation.component';
+import { AdminProComponent } from './pages/admin-pro/admin-pro.component';
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin,
+]);
 
 @NgModule({
   declarations: [
@@ -80,9 +95,15 @@ import { ConfirmacionEliminacionComponent } from './pages/muya-app/confirmacion-
     SignUpComponent,
     SideHuertoComponent,
     AgregarSiembraComponent,
-    ConfirmacionEliminacionComponent
+    ConfirmacionEliminacionComponent,
+    GotoComponent,
+    StartSetupComponent,
+    CalendarComponent,
+    HuertoConfirmationComponent,
+    AdminProComponent
   ],
   imports: [
+    FullCalendarModule, // register FullCalendar with you app
     ToastrModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
@@ -138,7 +159,8 @@ import { ConfirmacionEliminacionComponent } from './pages/muya-app/confirmacion-
   providers: [
     ServerService,
     LogService,
-    UsuarioActualService
+    UsuarioActualService,
+    DatePipe
   ],
   bootstrap: [AppComponent],
   schemas: [

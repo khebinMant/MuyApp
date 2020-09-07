@@ -13,7 +13,6 @@ let Op = Sequelize.Op;
 
 
 let login = (req, res) => {
-
     let correoElectronico = req.body.correoElectronico
     let psw = req.body.psw
     modelos.Personas.findOne({
@@ -46,6 +45,65 @@ let login = (req, res) => {
             msg: 'Persona no registrada'
         })
     })
+<<<<<<< HEAD
+=======
+}   
+let actualizarConfirmacion = (req, res) => {
+
+    var html =`<!DOCTYPE html>
+    <html>
+       <head>
+          <title>HTML Meta Tag</title>
+          <meta http-equiv = "refresh" content = "1; url = http://localhost:4200/goto" />
+       </head>
+       <body>
+          <p>Redirigiendo a MuyApp</p>
+       </body>
+    </html>`
+
+    let id = req.params.id
+    console.log(id)
+    const user={
+        confirmacion:true
+    };
+    //user.confirmacion = true
+    modelos.Personas.update(user,{
+        where:{
+                id:id
+            }
+    }).then(respuesta => {
+        res.send(html)
+    }).catch(err => {
+        res.status(500).json({
+            transaccion: false,
+            data: err,
+            msg: 'Servidor no disponible'
+        })
+    })
+}
+
+let ponerFoto =(req,res)=>{
+
+    let data= req.body.data
+    console.log(data.foto)
+    modelos.Personas.update(data,{
+        where:{
+                id:req.body.idPersona,
+            }
+    }).then(respuesta => {
+        res.status(200).json({
+            transaccion: true,
+            data: respuesta,
+            msg: respuesta.length
+        }) 
+    }).catch(err => {
+        res.status(500).json({
+            transaccion: false,
+            data: err,
+            msg: 'Servidor no disponible'
+        })
+    })
+>>>>>>> edab0af319fc4acdfd02aad4618f4f85f3d7bb41
 }
 
 let crearPersona = (req, res) => {
@@ -77,11 +135,10 @@ let crearPersona = (req, res) => {
 let buscarPersona = (req, res) => {
 
     let correoElectronico = req.body.data.correoElectronico
-    let contraseña = req.body.data.contraseña
+    console.log(req.body.data)
     modelos.Personas.findAll({
         where: {
             correoElectronico: correoElectronico,
-            contraseña: contraseña
         }
     }).then(data => {
         return res.status(200).json({
@@ -158,5 +215,7 @@ module.exports = {
     crearRolPersona,
     crearPersona,
     traerPersonas,
-    buscarPersona
+    buscarPersona,
+    actualizarConfirmacion,
+    ponerFoto
 }

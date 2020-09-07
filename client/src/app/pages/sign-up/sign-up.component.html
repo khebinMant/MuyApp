@@ -11,10 +11,15 @@
       <div class="ingreso">
           <form action="" [formGroup]="registerForm" >
 
-            <mat-form-field  appearance="outline">
+            <mat-form-field appearance="outline">
               <mat-label >Nombre</mat-label>
                <input matInput formControlName="nombre" placeholder="Ej: Carlitos">
-               <mat-icon matPrefix color="primary"></mat-icon>
+               <mat-error *ngIf="registerForm.get('nombre').hasError('pattern')">
+                <strong>Por favor ingrese un nombre válido</strong>
+              </mat-error>
+              <mat-error *ngIf="registerForm.get('nombre').hasError('required')">
+                <strong>El nombre es necesario</strong>
+              </mat-error>
             </mat-form-field>
 
 <<<<<<< HEAD
@@ -22,25 +27,46 @@
             <mat-form-field  appearance="outline">
               <mat-label >Apellido</mat-label>
                <input matInput formControlName="apellido" placeholder="Ej: Taco">
-               <mat-icon matPrefix color="primary"></mat-icon>
+               <mat-error *ngIf="registerForm.get('apellido').hasError('pattern')">
+                <strong>Por favor ingrese un apellido válido</strong>
+              </mat-error>
+              <mat-error *ngIf="registerForm.get('apellido').hasError('required')">
+                <strong>El apellido es necesario</strong>
+              </mat-error>
             </mat-form-field>
 
 >>>>>>> 8972e8071f1d175e4bb81e1bd1417a050536414b
             <mat-form-field appearance="outline">
               <mat-label>Dirección de correo </mat-label>
               <input matInput formControlName="correoElectronico" placeholder="Ej: jaz@dominio.com">
+              <mat-error *ngIf="registerForm.get('correoElectronico').hasError('email')">
+                <strong>Por favor ingrese un correo válido</strong>
+              </mat-error>
+              <mat-error *ngIf="registerForm.get('correoElectronico').hasError('required')">
+                <strong>El correo es necesario</strong>
+              </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
               <mat-label>Contraseña</mat-label>
               <input type="password" matInput formControlName="psw" placeholder="Ej: contraseña">
-              <mat-icon matPrefix color="primary"></mat-icon>
+              <mat-error *ngIf="registerForm.get('psw').hasError('pattern')">
+                <strong>La contraseña lleva unicamente numero y letras sin tilde</strong>
+              </mat-error>
+              <mat-error *ngIf="registerForm.get('psw').hasError('required')">
+                <strong> La contraseña es necesaria</strong>
+              </mat-error>
+              <mat-error *ngIf="registerForm.get('pswcon').hasError('matchOtherValidator')">
+                <strong> Las contraseñas no coinciden</strong>
+              </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
               <mat-label>Confirma Contraseña</mat-label>
-              <input type="password" matInput formControlName="psw" placeholder="Ej: contraseña">
-              <mat-icon matPrefix color="primary"></mat-icon>
+              <input type="password" matInput formControlName="pswcon" placeholder="Ej: contraseña">
+              <mat-error *ngIf="registerForm.get('pswcon').errors">
+                <strong> Las contraseñas no coinciden</strong>
+              </mat-error>
             </mat-form-field>
 <<<<<<< HEAD
             

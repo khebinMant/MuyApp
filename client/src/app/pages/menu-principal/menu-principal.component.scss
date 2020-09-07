@@ -139,6 +139,22 @@ mat-toolbar {
 mat-card img{
   justify-content: center;
 }
+
+//Boton de Admin
+
+.admin{
+  position: absolute;
+  display: inline-block;
+  border-radius: 100%;
+  width: 25px;
+  height: 25px;
+  top: 50px;
+  right: 90px;
+  background-color: floralwhite;
+}
+.admin:hover{
+  cursor: pointer;
+}
 /*
 @import '../../../main-style.scss';
 

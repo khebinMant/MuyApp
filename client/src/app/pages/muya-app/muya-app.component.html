@@ -4,11 +4,15 @@
 
     <main style="justify-content: center;" class="contenedorTabla" >
       <div class="botones-accion">
-        <button mat-icon-button class="add-product"(click)="cambio(); traerProductos()" mat-mini-fab>
+        <button mat-icon-button class="add-product"(click)="cambio('añadir'); traerProductos()" mat-mini-fab>
           <mat-icon matTooltip="Añadir Siembra" >add_circle_outline</mat-icon>
         </button>
 
-        <button mat-icon-button class="back-menu"(click)="volver();" mat-mini-fab>
+        <button mat-icon-button class="calendario"(click)="cambio('calendario')" mat-mini-fab>
+          <mat-icon matTooltip="Ver Calendario" >insert_invitation</mat-icon>
+        </button>
+
+        <button mat-icon-button class="back-menu1"(click)="volver();" mat-mini-fab>
           <mat-icon matTooltip="Regresar al menu" >arrow_back</mat-icon>
         </button>
         <p class="titulo-tabla">
@@ -83,15 +87,15 @@
   </div>
   <div  class="tabSiembra"*ngIf="addSiembra">
     <div class="botones-accion1">
-      <button mat-icon-button class="add-product"(click)="volver();" mat-mini-fab>
+      <button mat-icon-button class="back"(click)="volver();" mat-mini-fab>
         <mat-icon matTooltip="Menu principal" >home</mat-icon>
       </button>
-      <button mat-icon-button class="back-menu"(click)="cambio();" mat-mini-fab>
+      <button mat-icon-button class="back-menu"(click)="cambio('volver');" mat-mini-fab>
         <mat-icon matTooltip="Volver a sembrios" >arrow_back</mat-icon>
       </button>
     </div>
     <mat-tab-group   class="borde-tab" animationDuration="1000ms" mat-align-tabs="center">
-      <mat-tab class="contenido-tab" style="font-weight: bold;" label="Frutas">
+      <mat-tab *ngIf="seeFruta" class="contenido-tab" style="font-weight: bold;" label="Frutas">
 
         <table class="sera" mat-table [dataSource]="dataSourceFruta">
 
@@ -127,7 +131,7 @@
         </table>
 
       </mat-tab>
-      <mat-tab style="font-weight: bold;" label="Legumbres">
+      <mat-tab *ngIf="seeLegumbre" style="font-weight: bold;" label="Legumbres">
 
         <table class="sera" mat-table [dataSource]="dataSourceLegumbre">
 
@@ -162,7 +166,7 @@
           <tr class="sera" mat-row *matRowDef="let row; columns: displayedColumnsLegumbres;"></tr>
         </table>
       </mat-tab>
-      <mat-tab  style="font-weight: bold;" label="Hierbas">
+      <mat-tab  *ngIf="seeHierba" style="font-weight: bold;" label="Hierbas">
         <table class="sera" mat-table [dataSource]="dataSourceHierbas">
 
           <ng-container matColumnDef="fotos">
@@ -196,7 +200,33 @@
           <tr class="sera" mat-row *matRowDef="let row; columns: displayedColumnsHierbas;"></tr>
         </table>
       </mat-tab>
+
+
+      <mat-tab  *ngIf="seeMensaje" style="font-weight: bold;" label="Mensaje">
+        <p class="titulo-tablas">
+          Hola {{perActual.nombre}} la configuración de tu huerto no admite ninguno producto
+          ve a tu configuración para cambiarlo.
+        </p>
+        <button  (click)="openDialogConfig()"  class="btnMenus" mat-button>
+          Cofiguracion
+        </button>
+      </mat-tab>
+
+
     </mat-tab-group>
+  </div>
+  <div style="height: auto; border: solid; width: auto;" *ngIf="seeCalendar" class="calendar">
+    <div class="botones-accion2">
+      <button mat-icon-button class="back"(click)="volver();" mat-mini-fab>
+        <mat-icon matTooltip="Menu principal" >home</mat-icon>
+      </button>
+      <button mat-icon-button class="back-menu2"(click)="cambio('volver');" mat-mini-fab>
+        <mat-icon matTooltip="Volver a sembrios" >arrow_back</mat-icon>
+      </button>
+    </div>
+    <div class="calendar">
+      <full-calendar deepChangeDetection="true" [options]="calendarOptions"></full-calendar>
+    </div>
   </div>
 
 </div>
