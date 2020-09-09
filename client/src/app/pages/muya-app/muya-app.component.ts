@@ -230,7 +230,7 @@ export class MuyaAppComponent implements OnInit {
   }
   volver(){
     this.router.navigateByUrl('', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['/menu/app']);
+      this.router.navigate(['/menu']);
   });
   }
   calendarOptions: CalendarOptions = {
@@ -245,6 +245,7 @@ export class MuyaAppComponent implements OnInit {
       {
         events: this.siembraCalendar
       },
+
       {
         events: this.cosechasCalendar
       },

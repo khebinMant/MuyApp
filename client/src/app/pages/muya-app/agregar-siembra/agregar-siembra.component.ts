@@ -117,7 +117,7 @@ export class AgregarSiembraComponent implements OnInit {
   async volver(){
     this.siembra = await this.api.sendApi('sembrar-producto',this.siembra);
     await this.router.navigateByUrl('', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['/menu/app']);
+      this.router.navigate(['/menu']);
   });
   }
   openSnackBar() {

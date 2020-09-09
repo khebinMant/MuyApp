@@ -55,10 +55,9 @@
 }
 
 .botones {
-  padding: 10px 20px;
+  padding-top: 40px;
   justify-content: start;
   text-align: center;
-  margin-bottom: 100px;
   button{
     background-color: greenyellow;
   }
@@ -77,9 +76,7 @@
 }
 
 .botones button:hover {
-  height: 50px;
-  width: 210px;
-  transition: 0.3s ease-out;
+  cursor: pointer;
 }
 
 mat-icon {

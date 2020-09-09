@@ -9,7 +9,7 @@ module.exports = {
           apellido: 'Guachagmira',
           correoElectronico: 'kevinguachagmira@gmail.com',
           psw: '12345678',
-          foto: 'a8vN04xVCj2kn58pKPOo-WMj.jpg',
+          foto: 'admin_kevin.jpg',
           confirmacion: true,
           estado:true,
           createdAt: new Date(),
@@ -53,12 +53,12 @@ module.exports = {
           apellido: 'Sanchez',
           correoElectronico: 'juanSanchez@gmail.com',
           psw: '12345678',
-          foto: 'a8vN04xVCj2kn58pKPOo-WMj.jpg',
+          foto: 'juansanchezfoto.jpg',
           confirmacion: true,
           estado:true,
           createdAt: new Date(),
           updatedAt: new Date()
-        }
+        } 
 
     ], {});
   },

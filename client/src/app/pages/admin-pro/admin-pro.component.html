@@ -17,12 +17,16 @@
 
               <mat-form-field>
                 <input formControlName="nombreComun" matInput placeholder="Nombre Común">
-                <mat-error  *ngIf="firstFormGroup.get('nombreComun').hasError('required')">Es necesario</mat-error>
+                <mat-error  *ngIf="firstFormGroup.get('nombreComun').hasError('required')"> <strong>Este campo es obligatorio</strong> </mat-error>
+                <mat-error  *ngIf="firstFormGroup.get('nombreComun').hasError('pattern')"> <strong>Por favor ingrese un nombre valido</strong> </mat-error>
+
               </mat-form-field>
 
               <mat-form-field>
                 <input formControlName="nombreCientifico" matInput placeholder="Nombre Científico">
-                <mat-error  *ngIf="firstFormGroup.get('nombreCientifico').hasError('required')">Es necesario</mat-error>
+                <mat-error  *ngIf="firstFormGroup.get('nombreCientifico').hasError('required')"><strong>Este campo es obligatorio</strong></mat-error>
+                <mat-error  *ngIf="firstFormGroup.get('nombreCientifico').hasError('pattern')"><strong>Por favor ingrese un nombre valido</strong></mat-error>
+
               </mat-form-field>
 
              <mat-form-field>
@@ -35,9 +39,13 @@
                 </mat-form-field>
 
               <mat-form-field>
-                    <input  formControlName="fechaCosecha" matInput placeholder="Fecha de cosecha">
-                    <mat-error  *ngIf="firstFormGroup.get('fechaCosecha').hasError('required')">Es necesario</mat-error>
-                  </mat-form-field>
+                    <input matTooltip="Recuerda para años ingresa valores del 1 al 10 y para dias mayor a 10" type="number" formControlName="fechaCosecha" matInput placeholder="Tiempo para la cosecha">
+                    <mat-error  *ngIf="firstFormGroup.get('fechaCosecha').hasError('required')"> <strong>Este campo es obligatorio</strong> </mat-error>
+                    <mat-error  *ngIf="firstFormGroup.get('fechaCosecha').hasError('pattern')"> <strong>Solo se permite numeros</strong> </mat-error>
+                    <mat-error  *ngIf="firstFormGroup.get('fechaCosecha').hasError('min')"> <strong>El minimo debe ser 1</strong> </mat-error>
+                    <mat-error  *ngIf="firstFormGroup.get('fechaCosecha').hasError('max')"> <strong>El maximo debe ser 365</strong> </mat-error>
+
+              </mat-form-field>
               <input class="input" formControlName="imagen" class="ng-hide" id="input-file-id" (change)="sendFile($event, 'imagen-producto')" multiple type="file" />
 
             </div>
@@ -52,18 +60,28 @@
       <ng-template matStepLabel>Condiciones</ng-template>
       <div class="ingreso">
               <mat-form-field>
-                <input formControlName="tipoSuelo" matInput placeholder="Tipo Suelo">
-                <mat-error  *ngIf="secondFormGroup.get('tipoSuelo').hasError('required')">Es necesario</mat-error>
+                <input formControlName="tipoSuelo" matInput placeholder="Tipo de Suelo">
+                <mat-error  *ngIf="secondFormGroup.get('tipoSuelo').hasError('required')"> <strong>Este campo es obligatorio</strong> </mat-error>
+                <mat-error  *ngIf="secondFormGroup.get('tipoSuelo').hasError('pattern')"> <strong></strong> Por favor ingrese un tipo de suelo valido </mat-error>
+
               </mat-form-field>
 
                 <mat-form-field>
-                <input formControlName="profundidadSemilla" matInput placeholder="Profundidad Semilla (cm)">
-                <mat-error  *ngIf="secondFormGroup.get('profundidadSemilla').hasError('required')">Es necesario</mat-error>
+                <input  type="number" formControlName="profundidadSemilla" matInput placeholder="Profundidad Semilla (cm)">
+                <mat-error  *ngIf="secondFormGroup.get('profundidadSemilla').hasError('required')"> <strong>Este campo es obligatorio</strong> </mat-error>
+                <mat-error  *ngIf="secondFormGroup.get('profundidadSemilla').hasError('pattern')"> <strong>Solo se permite ingresar numeros</strong></mat-error>
+                <mat-error  *ngIf="secondFormGroup.get('profundidadSemilla').hasError('min')"> <strong>El minimo es 1 cm </strong> </mat-error>
+                <mat-error  *ngIf="secondFormGroup.get('profundidadSemilla').hasError('max')"> <strong>El máximo es 100 cm</strong> </mat-error>
+
               </mat-form-field>
 
               <mat-form-field>
-                <input formControlName="espacioRecomendado" matInput placeholder="Espacio Recomendado (cm)">
-                <mat-error  *ngIf="secondFormGroup.get('espacioRecomendado').hasError('required')">Es necesario</mat-error>
+                <input  type="number" formControlName="espacioRecomendado" matInput placeholder="Espacio Recomendado (cm)">
+                <mat-error  *ngIf="secondFormGroup.get('espacioRecomendado').hasError('required')">  <strong>Este campo es obligatorio</strong></mat-error>
+                <mat-error  *ngIf="secondFormGroup.get('espacioRecomendado').hasError('pattern')">  <strong>Solo se permite ingresar numeros</strong></mat-error>
+                <mat-error  *ngIf="secondFormGroup.get('espacioRecomendado').hasError('min')">  <strong>El mínimo es 1 cm</strong></mat-error>
+                <mat-error  *ngIf="secondFormGroup.get('espacioRecomendado').hasError('max')">  <strong>El máximo  es 100 cm</strong></mat-error>
+
               </mat-form-field>
 
             </div>
@@ -75,29 +93,39 @@
   <mat-step   class="contenedor-producto" [stepControl]="thirdFormGroup" [editable]="isEditable">
     <form class="contenedor-producto" [formGroup]="thirdFormGroup">
       <ng-template matStepLabel>Cuidados</ng-template>
-  <mat-form-field>
-    <mat-select formControlName="resistenciaFrio" placeholder="Resistencia al Frio">
-      <ng-container *ngFor="let resistenciaFrio of resistenciaFrios">
-        <mat-option value="{{resistenciaFrio.value}}">{{resistenciaFrio.value}}</mat-option>
-      </ng-container>
-    </mat-select>
-    <mat-error>Este campo es obligatorio</mat-error>
-  </mat-form-field>
-    <mat-form-field>
-        <input formControlName="frecuenciaRiego" matInput placeholder="Frecuencia de  Riego (por semana)">
-        <mat-error>Este campo es obligatorio</mat-error>
-        <mat-error  *ngIf="thirdFormGroup.get('frecuenciaRiego').hasError('required')">Es necesario</mat-error>
-  </mat-form-field>
+      <div class="ingreso">
 
-  <mat-form-field>
-    <input formControlName="cantidadRiego" matInput placeholder="Cantidad(militros)">
-    <mat-error>Este campo es obligatorio</mat-error>
-    <mat-error  *ngIf="thirdFormGroup.get('cantidadRiego').hasError('required')">Es necesario</mat-error>
-  </mat-form-field>
+        <mat-form-field>
+          <mat-select formControlName="resistenciaFrio" placeholder="Resistencia al Frio">
+            <ng-container *ngFor="let resistenciaFrio of resistenciaFrios">
+              <mat-option value="{{resistenciaFrio.value}}">{{resistenciaFrio.value}}</mat-option>
+            </ng-container>
+          </mat-select>
+          <mat-error>Este campo es obligatorio</mat-error>
+        </mat-form-field>
+          <mat-form-field>
+              <input type="number" formControlName="frecuenciaRiego" matInput placeholder="Frecuencia de  Riego (por semana)">
+              <mat-error  *ngIf="thirdFormGroup.get('frecuenciaRiego').hasError('required')">  <strong>Este campo es obligatorio</strong></mat-error>
+              <mat-error  *ngIf="thirdFormGroup.get('frecuenciaRiego').hasError('pattern')"> <strong>Solo se permite ingresar números</strong> </mat-error>
+              <mat-error  *ngIf="thirdFormGroup.get('frecuenciaRiego').hasError('min')"> <strong>El mínimo de veces es 1</strong> </mat-error>
+              <mat-error  *ngIf="thirdFormGroup.get('frecuenciaRiego').hasError('max')"> <strong>El máximo de veces es 10</strong> </mat-error>
 
-          <button mat-button (click)="guardarProducto()" class="btn-back"  [mat-dialog-close]="cerrar" >Aceptar</button>
+            </mat-form-field>
 
-    </form>
+        <mat-form-field>
+          <input type="number" formControlName="cantidadRiego" matInput placeholder="Cantidad(militros)">
+          <mat-error  *ngIf="thirdFormGroup.get('cantidadRiego').hasError('required')"><strong>Este campo es obligatorio</strong></mat-error>
+          <mat-error  *ngIf="thirdFormGroup.get('cantidadRiego').hasError('pattern')"><strong>Solo se permite ingresar números</strong></mat-error>
+          <mat-error  *ngIf="thirdFormGroup.get('cantidadRiego').hasError('min')"> <strong>El mínimo de veces es 1 mililitro</strong> </mat-error>
+          <mat-error  *ngIf="thirdFormGroup.get('cantidadRiego').hasError('max')"> <strong>El máximo de veces es 100000 militros</strong> </mat-error>
+
+        </mat-form-field>
+
+      </div>
+
+        <button mat-button (click)="guardarProducto()" class="btn-back"  [mat-dialog-close]="cerrar" >Aceptar</button>
+
+      </form>
   </mat-step>
 </mat-horizontal-stepper>
 </div>

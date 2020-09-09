@@ -37,8 +37,8 @@ export class SignUpComponent implements OnInit {
   }
   crearLRegisterForm() {
     this.registerForm = this.fb.group({
-      nombre:['',[Validators.required,Validators.pattern('^[a-zA-Z0-9 áéíóúñüÁÉÍÓÚÑÜ]*$')]],
-      apellido:['',[Validators.required, Validators.pattern('^[a-zA-Z0-9 áéíóúñüÁÉÍÓÚÑÜ]*$')]],
+      nombre:['',[Validators.required,Validators.pattern('^[a-zA-Z áéíóúñüÁÉÍÓÚÑÜ]*$')]],
+      apellido:['',[Validators.required, Validators.pattern('^[a-zA-Z áéíóúñüÁÉÍÓÚÑÜ]*$')]],
       correoElectronico: ['', [Validators.required,  Validators.email]],
       psw: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9 ñÑ]*$')]],
       pswcon: ['', [Validators.required,matchOtherValidator('psw')]]

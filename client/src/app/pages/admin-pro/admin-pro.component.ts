@@ -72,6 +72,8 @@ export class AdminProComponent implements OnInit {
     private router: Router,
     private server: ServerService,
     private _formBuilder: FormBuilder,
+    private toastr: ToastrService
+
   ) {
       this.url = api.url;
       this.crearProductoForm();
@@ -88,21 +90,21 @@ export class AdminProComponent implements OnInit {
   }
   crearProductoForm() {
     this.firstFormGroup = this._formBuilder.group({
-      categoria: ['', Validators.required],
-      nombreComun: ['', Validators.required],
-      nombreCientifico: ['', Validators.required],
+      categoria: ['', [Validators.required]],
+      nombreComun: ['', [Validators.required,Validators.pattern('^[a-zA-Z áéíóúñüÁÉÍÓÚÑÜ]*$')]],
+      nombreCientifico: ['', [Validators.required,Validators.pattern('^[a-zA-Z áéíóúñüÁÉÍÓÚÑÜ]*$')]],
       imagen: ['', [Validators.required]],
-      dificultad: ['', Validators.required],
-      fechaCosecha: ['', Validators.required],
+      dificultad: ['', [Validators.required]],
+      fechaCosecha: ['', [Validators.required,  Validators.pattern('^\\d*$'),Validators.min(1), Validators.max(365)]],
     });
     this.secondFormGroup = this._formBuilder.group({
-      tipoSuelo: ['', Validators.required],
-      espacioRecomendado: ['' , Validators.required],
-      profundidadSemilla: ['', Validators.required],
+      tipoSuelo: ['', [Validators.required,Validators.pattern('^[a-zA-Z áéíóúñüÁÉÍÓÚÑÜ]*$')]],
+      espacioRecomendado: ['' , [Validators.required,  Validators.pattern('^\\d*$'),Validators.min(1), Validators.max(100)]],
+      profundidadSemilla: ['', [Validators.required,  Validators.pattern('^\\d*$'),Validators.min(1), Validators.max(100)]],
     });
     this.thirdFormGroup = this._formBuilder.group({
-      frecuenciaRiego: ['', Validators.required],
-      cantidadRiego: ['', Validators.required],
+      frecuenciaRiego: ['', [Validators.required,  Validators.pattern('^\\d*$'),Validators.min(1), Validators.max(31)]],
+      cantidadRiego: ['', [Validators.required,  Validators.pattern('^\\d*$'),Validators.min(1), Validators.max(100000)]],
       resistenciaFrio: ['', Validators.required],
     });
 };
@@ -162,6 +164,8 @@ export class AdminProComponent implements OnInit {
     }
     let resp3 = await this.api.sendApi('crear-cuidado',informacionCuidado)
     console.log(resp3)
+    this.toastr.success('La información de la semilla ha sido guardada con exito en la base de datos', 'Semilla agregada');
+
     //Respuesta de guardar el cuidado del producto
   }
 
